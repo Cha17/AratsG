@@ -1,4 +1,8 @@
-<?php require('conn.php'); ?>
+<?php 
+  require('conn.php');
+  session_start();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,11 +42,14 @@
               class="text-black text-center text-base font-medium leading-5"
               >Events</a
             >
-            <a
-              href="login.php"
-              class="text-black text-center text-base font-medium leading-5 whitespace-nowrap"
-              >Sign In</a
-            >
+            <?php 
+              if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
+              }
+              else{
+                echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+              }
+            ?>
           </div>
         </a>
       </nav>

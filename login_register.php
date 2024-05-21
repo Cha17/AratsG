@@ -5,19 +5,21 @@ session_start();
 
 //for login
 if(isset($_POST['login'])){
-    $query = "SELECT * FROM registered_users WHERE email = '$_POST[email]' OR username = '$_POST[username]'";
+    $query = "SELECT * FROM registered_users WHERE email = '$_POST[email_username]' OR username = '$_POST[email_username]'";
     $result = mysqli_query($conn, $query);
 
     if($result){
         if(mysqli_num_rows($result)==1){
             $result_fetch = mysqli_fetch_assoc($result);
             if(password_verify($_POST['password'], $result_fetch['password'])){
-            echo "right";
+                $_SESSION['logged_in']=true;
+                $_SESSION['email']=$result_fetch['email'];
+                header("location: userHome.php");;
             }
             else{
                 echo "
                 <script>
-                    alert('Invalid username or password!');
+                    alert('Email or Username not registered!');
                     window.location.href = 'login.php';
                 </script>
                 ";
@@ -26,7 +28,7 @@ if(isset($_POST['login'])){
         }else{
             echo "
             <script>
-                alert('Invalid username or password!');
+                alert('error!');
                 window.location.href = 'login.php';
             </script>
             ";
