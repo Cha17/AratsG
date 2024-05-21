@@ -5,7 +5,7 @@ session_start();
 
 //for login
 if(isset($_POST['login'])){
-    $query = "SELECT * FROM registered_users WHERE email = '$_POST[email_username]' OR username = '$_POST[email_username]'";
+    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]'";
     $result = mysqli_query($conn, $query);
 
     if($result){
@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
             else{
                 echo "
                 <script>
-                    alert('Email or Username not registered!');
+                    alert('Wrong username or password!');
                     window.location.href = 'login.php';
                 </script>
                 ";
@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
         }else{
             echo "
             <script>
-                alert('error!');
+                alert('Email not registered!');
                 window.location.href = 'login.php';
             </script>
             ";
@@ -38,7 +38,7 @@ if(isset($_POST['login'])){
     else{
         echo "
         <script>
-            alert('Invalid username or password!');
+            alert('Email not registered!');
             window.location.href = 'login.php';
         </script>
         ";
@@ -49,7 +49,7 @@ if(isset($_POST['login'])){
 
 //for registration
 if(isset($_POST['signup'])){
-    $user_exists_query = "SELECT * FROM registered_users WHERE studentNum = '$_POST[studentNum]' OR email = '$_POST[email]'";
+    $user_exists_query = "SELECT * FROM users WHERE studentNum = '$_POST[studentNum]' OR email = '$_POST[email]'";
     $result = mysqli_query($conn, $user_exists_query);
 }
 
@@ -79,7 +79,7 @@ if($result){
     // will be executed if student number and email is not yet registered
     else{
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $query = "INSERT INTO registered_users (username, studentNum, email, password) VALUES ('$_POST[username]', '$_POST[studentNum]', '$_POST[email]', '$password')";
+        $query = "INSERT INTO users (fullname, studentNum, email, password) VALUES ('$_POST[username]', '$_POST[studentNum]', '$_POST[email]', '$password')";
         if(mysqli_query($conn, $query)){
             echo "
             <script>
