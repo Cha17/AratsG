@@ -21,7 +21,7 @@
         class="flex w-full items-center justify-between gap-20 mt-10 max-md:max-w-full max-md:flex-wrap"
       >
         <a
-          href="userHome.html"
+          href="userHome.php"
           class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center"
         >
           <img
@@ -33,7 +33,7 @@
             class="justify-center self-start flex my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center"
           >
             <a
-              href="userHome.html"
+              href="userHome.php"
               class="text-stone-900 text-center text-base font-extrabold leading-5"
               >Home</a
             >

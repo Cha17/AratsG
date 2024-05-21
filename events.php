@@ -1,12 +1,19 @@
+<?php 
+  require('conn.php');
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Events</title>
+    <title>G! Arat Na</title>
     <link rel="icon" type="image/x-icon" href="images/G!.png" />
     <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="regFebibig.css">
   </head>
   <body>
     <!-- Gradient Background -->
@@ -27,44 +34,47 @@
         <nav
           class="flex w-full items-center justify-between gap-20 mt-10 max-md:max-w-full max-md:flex-wrap"
         >
-          <a
-            href="userHome.html"
-            class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center"
-          >
-            <img
-              src="images/G!.png"
-              class="aspect-[4.09] object-contain object-center w-[200px] overflow-hidden shrink-0 max-w-full"
-              alt="G! Arat Na"
-            />
+        <a
+          href="userHome.php"
+          class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center"
+        >
+          <img
+            src="images/G!.png"
+            class="aspect-[4.09] object-contain object-center w-[200px] overflow-hidden shrink-0 max-w-full"
+            alt="G! Arat Na"
+          />
             <div
               class="justify-center self-start flex gap-10 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center"
             >
               <a
-                href="Student_Home.html"
+                href="userHome.php"
                 class="text-stone-900 text-center text-base font-medium leading-5"
                 >Home</a
               >
               <a
-                href="formrequest.html"
+                href="events.php"
                 class="text-black text-center text-base font-extrabold leading-5"
                 >Events</a
               >
-              <a
-                href="login.php"
-                class="text-black text-center text-base font-medium leading-5 whitespace-nowrap"
-                >Sign In</a
-              >
+              <?php 
+              if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
+              }
+              else{
+                echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+              }
+            ?> 
             </div>
           </a>
         </nav>
       </header>
       <h1
-        class="text-orange-950 text-4xl font-extrabold leading-[54px] w-[1012px] ml-4 mt-12 max-md:max-w-full max-md:mt-10"
+        class="text-orange-950 text-[65px] font-extrabold pl-10 leading-[54px] w-[1012px] ml-4 mt-12 max-md:max-w-full max-md:mt-10"
       >
         Events
       </h1>
       <section
-        class="self-center flex max-w-full gap-5 mt-12 mb-10 max-md:flex-wrap max-md:justify-center max-md:mt-10"
+        class="self-center flex max-w-full gap-5 mt-8 mb-10 max-md:flex-wrap max-md:justify-center max-md:mt-10"
       >
         <div
           class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl"
@@ -144,8 +154,7 @@
             <p
               class="relative text-gray-700 text-base leading-5 opacity-90 mt-8"
             >
-              BINI is gearing up for their much-anticipated first solo concert
-              at the New Frontier Theater on June 28, 2024. Get ready to witness
+              BINI is gearing up for their much-anticipated first solo concert. Get ready to witness
               powerful performances, stunning visuals, and special surprises!
             </p>
             <a
