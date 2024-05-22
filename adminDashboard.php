@@ -158,14 +158,17 @@ include("conn.php");
                   id="dropdown"
                 >
                   <div class="px-4 py-3">
-                    <span id="accname" class="block text-sm"></span>
-                    <span id="accemail"
-                      class="block text-sm font-medium text-gray-900 truncate"
-                      ></span
-                    >
+                      <?php 
+                      if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                        $email = $_SESSION['email'];
+                        $sql="Select * from users where email='$email'";
+                        $result=mysqli_query($conn,$sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo '<p>'.$row['fullname'].'</p>';
+                      }
+                      ?>
                   </div>
                   <ul class="py-1" aria-labelledby="dropdown">
-                    
 
                     <li>
                       <a
@@ -334,54 +337,5 @@ include("conn.php");
     </div>
   </body>
 </html>
-
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-<!-- Our script must be loaded after firebase references -->
-<script src="script.js"></script>
-<script>
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/v8/firebase.User
-      var userID = user.uid;
-      const dbRef = firebase.database().ref();
-      dbRef.child("admin").child(userID).get().then((snapshot) => {
-        if (snapshot.exists()) {
-          //const datasnap = snapshot.toJSON()
-          var fname = snapshot.val().firstName
-          var lname = snapshot.val().lastName
-          var email = snapshot.val().email
-          //const namestr = JSON.stringify(name)
-          var span = document.getElementById('accname')
-          var p = document.createElement('p')
-          //console.log(namestr)
-          p.innerHTML = fname + " " + lname
-          span.appendChild(p);
-          var spanemail = document.getElementById('accemail')
-          var emailp = document.createElement('p')
-          emailp.innerHTML = email
-          spanemail.appendChild(emailp)
-
-
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
-
-
-    } else {
-      // User is signed out
-      window.location.href = 'index.html'
-    }
-  });
-</script>
 
 </html>
