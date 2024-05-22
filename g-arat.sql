@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 09:24 AM
+-- Generation Time: May 22, 2024 at 09:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -95,7 +95,9 @@ ALTER TABLE `events`
 -- Indexes for table `registrations`
 --
 ALTER TABLE `registrations`
-  ADD PRIMARY KEY (`reg-id`);
+  ADD PRIMARY KEY (`reg-id`),
+  ADD KEY `User foreign key` (`user-id`),
+  ADD KEY `Event foreign key` (`event-id`);
 
 --
 -- Indexes for table `users`
@@ -124,6 +126,17 @@ ALTER TABLE `registrations`
 --
 ALTER TABLE `users`
   MODIFY `user-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `registrations`
+--
+ALTER TABLE `registrations`
+  ADD CONSTRAINT `Event foreign key` FOREIGN KEY (`event-id`) REFERENCES `events` (`event-id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `User foreign key` FOREIGN KEY (`user-id`) REFERENCES `users` (`user-id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
