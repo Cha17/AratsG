@@ -303,89 +303,35 @@ include("conn.php");
                 class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
               >
                 <div
-                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5"
-                >
+                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5">
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Pending
+                  <?php
+                    $sql="Select * from registrations";
+                    $result=mysqli_query($conn,$sql);
+                    if (isset($result)) {
+                      $row = mysqli_num_rows($result);
+                      echo $row;
+                    }
+                  ?>
                   </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
                   Click to see a list of attendees who have registered but haven't completed their payment yet.
-                </p>
-                <div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
-                  <?php
-                  $sql="Select * from registrations";
-                  $result=mysqli_query($conn,$sql);
-                  if (isset($result)) {
-                    $row = mysqli_num_rows($result);
-                    echo $row;
-                  }
-                  ?>
-                </div>
-                </div>
-              </div>
-              <div
-                class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
-              >
-                <div
-                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5"
-                >
-                  <h2
-                    class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >
-                    Confirmed
-                  </h2>
-                  <p
-                    class="text-orange-950 text-base leading-5 self-stretch mt-8"
-                  >
-                  Here are the confirmed attendees for the event. Click to view a complete list of registered and paid attendees for this event.
                   </p>
-                  <div
-                    class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
-                  >
-                  <?php
-                  $sql="Select * from registrations";
-                  $result=mysqli_query($conn,$sql);
-                  if (isset($result)) {
-                    $row = mysqli_num_rows($result);
-                    echo $row;
-                  }
-                  ?>
+                  <div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
+                    <?php
+                    $sql="Select * from registrations";
+                    $result=mysqli_query($conn,$sql);
+                    if (isset($result)) {
+                      $row = mysqli_num_rows($result);
+                      echo $row;
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
-              <div
-                class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
-              >
-                <div
-                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5"
-                >
-                  <h2
-                    class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >
-                    Missed
-                  </h2>
-                  <p
-                    class="text-orange-950 text-base leading-5 self-stretch mt-8"
-                  >
-                    Missed credentials of students who did not claim their
-                    request forms, or that were not made past the deadline.
-                  </p>
-                  <div
-                    class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
-                  >
-                  <?php
-                  $sql="Select * from registrations";
-                  $result=mysqli_query($conn,$sql);
-                  if (isset($result)) {
-                    $row = mysqli_num_rows($result);
-                    echo $row;
-                  }
-                  ?>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </section>
           
