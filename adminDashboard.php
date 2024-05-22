@@ -281,13 +281,11 @@ include("conn.php");
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
-                  $sql="Select * from events";
-                  $result1=mysqli_query($conn,$sql);
                   $sql="Select * from registrations";
-                  $result2=mysqli_query($conn,$sql);
+                  $result=mysqli_query($conn,$sql);
                   
                   if (isset($result1) && isset($result2)) {
-                    $row = mysqli_num_rows($result1) + mysqli_num_rows($result2);
+                    $row = mysqli_num_rows($result);
                     echo $row;
                   }
                   ?>
@@ -313,8 +311,7 @@ include("conn.php");
                     Pending
                   </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
-                  Pending request forms of students. Dynamic queue of students
-                  awaiting administrative action.
+                  Click to see a list of attendees who have registered but haven't completed their payment yet.
                 </p>
                 <div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
                   <?php
@@ -337,13 +334,12 @@ include("conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Completed
+                    Confirmed
                   </h2>
                   <p
                     class="text-orange-950 text-base leading-5 self-stretch mt-8"
                   >
-                    Completed forms of students who requested their credentials,
-                    awaiting to review and approval to finalize.
+                  Here are the confirmed attendees for the event. Click to view a complete list of registered and paid attendees for this event.
                   </p>
                   <div
                     class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
