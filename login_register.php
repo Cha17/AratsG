@@ -21,7 +21,7 @@ if(isset($_POST['login'])){
                 else{
                     $_SESSION['logged_in']=true;
                     $_SESSION['email']=$result_fetch['email'];
-                    header("location: adminDashboard.html");;
+                    header("location: adminDashboard.php");;
                 }
             }
             else{
