@@ -291,46 +291,43 @@ include("conn.php");
 
             </div>
           </section>
+          <div>
           <section class="mt-10">
-            <div
+          <div
               class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
             >
-              <div
+            <?php
+            $sql="Select * from events";
+            $query = mysqli_query($conn, $sql);
+            if ($query-> num_rows > 0) {
+              while ($row = mysqli_fetch_assoc($query)) { 
+                echo '<div
                 class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
               >
-                <div
+              <div
                   class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5">
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >
-                  <?php
-                    $sql="Select * from registrations";
-                    $result=mysqli_query($conn,$sql);
-                    if (isset($result)) {
-                      $row = mysqli_num_rows($result);
-                      echo $row;
-                    }
-                  ?>
-                  </h2>
-                  <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
-                  Click to see a list of attendees who have registered but haven't completed their payment yet.
-                  </p>
+                  >';
+                      echo $row["title"];
+                  echo '</h2>
+                  <p class="text-orange-950 text-base leading-5 self-stretch mt-8">';
+                      echo $row["description"];
+                    
+                  echo '</p>
                   <div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
-                    <?php
-                    $sql="Select * from registrations";
-                    $result=mysqli_query($conn,$sql);
-                    if (isset($result)) {
-                      $row = mysqli_num_rows($result);
-                      echo $row;
-                    }
-                    ?>
+                    
                   </div>
                 </div>
-              </div>
+              </div>';
+            };
+          };
+            ?>
+              
               
             </div>
           </section>
-          
+          <div>
         </main>
       </section>
     </div>
