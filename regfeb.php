@@ -5,15 +5,21 @@ session_start();
 if (isset($_POST["submit"])) {
   $fullname = $_POST['fullname'];
   $student_num = $_POST['student_num'];
+  $email = $_POST['email'];
   $program = $_POST['program'];
-  $yr_sec = $_POST['yr_sec'];
-  $dob = $_POST['dob'];
-  $sem = $_POST['sem'];
-  $purpose = $_POST['purpose'];
+  $year = $_POST['year'];
+  $sec = $_POST['sec'];
+  $payment = $_POST['payment'];
+  $note = $_POST['note'];
+  // $dob = $_POST['dob'];
+  // $sem = $_POST['sem'];
+  // $purpose = $_POST['purpose'];
 
+  $query = "INSERT INTO request (fullname,student_num,email,program,year,sec,payment,note) 
+  VALUES ('$fullname','$student_num','$email','$program','$year','$sec', '$payment', '$note)";
 
-  $query = "INSERT INTO request (fullname,student_num,program,yr_sec,dob,sem,purpose,reqtype) 
-  VALUES ('$fullname','$student_num','$program','$yr_sec','$dob','$sem', '$purpose', 'Transcript of Records')";
+  // $query = "INSERT INTO request (fullname,student_num,program,yr_sec,dob,sem,purpose,reqtype) 
+  // VALUES ('$fullname','$student_num','$program','$yr_sec','$dob','$sem', '$purpose', 'Transcript of Records')";
 
 
   mysqli_query($conn, $query);
@@ -126,35 +132,6 @@ if (isset($_POST["submit"])) {
             <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <!-- First Row Info -->
               <div class="justify-between max-md:max-w-full">
-                <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-                  <!-- Full Name -->
-                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
-                    <div class="items-stretch flex grow flex-col max-md:mt-10">
-                      <label for="fullname" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Full Name</label>
-                      <input type="text" name="fullname" id="fullname" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Full Name" required />
-                    </div>
-                  </div>
-                  <!-- Student Number -->
-                  <div class="flex flex-col items-stretch w-[35%] ml-5 max-md:w-full max-md:ml-0">
-                    <div class="items-stretch flex grow flex-col max-md:mt-10">
-                      <label for="student_num" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Student Number</label>
-                      <input id="student_num" name="student_num" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Student Number" required />
-                    </div>
-                  </div>
-                  <!-- Program -->
-                  <div class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
-                    <div class="items-stretch flex grow flex-col max-md:mt-10">
-                      <label for="program" class="text-[#401b1b] text-base font-extrabold leading-6 whitespace-nowrap">Program</label>
-                      <div class="w-88 relative">
-                        <input type="text" id="program" name="program" placeholder="Program" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" />
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of program -->
-                </div>
-              </div>
-              <!-- First Row Info -->
-              <div class="justify-between mt-10 max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
                   <!-- Full Name -->
                   <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
@@ -208,63 +185,20 @@ if (isset($_POST["submit"])) {
                       " required />
                     </div>
                   </div>
-
+                  <!-- End of Email -->
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <!-- End of First Row Info -->
               <!-- Second Row Info -->
               <div class="justify-between mt-10 max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+                  <!-- Program -->
+                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
+                    <div class="items-stretch flex grow flex-col max-md:mt-10">
+                      <label for="program" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Program</label>
+                      <input type="text" name="program" id="program" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Program" required />
+                    </div>
+                  </div>
                   <!-- Year -->
                   <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
@@ -280,14 +214,7 @@ if (isset($_POST["submit"])) {
                       <input type="text" name="sec" id="sec" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Section" required />
                     </div>
                   </div>
-                  <!-- Email -->
-                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
-                    <div class="items-stretch flex grow flex-col max-md:mt-10">
-                      <label for="reg_email" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Email</label>
-                      <input type="text" name="reg_email" id="reg_email" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Email" required />
-                    </div>
-                  </div>
-
+                  <!-- End of Section -->
                 </div>
               </div>
 
@@ -299,66 +226,26 @@ if (isset($_POST["submit"])) {
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="payment" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Payment Option</label>
                       <div class="w-88 relative">
-                        <select type="text" name="payment" id="payment" placeholder="Payment Option" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" autocomplete="off">
+                        <select type="text" name="payment" id="payment" placeholder="Payment Option" required class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" autocomplete="off">
                           <option value=""></option>
                           <option value="Cash">Cash</option>
                           <option value="Online">Online</option>
                         </select>
-
                       </div>
                     </div>
                   </div>
-
-                  <!-- Section 
-                <div
-                  class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
-                >
-                  <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
-                      for="sec"
-                      class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Section</label
-                    >
-                    <input
-                      type="text"
-                      name="sec"
-                      id="sec"
-                      class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Section"
-                      required
-                    />
-                  </div>
-                </div>
-                -->
-                  <!-- Email 
-                <div
-                  class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
-                >
-                  <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
-                      for="reg_email"
-                      class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Email</label
-                    >
-                    <input
-                      type="text"
-                      name="reg_email"
-                      id="reg_email"
-                      class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-                </div>
--->
+                  <!-- End of Payment Option -->
                 </div>
               </div>
+              <!-- End of Third Row Info -->
 
 
 
             </div>
           </div>
         </section>
+        <!-- End of Registration Form -->
+        <!-- Note -->
         <section>
           <div class="flex flex-col items-stretch px-10">
             <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
@@ -366,24 +253,21 @@ if (isset($_POST["submit"])) {
                 <label for="note" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Note</label>
 
               </div>
-              <input type="text" name="note" id="note" class="bg-[#eff0f2] align-text-top mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[10px] max-md:pl-1" placeholder="Add note here" required />
+              <input type="text" name="note" id="note" class="bg-[#eff0f2] align-text-top mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[10px] max-md:pl-1" placeholder="Add note here" />
             </div>
-
           </div>
+        </section>
 
-
-          <!-- component -->
-
-          <section class="mb-20">
-            <div class="flex flex-col items-stretch px-16">
-              <div class="justify-center items-stretch  flex w-full flex-col -mr-5 px-7 mt-12 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
-                <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-
-                  <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Submit</h2>
-                </button>
-              </div>
+        <!-- Submit Button -->
+        <section class="mb-20">
+          <div class="flex flex-col items-stretch px-16">
+            <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-6 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+              <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
+                <h2 class="text-gray-200 text-center font-extrabold leading-6">Submit</h2>
+              </button>
             </div>
-          </section>
+          </div>
+        </section>
       </form>
     </div>
   </div>
