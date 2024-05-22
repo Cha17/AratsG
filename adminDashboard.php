@@ -277,11 +277,11 @@ include("conn.php");
                   <div
                     class="text-orange-950 text-center text-lg whitespace-nowrap"
                   >
-                  <a href="requests.php">Registrations</a>
+                  <a href="requests.php">Pending</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
-                  $sql="Select * from registrations";
+                  $sql="Select * from registrations where payment_status='Pending'";
                   $result=mysqli_query($conn,$sql);
                   
                   if (isset($result1) && isset($result2)) {
