@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 07:14 PM
+-- Generation Time: May 22, 2024 at 07:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -84,11 +84,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user-id`, `fullname`, `email`, `studentNum`, `password`, `role`) VALUES
 (1, 'admin', 'admin@email.com', 245245, '$2y$10$GBVjt27rSqldANCqQl/2Zecs7zHrD9MLBZz5.LMRXGSiEr007Yu4y', 'Admin'),
-(2, 'user', 'user@email.com', 123456, '$2y$10$N.SOxT4ePz2uyFfhEBGPGuRkkYNruJoQhfP49kb8K2J7qe1WQg7wC', 'User'),
-(3, '', '', 0, '$2y$10$XHgHHUnaEvW0Waa0rICUle0VM8jJ83q8jVBcUM0Zpss2CUDQw54dS', 'User'),
-(4, '', '', 0, '$2y$10$GO67n8awrm3kXMWg94fwruMfGyP9eFl2JgVzNDA7HNpE2ql3rhDxe', 'User'),
-(5, '', '', 0, '$2y$10$IIypEK1E3I/hMYaWsTiPn.04hYi1wEMR/NySRTgXPci/qZD9jHpaa', 'User'),
-(6, '', '', 0, '$2y$10$02hPTELy4G5nBRhGyNh0Kes9TJZp70s.bi9nINs/C14R.fRcuEfai', 'User');
+(2, 'user', 'user@email.com', 123456, '$2y$10$N.SOxT4ePz2uyFfhEBGPGuRkkYNruJoQhfP49kb8K2J7qe1WQg7wC', 'User');
 
 --
 -- Indexes for dumped tables
