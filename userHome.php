@@ -38,7 +38,7 @@
               >Home</a
             >
             <a
-              href="events.html"
+              href="events.php"
               class="text-black text-center text-base font-medium leading-5"
               >Events</a
             >
