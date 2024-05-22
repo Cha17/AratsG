@@ -70,7 +70,7 @@ window.location.href="qrgenerator.php";
                 echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
               }
               else{
-                echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+                echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
               }
             ?> 
                     </div>
@@ -126,7 +126,7 @@ window.location.href="qrgenerator.php";
     <div>
       <form class="" method="post" autocomplete="off">
       <section>
-        <div class="flex flex-col items-stretch px-10 pt-48">
+        <div class="flex flex-col items-stretch px-10 pt-20">
           <h2 class="text-4xl font-semibold">Register Here</h2>
           <div
             class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5"
@@ -306,7 +306,7 @@ window.location.href="qrgenerator.php";
                   </div>
                 </div>
 
-                <!-- Section -->
+                <!-- Section 
                 <div
                   class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
                 >
@@ -326,7 +326,8 @@ window.location.href="qrgenerator.php";
                     />
                   </div>
                 </div>
-                <!-- Email -->
+                -->
+                <!-- Email 
                 <div
                   class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
                 >
@@ -346,7 +347,7 @@ window.location.href="qrgenerator.php";
                     />
                   </div>
                 </div>
-
+-->
               </div>
             </div>
 

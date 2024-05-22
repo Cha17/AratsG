@@ -61,7 +61,7 @@
                 echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
               }
               else{
-                echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+                echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
               }
             ?> 
             </div>
@@ -99,7 +99,7 @@
               for an event filled with activities, fun, and romance!
             </p>
             <a
-              href="ReqTOR.php"
+              href="regfeb.php"
               class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10"
               >Register Now</a
             >
