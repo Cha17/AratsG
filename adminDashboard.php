@@ -18,14 +18,10 @@ include("conn.php");
     class="bg-fixed bg-no-repeat bg-cover bg-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#f3f4f5] via-[#e0e8ed] to-[#d0dde6]"
   >
     <div class="pr-12 max-md:pr-5 no-scrollbar">
-      <section
-        class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
-      >
+      <section class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
         <!--Sidebar-->
         <aside>
-          <div
-            class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5"
-          >
+          <div class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5">
             <img
               loading="lazy"
               srcset="
