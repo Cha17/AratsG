@@ -47,7 +47,7 @@
                 echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
               }
               else{
-                echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+                echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
               }
             ?>
           </div>

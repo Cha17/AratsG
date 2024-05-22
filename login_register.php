@@ -12,9 +12,17 @@ if(isset($_POST['login'])){
         if(mysqli_num_rows($result)==1){
             $result_fetch = mysqli_fetch_assoc($result);
             if(password_verify($_POST['password'], $result_fetch['password'])){
-                $_SESSION['logged_in']=true;
-                $_SESSION['email']=$result_fetch['email'];
-                header("location: userHome.php");;
+                //identify user role
+                if($result_fetch['role']=="User"){
+                    $_SESSION['logged_in']=true;
+                    $_SESSION['email']=$result_fetch['email'];
+                    header("location: userHome.php");;
+                }
+                else{
+                    $_SESSION['logged_in']=true;
+                    $_SESSION['email']=$result_fetch['email'];
+                    header("location: adminDashboard.html");;
+                }
             }
             else{
                 echo "
