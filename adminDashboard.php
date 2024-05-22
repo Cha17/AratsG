@@ -101,8 +101,8 @@ include("conn.php");
                 </div>
               </a>
 
-              <!--Request-->
-              <a href="requests.php">
+              <!--Events-->
+              <a href="events.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -308,7 +308,8 @@ include("conn.php");
                   class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5">
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >';
+                  >'
+                  ;
                       echo $row["title"];
                   echo '</h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 09:39 AM
+-- Generation Time: May 22, 2024 at 07:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,6 +37,14 @@ CREATE TABLE `events` (
   `price` decimal(11,0) NOT NULL,
   `addtl_info` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`event-id`, `title`, `description`, `date`, `time`, `location`, `price`, `addtl_info`) VALUES
+(20240001, 'Feb-Ibig 2024', 'The Central Student Government presents Feb-Ibig 2024. Get ready for an event filled with activities, fun, and romance!', '2024-03-06', '09:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15, ''),
+(20240002, 'DCS Week 2024\r\n', 'Gear up for DCS Week 2024! Join the Alliance of Computer Scientists and Information Technology Society in a week-long celebration of the Department of Computer Studies.', '2024-04-11', '09:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15, '');
 
 -- --------------------------------------------------------
 
@@ -79,7 +87,8 @@ INSERT INTO `users` (`user-id`, `fullname`, `email`, `studentNum`, `password`, `
 (2, 'user', 'user@email.com', 123456, '$2y$10$N.SOxT4ePz2uyFfhEBGPGuRkkYNruJoQhfP49kb8K2J7qe1WQg7wC', 'User'),
 (3, '', '', 0, '$2y$10$XHgHHUnaEvW0Waa0rICUle0VM8jJ83q8jVBcUM0Zpss2CUDQw54dS', 'User'),
 (4, '', '', 0, '$2y$10$GO67n8awrm3kXMWg94fwruMfGyP9eFl2JgVzNDA7HNpE2ql3rhDxe', 'User'),
-(5, '', '', 0, '$2y$10$IIypEK1E3I/hMYaWsTiPn.04hYi1wEMR/NySRTgXPci/qZD9jHpaa', 'User');
+(5, '', '', 0, '$2y$10$IIypEK1E3I/hMYaWsTiPn.04hYi1wEMR/NySRTgXPci/qZD9jHpaa', 'User'),
+(6, '', '', 0, '$2y$10$02hPTELy4G5nBRhGyNh0Kes9TJZp70s.bi9nINs/C14R.fRcuEfai', 'User');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +122,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event-id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `event-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20240003;
 
 --
 -- AUTO_INCREMENT for table `registrations`
@@ -125,7 +134,7 @@ ALTER TABLE `registrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
