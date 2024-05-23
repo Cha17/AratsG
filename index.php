@@ -42,6 +42,11 @@
               class="text-black text-center text-base font-medium leading-5"
               >Events</a
             >
+            <a
+              href="events.php"
+              class="text-black text-center text-base font-medium leading-5"
+              >About</a
+            >
             <?php 
               if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                 echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
