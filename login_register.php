@@ -5,7 +5,7 @@ session_start();
 
 //for login
 if(isset($_POST['login'])){
-    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]'";
+    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]' OR studentNum = '$_POST[email_username]'";
     $result = mysqli_query($conn, $query);
 
     if($result){
