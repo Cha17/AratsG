@@ -2,6 +2,23 @@
 session_start();
 include("conn.php");
 
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+  $email = $_SESSION['email'];
+  $sql = "Select * from users where email='$email'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+  if($row['role']=="User") {
+    echo "
+    <script>
+    alert('Wrong username or password!');
+    </script>";
+    header("location: userHome.php");
+  }
+} else {
+  session_destroy();
+    header("location: index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

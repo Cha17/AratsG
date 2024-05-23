@@ -2,6 +2,9 @@
 require 'conn.php';
 session_start();
 
+
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+
 if (isset($_POST["submit"])) {
   $program = $_POST['program'];
   $year = $_POST['year'];
@@ -33,7 +36,17 @@ if (isset($_POST["submit"])) {
 
             //header("location: formrequest.html");
           }
-
+        
+        } else {
+          echo "
+                <script>
+                    alert('Login first before filling up the register form');
+                    window.location.href = 'index.php';
+                </script>
+                ";
+          session_destroy();
+          header("location: index.php");
+        }
 
             ?>
 <!DOCTYPE html>
