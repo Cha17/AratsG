@@ -451,11 +451,11 @@ $query = mysqli_query($conn, $sql);
             <td><?php echo $row["section"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
-                <button name="completed" value="<?=$row['ctrl_num'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                <button name="completed" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
                     <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
                 
-                <button name="miss" value="<?=$row['ctrl_num'];?>"class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-2 py-2 mr-2'>
+                <button name="miss" value="<?=$row['reg_id'];?>"class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-2 py-2 mr-2'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
                   <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
                 </button>
