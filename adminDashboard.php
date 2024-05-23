@@ -183,12 +183,10 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
                   $sql = "Select * from events";
-                  $result1 = mysqli_query($conn, $sql);
-                  $sql = "Select * from registrations";
-                  $result2 = mysqli_query($conn, $sql);
+                  $result = mysqli_query($conn, $sql);
 
-                  if (isset($result1) && isset($result2)) {
-                    $row = mysqli_num_rows($result1) + mysqli_num_rows($result2);
+                  if (isset($result)) {
+                    $row = mysqli_num_rows($result);
                     echo $row;
                   }
                   ?>
@@ -210,7 +208,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                   $sql = "Select * from registrations where payment_status='Pending'";
                   $result = mysqli_query($conn, $sql);
 
-                  if (isset($result1) && isset($result2)) {
+                  if (isset($result)) {
                     $row = mysqli_num_rows($result);
                     echo $row;
                   }
