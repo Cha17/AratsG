@@ -138,7 +138,7 @@
               We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance.
               </div>
               <div class="buttons">
-                <button>Register</button>
+                <button type="button" onclick="location.href='csgelections.php'">Register</button>
               </div>
             </div>
           </div>
