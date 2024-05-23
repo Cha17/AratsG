@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 07:30 PM
+-- Generation Time: May 23, 2024 at 09:33 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,15 +53,24 @@ INSERT INTO `events` (`event-id`, `title`, `description`, `date`, `time`, `locat
 --
 
 CREATE TABLE `registrations` (
-  `reg-id` int(11) NOT NULL,
-  `user-id` int(11) NOT NULL,
-  `event-id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `reg_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `program` varchar(100) NOT NULL,
+  `yearlvl` varchar(100) NOT NULL,
+  `section` varchar(100) NOT NULL,
   `reg_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `payment_mode` varchar(100) NOT NULL,
-  `payment_status` varchar(100) NOT NULL,
+  `payment_status` varchar(100) NOT NULL DEFAULT 'Pending',
   `addtl_data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registrations`
+--
+
+INSERT INTO `registrations` (`reg_id`, `user_id`, `event_id`, `program`, `yearlvl`, `section`, `reg_at`, `payment_mode`, `payment_status`, `addtl_data`) VALUES
+(5, 2, 20240001, 'BSCS', '3', '1', '2024-05-23 07:29:19', 'Cash', 'Pending', '');
 
 -- --------------------------------------------------------
 
@@ -100,9 +109,9 @@ ALTER TABLE `events`
 -- Indexes for table `registrations`
 --
 ALTER TABLE `registrations`
-  ADD PRIMARY KEY (`reg-id`),
-  ADD KEY `User foreign key` (`user-id`),
-  ADD KEY `Event foreign key` (`event-id`);
+  ADD PRIMARY KEY (`reg_id`),
+  ADD KEY `User foreign key` (`user_id`),
+  ADD KEY `Event foreign key` (`event_id`);
 
 --
 -- Indexes for table `users`
@@ -124,7 +133,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `reg-id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -140,8 +149,8 @@ ALTER TABLE `users`
 -- Constraints for table `registrations`
 --
 ALTER TABLE `registrations`
-  ADD CONSTRAINT `Event foreign key` FOREIGN KEY (`event-id`) REFERENCES `events` (`event-id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `User foreign key` FOREIGN KEY (`user-id`) REFERENCES `users` (`user-id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Event foreign key` FOREIGN KEY (`event_id`) REFERENCES `events` (`event-id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `User foreign key` FOREIGN KEY (`user_id`) REFERENCES `users` (`user-id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
