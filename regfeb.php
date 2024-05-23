@@ -147,7 +147,7 @@ if (isset($_POST["submit"])) {
                   <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="fullname" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Full Name</label>
-                      <input type="text" name="fullname" id="fullname" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Year" value="
+                      <input type="text" name="fullname" id="fullname" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Name" value="
                       <?php
                       if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                         $email = $_SESSION['email'];
@@ -165,7 +165,7 @@ if (isset($_POST["submit"])) {
                   <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="student_num" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Student Number</label>
-                      <input type="text" name="student_num" id="student_num" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Section" value="
+                      <input type="text" name="student_num" id="student_num" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Student Number" value="
                       <?php
                       if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                         $email = $_SESSION['email'];
