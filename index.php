@@ -97,16 +97,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="images/biniverse.jpg" alt="Bin" />
+          <img src="images/Leadership and Mental Semianr.jpg" alt="Bin" />
           <div class="content">
             <div class="contentContainer">
-              <div class="author">Bini</div>
-              <div class="title">Biniverse</div>
+              <div class="author">Central Student Government</div>
+              <div class="title">Leadership and Mental Seminar</div>
               <div class="des">
-                BINI is gearing up for their much-anticipated first solo concert
-                at the New Frontier Theater on June 28, 2024. Get ready to
-                witness powerful performances, stunning visuals, and special
-                surprises!
+              𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
               </div>
               <div class="buttons">
                 <button>Register</button>
@@ -115,14 +112,14 @@
           </div>
         </div>
         <div class="item">
-          <img src="images/sbtown music fiesta.jpg" alt="SBTown Music Fiesta" />
+          <img src="images/mindmatters.jpg" alt="SBTown Music Fiesta" />
           <div class="content">
             <div class="contentContainer">
-              <div class="author">YGIG, PLUUS, Darlene, and more</div>
-              <div class="title">SBTown Music Fiesta</div>
+              <div class="author">La Liga Psicologia</div>
+              <div class="title">MIND MATTERS</div>
               <div class="des">
-                SBTown Music Fiesta is set on May 26, 2024, 5PM at Rizal Open
-                Auditorium, Rizal Park Luneta.
+                Mind Matters Seminar is set on 𝐌𝐚𝐲 𝟎𝟑, 𝟐𝟎𝟐𝟒, 8 AM onwards at SF, 
+                Multipurpose Hall, New Bldg.
               </div>
               <div class="buttons">
                 <button>Register</button>
@@ -165,12 +162,12 @@
         </div>
         <div class="item">
           <img
-            src="images/biniverse.jpg"
+            src="images/mindmatters.jpg"
             alt="Biniverse"
             class="border-solid border-2 border-slate-500"
           />
           <div class="content">
-            <div class="font-bold text-gray-950">Biniverse</div>
+            <div class="font-bold text-gray-950">MIND MATTERS</div>
           </div>
         </div>
       </div>
