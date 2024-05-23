@@ -127,17 +127,33 @@
             </div>
           </div>
         </div>
+        <div class="item">
+          <img src="images/CSG Elections.jpg" alt="SBTown Music Fiesta" />
+          <div class="content">
+            <div class="contentContainer">
+              <div class="author">Central Student Government</div>
+              <div class="title">CSG ELECTIONS</div>
+              <div class="des">
+              Calling all CvSUeños!🗣️
+              We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance, .
+              </div>
+              <div class="buttons">
+                <button>Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- thumbnail -->
       <div class="thumbnail">
         <div class="item">
           <img
-            src="images/sbtown music fiesta.jpg"
+            src="images/CSG Elections.jpg"
             alt="Biniverse"
             class="border-solid border-2 border-slate-500"
           />
           <div class="content">
-            <div class="font-bold text-gray-950">SBTown Music Fiesta</div>
+            <div class="font-bold text-gray-950">CSG LECTIONS</div>
           </div>
         </div>
         <div class="item">
