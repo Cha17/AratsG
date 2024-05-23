@@ -5,7 +5,7 @@ session_start();
 
 //for login
 if(isset($_POST['login'])){
-    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]'";
+    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]' OR studentNum = '$_POST[email_username]'";
     $result = mysqli_query($conn, $query);
 
     if($result){
@@ -69,7 +69,7 @@ if($result){
             //if student number already registered
                 echo "
                 <script>
-                    alert('Username already exists!');
+                    alert('Student number already exists! Please make sure to enter your unique student number correctly, or login if you already have an account.');
                     window.location.href = 'index.php';
                 </script>
                 ";
