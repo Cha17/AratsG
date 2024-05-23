@@ -1,5 +1,5 @@
 <?php
-include("db_conn.php");
+include("conn.php");
 //include("searchajax2.php");
 //$columns = array('program');
 
@@ -32,7 +32,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM request LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM registrations LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -267,7 +267,7 @@ $query = mysqli_query($conn, $sql);
                   
                   <div class="text-stone-500  text-lg leading-7 self-center whitespace-nowrap mt-2 mb-1">
                     <input type = "search" class="bg-zinc-100" id = "getName" placeholder = "Search here..." autocomplete = "off">
-                    <script>/*$('#getName').on('input', function() {
+                    <!--script>/*$('#getName').on('input', function() {
                       $('#getName').trigger('keydown');
                     })*/
                     const event = new Event('keydown');
@@ -281,7 +281,7 @@ $query = mysqli_query($conn, $sql);
                         $('#getName').trigger('keydown');
                     })
                     })
-                    </script>
+                    </script-->
                   </div>
 
                 </div>
@@ -311,7 +311,7 @@ $query = mysqli_query($conn, $sql);
                 <!--a href="request.php?column=program&value=">Link</a>
                 <a href="request.php?column=program&value=">Link</a>
                 <a href="request.php?column=program&value=">Link</a-->
-                <?php 
+                <!--?php 
           
           $sql = "SELECT DISTINCT program from request";
           $result = $conn-> query($sql);
@@ -328,7 +328,7 @@ $query = mysqli_query($conn, $sql);
           }
 
           //$conn-> close();
-          ?>
+          ?-->
               </div>
         </div>
         <!--/form-->
@@ -354,7 +354,7 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
               </div>
               <div id="ylDropdown" class="dropdown-content">
-              <?php 
+              <!--?php 
           
           $sql = "SELECT DISTINCT yr_sec from request";
           $result = $conn-> query($sql);
@@ -369,7 +369,7 @@ $query = mysqli_query($conn, $sql);
           else{
               echo "0 results";
           }
-          ?>
+          ?-->
               </div>
             </div>
 
@@ -422,7 +422,7 @@ $query = mysqli_query($conn, $sql);
           <!--SHOWDATA-->
           <tbody id="showdata">
           <?php 
-          if (isset($_GET['order'])){
+          /*if (isset($_GET['order'])){
             $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request ORDER BY reqtype $sort_order LIMIT $limitStart, $rowsPerPage";
           }
           else if (isset($_GET['progvalue'])){
@@ -439,16 +439,16 @@ $query = mysqli_query($conn, $sql);
           }
           
           //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
-          
+          */
           $result = $conn-> query($sql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-            <td><?php echo $row["fullname"]; ?></td>
-            <td><?php echo $row["student_num"]; ?></td>
-            <td><?php echo $row["ctrl_num"]; ?></td>
-            <td><?php echo $row["yr_sec"]; ?></td>
+            <td><?php echo $row["reg_id"]; ?></td>
+            <td><?php echo $row["user_id"]; ?></td>
+            <td><?php echo $row["event_id"]; ?></td>
             <td><?php echo $row["program"]; ?></td>
-            <td><?php echo $row["reqtype"]; ?></td>
+            <td><?php echo $row["yearlvl"]; ?></td>
+            <td><?php echo $row["section"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
                 <button name="completed" value="<?=$row['ctrl_num'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
@@ -471,7 +471,7 @@ $query = mysqli_query($conn, $sql);
 <!--PREVIOUS & NEXT PAGE BUTTON-->
 <div class="flex justify-center mt-2 mb-2">
     <?php
-    $resultnumrows = mysqli_query($conn, "SELECT * FROM request");
+    $resultnumrows = mysqli_query($conn, "SELECT * FROM registrations");
     $totalRows = mysqli_num_rows($resultnumrows);
     $totalPages = ceil($totalRows / $rowsPerPage);
 

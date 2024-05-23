@@ -27,10 +27,10 @@ session_start();
   <div class="flex flex-col items-stretch pl-12 pr-12 max-md:px-5">
     <header>
       <nav class="flex w-full items-center justify-between gap-20 mt-10 max-md:max-w-full max-md:flex-wrap">
-        <a href="userHome.php" class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
+        <a href="index.php" class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
           <img src="images/G!.png" class="aspect-[4.09] object-contain object-center w-[200px] overflow-hidden shrink-0 max-w-full" alt="G! Arat Na" />
           <div class="justify-center self-start flex gap-10 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
-            <a href="userHome.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
+            <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
