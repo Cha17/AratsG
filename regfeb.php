@@ -5,48 +5,47 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
-if (isset($_POST["submit"])) {
-  $program = $_POST['program'];
-  $year = $_POST['year'];
-  $sec = $_POST['sec'];
-  $payment = $_POST['payment'];
-  $note = $_POST['note'];
+  if (isset($_POST["submit"])) {
+    $program = $_POST['program'];
+    $year = $_POST['year'];
+    $sec = $_POST['sec'];
+    $payment = $_POST['payment'];
+    $note = $_POST['note'];
 
-  $email = $_SESSION['email'];
-  $sql = "Select * from users where email='$email'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $userid = $row['user-id'];
+    $email = $_SESSION['email'];
+    $sql = "Select * from users where email='$email'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $userid = $row['user-id'];
 
-  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+    $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
   VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
-  mysqli_query($conn, $query);
+    mysqli_query($conn, $query);
 ?><script type="text/javascript">
-    alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
+      alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
 
 
 
-    window.location.href = "qrgenerator.php";
-  </script><?php
+      window.location.href = "qrgenerator.php";
+    </script><?php
 
 
 
 
-            //header("location: formrequest.html");
-          }
-        
-        } else {
-          echo "
+              //header("location: formrequest.html");
+            }
+          } else {
+            echo "
                 <script>
                     alert('Login first before filling out the register form');
                     window.location.href = 'login.php';
                 </script>
                 ";
-        }
+          }
 
-            ?>
+              ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,6 +66,7 @@ if (isset($_POST["submit"])) {
   <div class="blob w-[1000px] h-[1000px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-red-200 via-gray-100 to-blue-100"></div>
   <div class="blob w-[600px] h-[600px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-slate-100 via-teal-100 to-blue-100"></div>
   <div class="blob w-[300px] h-[300px] rounded-[999px] absolute bottom-[10px] left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-green-200 via-cyan-200 to-fuchsia-300"></div>
+  <!-- End of Gradient Background -->
   <div class="flex flex-col items-stretch pl-12 pr-12 max-md:px-5">
     <header>
       <nav class="flex w-full items-center justify-between gap-20 mt-10 max-md:max-w-full max-md:flex-wrap">
