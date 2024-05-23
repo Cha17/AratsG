@@ -5,49 +5,48 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
-if (isset($_POST["submit"])) {
-  $program = $_POST['program'];
-  $year = $_POST['year'];
-  $sec = $_POST['sec'];
-  $payment = $_POST['payment'];
-  $note = $_POST['note'];
+  if (isset($_POST["submit"])) {
+    $program = $_POST['program'];
+    $year = $_POST['year'];
+    $sec = $_POST['sec'];
+    $payment = $_POST['payment'];
+    $note = $_POST['note'];
 
-  $email = $_SESSION['email'];
-  $sql = "Select * from users where email='$email'";
-  $sql = "Select * from users where email='$email'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $userid = $row['user-id'];
+    $email = $_SESSION['email'];
+    $sql = "Select * from users where email='$email'";
+    $sql = "Select * from users where email='$email'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $userid = $row['user-id'];
 
-  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+    $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
   VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
-  mysqli_query($conn, $query);
+    mysqli_query($conn, $query);
 ?><script type="text/javascript">
-    alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
+      alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
 
 
 
-    window.location.href = "qrgenerator.php";
-  </script><?php
+      window.location.href = "qrgenerator.php";
+    </script><?php
 
 
 
 
-            //header("location: formrequest.html");
-          }
-        
-        } else {
-          echo "
+              //header("location: formrequest.html");
+            }
+          } else {
+            echo "
                 <script>
                     alert('Login first before filling out the register form');
                     window.location.href = 'index.php';
                 </script>
                 ";
-        }
+          }
 
-            ?>
+              ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +54,7 @@ if (isset($_POST["submit"])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗮𝗻𝗱 𝗠𝗲𝗻𝘁𝗮𝗹, 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗽𝗶𝗿𝗶𝘁𝘂𝗮𝗹 𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀</title>
+  <title>Leadership and Mental, Physical, and Spiritual Health Awareness</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -93,33 +92,33 @@ if (isset($_POST["submit"])) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h6 class="text-center text-[80px] pb-2">𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀</h6>
-          <p class="text-justify pb-4">
-          𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
-          Let's get all ready as the 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀 𝗖𝗲𝗻𝘁𝗿𝗮𝗹 𝗦𝘁𝘂𝗱𝗲𝗻𝘁 𝗚𝗼𝘃𝗲𝗿𝗻𝗺𝗲𝗻𝘁 will 
-          conduct a 𝗙𝗥𝗘𝗘 and remarkable 𝘀𝗲𝗺𝗶𝗻𝗮𝗿 entitled "𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗮𝗻𝗱 𝗠𝗲𝗻𝘁𝗮𝗹, 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗽𝗶𝗿𝗶𝘁𝘂𝗮𝗹 𝗛𝗲𝗮𝗹𝘁𝗵
-          𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀: 𝗙𝗼𝘀𝘁𝗲𝗿𝗶𝗻𝗴 𝗮 𝗛𝗲𝗮𝗹𝘁𝗵𝘆 𝗮𝗻𝗱 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗪𝗼𝗿𝗸 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗺𝗲𝗻𝘁", at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 
-          𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺.The seminar is mainly focused on 𝗠𝗲𝗻𝘁𝗮𝗹 𝗮𝗻𝗱 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 and 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗦𝘂𝗺𝗺𝗶𝘁. 
-          This is open for everyone especially student leaders such as Organizations, Society Officers, and Class
-          Presidents. The attendees will be receiving 𝗲-𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 for participating. ✨
+          <h2 class="text-center text-[80px] pb-2">Health Awareness</h2>
+          <p class="text-justify pb-4 indent-8">
+            𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
+            Let's get all ready as the 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀 𝗖𝗲𝗻𝘁𝗿𝗮𝗹 𝗦𝘁𝘂𝗱𝗲𝗻𝘁 𝗚𝗼𝘃𝗲𝗿𝗻𝗺𝗲𝗻𝘁 will
+            conduct a 𝗙𝗥𝗘𝗘 and remarkable 𝘀𝗲𝗺𝗶𝗻𝗮𝗿 entitled "𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗮𝗻𝗱 𝗠𝗲𝗻𝘁𝗮𝗹, 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗽𝗶𝗿𝗶𝘁𝘂𝗮𝗹 𝗛𝗲𝗮𝗹𝘁𝗵
+            𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀: 𝗙𝗼𝘀𝘁𝗲𝗿𝗶𝗻𝗴 𝗮 𝗛𝗲𝗮𝗹𝘁𝗵𝘆 𝗮𝗻𝗱 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗪𝗼𝗿𝗸 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗺𝗲𝗻𝘁", at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆
+            𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺.The seminar is mainly focused on 𝗠𝗲𝗻𝘁𝗮𝗹 𝗮𝗻𝗱 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 and 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗦𝘂𝗺𝗺𝗶𝘁.
+            This is open for everyone especially student leaders such as Organizations, Society Officers, and Class
+            Presidents. The attendees will be receiving 𝗲-𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 for participating. ✨
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
               <li>
-              𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
+                Seminar Specially for You
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
-                𝗠𝗮𝗿𝗰𝗵 𝟮𝟲, 𝟮𝟬𝟮𝟰
-             </li>
+                March 26, 2024
+              </li>
               <li>
                 <img src="images/bx-time.svg" alt="">
-                𝟴 𝗮.𝗺. to 𝟱 𝗽.𝗺
+                8 a.m to 5 p.m
               </li>
               <li>
                 <img src="images/bx-map.svg" alt="">
-                𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺
+                CvSU Bacoor Gym
               </li>
               <li>
                 <img src="images/bx-group.svg" alt="">
@@ -145,8 +144,8 @@ if (isset($_POST["submit"])) {
       <form class="" method="post" autocomplete="off">
         <section>
           <div class="flex flex-col items-stretch px-10 pt-20">
-            <h2 class="text-4xl font-semibold">Register Here</h2>
-            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+            <h2 class="text-[46px] font-medium tracking-wider">Register Here</h2>
+            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-2 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <!-- First Row Info -->
               <div class="justify-between max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -276,7 +275,7 @@ if (isset($_POST["submit"])) {
           <div class="flex flex-col items-stretch px-16">
             <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-6 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-                <h2 class="text-gray-200 text-center font-extrabold leading-6">Submit</h2>
+                <h4 class="text-gray-200 text-center font-extrabold leading-6">Submit</h4>
               </button>
             </div>
           </div>

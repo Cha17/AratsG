@@ -93,9 +93,14 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
       <div>
         <div class="px-20 ml-10">
           <h1 class="text-center text-[80px] pb-2">Feb-Ibig 2024</h1>
-          <p class="text-justify pb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, necessitatibus et. Odit, eius quam. Adipisci quisquam molestias corrupti, facilis repellat unde harum facere quis ea earum commodi maxime necessitatibus vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis maiores libero, inventore dolor in repellat odit explicabo aliquam provident natus. Odit animi nobis eligendi vitae beatae? Voluptas officia incidunt et.
+          <p class="text-justify pb-4 indent-8">
+            Pagod ka na ba kakahintay sa chance na makasama mo ang crush mo? Finally, the prolonged wait is over!
+          </p>
+          <p class="text-justify pb-4 indent-8"> Get your partners and friends ready. Join us in 𝗠𝗮𝗿𝗰𝗵 𝟲, 𝟮𝟬𝟮𝟰 (𝗪𝗲𝗱𝗻𝗲𝘀𝗱𝗮𝘆) 𝟴:𝟬𝟬 𝗮𝗺 - 𝟱:𝟬𝟬 𝗽𝗺 for the much awaited 𝗡𝗮𝗸𝗮𝗸𝗮𝗽𝗮𝗴𝗽𝗮𝗯𝗮𝗴𝗮𝗯𝗮𝗴 𝗻𝗮 𝗙𝗲𝗯-𝗜𝗯𝗶𝗴 𝟮𝟬𝟮𝟰: 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗹𝗼𝘃𝗲 𝗰𝗼𝗺𝗲𝘀 𝗳𝗿𝗼𝗺 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗧𝗶𝗺𝗲 (𝗠𝗮𝗿𝗰𝗵 𝗘𝗱𝗶𝘁𝗶𝗼𝗻) at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀. 🏫🎊
+          </p>
+          <p class="text-justify pb-4 indent-8">
+
+            Get excited because there will be a lot of bonding and exciting events, performances, and celebrations—you could say it's giving—and don't forget to stay connected.
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
@@ -139,8 +144,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
       <form class="" method="post" autocomplete="off">
         <section>
           <div class="flex flex-col items-stretch px-10 pt-20">
-            <h2 class="text-4xl font-semibold">Register Here</h2>
-            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+            <h2 class="text-[46px] font-medium tracking-wider">Register Here</h2>
+            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-2 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <!-- First Row Info -->
               <div class="justify-between max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -270,7 +275,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="flex flex-col items-stretch px-16">
             <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-6 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-                <h2 class="text-gray-200 text-center font-extrabold leading-6">Submit</h2>
+                <h4 class="text-gray-200 text-center font-extrabold leading-6">Submit</h4>
               </button>
             </div>
           </div>

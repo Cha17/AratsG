@@ -91,15 +91,15 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h1 class="text-center text-[80px] pb-2">𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</h1>
-          <p class="text-justify pb-4">
-          Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 #401b1b
-         ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer 
-          Laboratory 1 to 4 & Room 301, 303
-          Hello World is the perfect way to:
-          Level Up your skills with workshops and seminars led by our guest speaker! Party Up with 
-          fellow students through interactive sessions and activities. Power Up for the upcoming 
-          semester with a refreshing and fun environment.
+          <h1 class="text-center text-[80px] pb-2">DCS Week 2024</h1>
+          <p class="text-justify pb-4 indent-8">
+            Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024
+            ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer
+            Laboratory 1 to 4 & Room 301, 303
+            Hello World is the perfect way to:
+            Level Up your skills with workshops and seminars led by our guest speaker! Party Up with
+            fellow students through interactive sessions and activities. Power Up for the upcoming
+            semester with a refreshing and fun environment.
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
@@ -143,8 +143,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
       <form class="" method="post" autocomplete="off">
         <section>
           <div class="flex flex-col items-stretch px-10 pt-20">
-            <h2 class="text-4xl font-semibold">Register Here</h2>
-            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+            <h2 class="text-[46px] font-medium tracking-wider">Register Here</h2>
+            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-2 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <!-- First Row Info -->
               <div class="justify-between max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -274,7 +274,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="flex flex-col items-stretch px-16">
             <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-6 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-                <h2 class="text-gray-200 text-center font-extrabold leading-6">Submit</h2>
+                <h4 class="text-gray-200 text-center font-extrabold leading-6">Submit</h4>
               </button>
             </div>
           </div>

@@ -33,7 +33,7 @@ session_start();
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
             <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
-            
+
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -53,60 +53,60 @@ session_start();
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-            𝐅𝐞𝐛-𝐈𝐛𝐢𝐠 2024
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
+              Feb-Ibig 2024
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
             The Central Student Government presents Feb-Ibig 2024. Get ready
-            for an event filled with activities, fun, and romance!
+            for an <span class="font-semibold"> event filled with activities, fun, and romance!</span>
           </p>
-          <a href="regfeb.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="regfeb.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
       <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[330px] max-h-[330px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-12">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-            𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
+              DCS Week 2024
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
             Gear up for DCS Week 2024! Join the Alliance of Computer
-            Scientists and Information Technology Society in a week-long
-            celebration of the Department of Computer Studies.
+            Scientists and Information Technology Society in a <span class="font-semibold">week-long
+              celebration of the Department of Computer Studies.</span>
           </p>
-          <a href="dcsweek.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="dcsweek.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
       <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-            𝗠𝗜𝗡𝗗 𝗠𝗔𝗧𝗧𝗘𝗥𝗦
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
+              Mind Matters
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-          A seminar talking about Psychological First Aid and Mental Hygiene?
-          “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒: 𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞”.
+            A seminar talking about Psychological First Aid and Mental Hygiene?
+            <span class="font-semibold"> "Mind Matters: Introduction to Psychological First Aid and Mental Hygiene." </span>
           </p>
-          <a href="regbini.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="mindmatters.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
       <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-            𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗙𝗢𝗥 𝗬𝗢𝗨.💚🦋
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
+              Seminar For You
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-          𝗙𝗥𝗘𝗘 and remarkable 𝘀𝗲𝗺𝗶𝗻𝗮𝗿 entitled "𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀: 𝗙𝗼𝘀𝘁𝗲𝗿𝗶𝗻𝗴 𝗮 𝗛𝗲𝗮𝗹𝘁𝗵𝘆 𝗮𝗻𝗱 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗪𝗼𝗿𝗸 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗺𝗲𝗻𝘁" at 𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺.
+            <span class="font-semibold">FREE</span> and remarkable seminar entitled <span class="font-semibold">"Health Awareness: Fostering a Healthy and Productive Work Environment"</span> at Campus Gynasium.
           </p>
-          <a href="ReqCOE.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="leadershipAndmental.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
     </section>

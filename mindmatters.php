@@ -5,49 +5,48 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
-if (isset($_POST["submit"])) {
-  $program = $_POST['program'];
-  $year = $_POST['year'];
-  $sec = $_POST['sec'];
-  $payment = $_POST['payment'];
-  $note = $_POST['note'];
+  if (isset($_POST["submit"])) {
+    $program = $_POST['program'];
+    $year = $_POST['year'];
+    $sec = $_POST['sec'];
+    $payment = $_POST['payment'];
+    $note = $_POST['note'];
 
-  $email = $_SESSION['email'];
-  $sql = "Select * from users where email='$email'";
-  $sql = "Select * from users where email='$email'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $userid = $row['user-id'];
+    $email = $_SESSION['email'];
+    $sql = "Select * from users where email='$email'";
+    $sql = "Select * from users where email='$email'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $userid = $row['user-id'];
 
-  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+    $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
   VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
-  mysqli_query($conn, $query);
+    mysqli_query($conn, $query);
 ?><script type="text/javascript">
-    alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
+      alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
 
 
 
-    window.location.href = "qrgenerator.php";
-  </script><?php
+      window.location.href = "qrgenerator.php";
+    </script><?php
 
 
 
 
-            //header("location: formrequest.html");
-          }
-        
-        } else {
-          echo "
+              //header("location: formrequest.html");
+            }
+          } else {
+            echo "
                 <script>
                     alert('Login first before filling out the register form');
                     window.location.href = 'index.php';
                 </script>
                 ";
-        }
+          }
 
-            ?>
+              ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +76,7 @@ if (isset($_POST["submit"])) {
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
             <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
-            
+
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -95,16 +94,16 @@ if (isset($_POST["submit"])) {
       <div>
         <div class="px-20 ml-10">
           <h1 class="text-center text-[80px] pb-2">MIND MATTERS</h1>
-          <p class="text-justify pb-4">
-          A seminar talking about Psychological First Aid and Mental Hygiene? Say no more!
-          Because La Liga Psicologia is pleased to announce that we will be conducting our 
-          first-ever face-to-face seminar, after the pandemic, entitled “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒: 
-          𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞” on 𝐅𝐫𝐢𝐝𝐚𝐲, 𝐌𝐚𝐲 𝟎𝟑, 𝟐𝟎𝟐𝟒.
-          As future mental health professionals, we value the importance of both our mental 
-          and physical health as a component of our overall well-being. Being equipped with 
-          knowledge and skills in assessing and de-escalating a situation in times of crisis 
-          may help keep ourselves safe and other people. You wouldn't want to miss out on 
-          this great opportunity, right?
+          <p class="text-justify pb-4 indent-8">
+            A seminar talking about Psychological First Aid and Mental Hygiene? Say no more!
+            Because La Liga Psicologia is pleased to announce that we will be conducting our
+            first-ever face-to-face seminar, after the pandemic, entitled “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒:
+            𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞” on 𝐅𝐫𝐢𝐝𝐚𝐲, 𝐌𝐚𝐲 𝟎𝟑, 𝟐𝟎𝟐𝟒.
+            As future mental health professionals, we value the importance of both our mental
+            and physical health as a component of our overall well-being. Being equipped with
+            knowledge and skills in assessing and de-escalating a situation in times of crisis
+            may help keep ourselves safe and other people. You wouldn't want to miss out on
+            this great opportunity, right?
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
@@ -148,8 +147,8 @@ if (isset($_POST["submit"])) {
       <form class="" method="post" autocomplete="off">
         <section>
           <div class="flex flex-col items-stretch px-10 pt-20">
-            <h2 class="text-4xl font-semibold">Register Here</h2>
-            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
+            <h2 class="text-[46px] font-medium tracking-wider">Register Here</h2>
+            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-2 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <!-- First Row Info -->
               <div class="justify-between max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -279,7 +278,7 @@ if (isset($_POST["submit"])) {
           <div class="flex flex-col items-stretch px-16">
             <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-6 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
               <button type="submit" name="submit" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-                <h2 class="text-gray-200 text-center font-extrabold leading-6">Submit</h2>
+                <h4 class="text-gray-200 text-center font-extrabold leading-6">Submit</h4>
               </button>
             </div>
           </div>
