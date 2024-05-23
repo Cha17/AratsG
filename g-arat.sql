@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2024 at 09:33 AM
+-- Generation Time: May 23, 2024 at 01:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,7 +34,7 @@ CREATE TABLE `events` (
   `date` date NOT NULL,
   `time` time NOT NULL,
   `location` varchar(255) NOT NULL,
-  `price` decimal(11,0) NOT NULL,
+  `price` decimal(11,2) NOT NULL,
   `addtl_info` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -43,8 +43,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event-id`, `title`, `description`, `date`, `time`, `location`, `price`, `addtl_info`) VALUES
-(20240001, 'Feb-Ibig 2024', 'The Central Student Government presents Feb-Ibig 2024. Get ready for an event filled with activities, fun, and romance!', '2024-03-06', '09:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15, ''),
-(20240002, 'DCS Week 2024\r\n', 'Gear up for DCS Week 2024! Join the Alliance of Computer Scientists and Information Technology Society in a week-long celebration of the Department of Computer Studies.', '2024-04-11', '09:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15, '');
+(20240001, 'Feb-Ibig 2024', 'The Central Student Government presents Feb-Ibig 2024. Get ready for an event filled with activities, fun, and romance!', '2024-03-06', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15.00, ''),
+(20240002, 'DCS Week 2024\r\n', 'Gear up for DCS Week 2024! Join the Alliance of Computer Scientists and Information Technology Society in a week-long celebration of the Department of Computer Studies.', '2024-04-11', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 25.00, '');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user-id`, `fullname`, `email`, `studentNum`, `password`, `role`) VALUES
 (1, 'admin', 'admin@email.com', 245245, '$2y$10$GBVjt27rSqldANCqQl/2Zecs7zHrD9MLBZz5.LMRXGSiEr007Yu4y', 'Admin'),
-(2, 'user', 'user@email.com', 123456, '$2y$10$N.SOxT4ePz2uyFfhEBGPGuRkkYNruJoQhfP49kb8K2J7qe1WQg7wC', 'User');
+(2, 'user', 'user@email.com', 123456, '$2y$10$N.SOxT4ePz2uyFfhEBGPGuRkkYNruJoQhfP49kb8K2J7qe1WQg7wC', 'User'),
+(8, 'New User', 'newuser@email.com', 123123, '$2y$10$jx7syq7jPx.J1NewsCRXFOrLbwJxmQ/d68OcGW7stRC4tI9hgcpn2', 'User'),
+(9, 'Full name', 'fullname@email.com', 123412, '$2y$10$CTJKgM0BLL.hsGhzl5O5UunS0i1YP7JCUxnh96DvEPqDu0XSuLwGO', 'User');
 
 --
 -- Indexes for dumped tables
@@ -139,7 +141,7 @@ ALTER TABLE `registrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
