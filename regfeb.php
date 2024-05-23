@@ -3,23 +3,20 @@ require 'conn.php';
 session_start();
 
 if (isset($_POST["submit"])) {
-  $fullname = $_POST['fullname'];
-  $student_num = $_POST['student_num'];
-  $email = $_POST['email'];
   $program = $_POST['program'];
   $year = $_POST['year'];
   $sec = $_POST['sec'];
   $payment = $_POST['payment'];
   $note = $_POST['note'];
-  // $dob = $_POST['dob'];
-  // $sem = $_POST['sem'];
-  // $purpose = $_POST['purpose'];
 
-  $query = "INSERT INTO request (fullname,student_num,email,program,year,sec,payment,note) 
-  VALUES ('$fullname','$student_num','$email','$program','$year','$sec', '$payment', '$note)";
+  $email = $_SESSION['email'];
+  $sql = "Select * from users where email='$email'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $userid = $row['user-id'];
 
-  // $query = "INSERT INTO request (fullname,student_num,program,yr_sec,dob,sem,purpose,reqtype) 
-  // VALUES ('$fullname','$student_num','$program','$yr_sec','$dob','$sem', '$purpose', 'Transcript of Records')";
+  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+  VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
   mysqli_query($conn, $query);
