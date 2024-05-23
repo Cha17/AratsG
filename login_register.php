@@ -69,7 +69,7 @@ if($result){
             //if student number already registered
                 echo "
                 <script>
-                    alert('Username already exists!');
+                    alert('Student number already exists! Please make sure to enter your unique student number correctly, or login if you already have an account.');
                     window.location.href = 'index.php';
                 </script>
                 ";
