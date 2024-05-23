@@ -224,7 +224,7 @@ if (isset($_POST["submit"])) {
               <div class="justify-between mt-10 max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
                   <!-- Payment Option -->
-                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
+                  <div class="flex flex-col items-stretch w-[32%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="payment" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Payment Option</label>
                       <div class="w-88 relative">
@@ -238,7 +238,7 @@ if (isset($_POST["submit"])) {
                   </div>
                   <!-- End of Payment Option -->
                   <!-- Note -->
-                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
+                  <div class="flex flex-col items-stretch w-[68%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="note" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Note</label>
                       <input type="text" name="note" id="note" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Add note here" />
