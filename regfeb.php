@@ -91,7 +91,9 @@ if (isset($_POST["submit"])) {
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
-
+              <li>
+                [Event Name]
+              </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
                 February 14, 2024
@@ -235,6 +237,14 @@ if (isset($_POST["submit"])) {
                     </div>
                   </div>
                   <!-- End of Payment Option -->
+
+                  <!-- Note -->
+                  <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
+                    <div class="items-stretch flex grow flex-col max-md:mt-10">
+                      <label for="note" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Note</label>
+                      <input type="text" name="note" id="note" class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" placeholder="Add note here" />
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- End of Third Row Info -->
@@ -245,18 +255,7 @@ if (isset($_POST["submit"])) {
           </div>
         </section>
         <!-- End of Registration Form -->
-        <!-- Note -->
-        <section>
-          <div class="flex flex-col items-stretch px-10">
-            <div class="bg-gradient-to-r from-sky-500/50 to-blue-500/50 justify-center items-stretch flex w-full flex-col -mr-5 mt-8 px-7 py-8 rounded-[10px] max-md:max-w-full max-md:mt-10 max-md:px-5">
-              <div class="items-stretch flex grow flex-col max-md:mt-10">
-                <label for="note" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Note</label>
 
-              </div>
-              <input type="text" name="note" id="note" class="bg-[#eff0f2] align-text-top mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[10px] max-md:pl-1" placeholder="Add note here" />
-            </div>
-          </div>
-        </section>
 
         <!-- Submit Button -->
         <section class="mb-20">
