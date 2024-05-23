@@ -74,7 +74,7 @@
                 for an event filled with activities, fun, and romance!
               </div>
               <div class="buttons">
-                <button>Register</button>
+                <button type="button" onclick="location.href='regfeb.php'">Register</button>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@
                 celebration of the Department of Computer Studies.
               </div>
               <div class="buttons">
-                <button>Register</button>
+                <button type="button" onclick="location.href='dcsweek.php'">Register</button>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@
               𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
               </div>
               <div class="buttons">
-                <button>Register</button>
+                <button type="button" onclick="location.href='leadershipAndmental.php'">Register</button>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
                 Multipurpose Hall, New Bldg.
               </div>
               <div class="buttons">
-                <button>Register</button>
+                <button type="button" onclick="location.href='mindmatters.php'">Register</button>
               </div>
             </div>
           </div>
