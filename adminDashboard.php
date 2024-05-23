@@ -10,7 +10,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
   if($row['role']=="User") {
     echo "
     <script>
-    alert('Wrong username or password!');
+    alert('You don't have admin privileges.');
     </script>";
     header("location: userHome.php");
   }

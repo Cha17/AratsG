@@ -40,12 +40,10 @@ if (isset($_POST["submit"])) {
         } else {
           echo "
                 <script>
-                    alert('Login first before filling up the register form');
+                    alert('Login first before filling out the register form');
                     window.location.href = 'index.php';
                 </script>
                 ";
-          session_destroy();
-          header("location: index.php");
         }
 
             ?>
