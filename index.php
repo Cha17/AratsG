@@ -135,7 +135,7 @@
               <div class="title">CSG ELECTIONS</div>
               <div class="des">
               Calling all CvSUeños!🗣️
-              We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance, .
+              We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance.
               </div>
               <div class="buttons">
                 <button>Register</button>
