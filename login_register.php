@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
                 if($result_fetch['role']=="User"){
                     $_SESSION['logged_in']=true;
                     $_SESSION['email']=$result_fetch['email'];
-                    header("location: userHome.php");;
+                    header("location: index.php");;
                 }
                 else{
                     $_SESSION['logged_in']=true;
@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
                 echo "
                 <script>
                     alert('Wrong username or password!');
-                    window.location.href = 'index.php';
+                    window.location.href = 'login.php';
                 </script>
                 ";
             }
@@ -37,7 +37,7 @@ if(isset($_POST['login'])){
             echo "
             <script>
                 alert('Email not registered!');
-                window.location.href = 'index.php';
+                window.location.href = 'login.php';
             </script>
             ";
         }
@@ -47,7 +47,7 @@ if(isset($_POST['login'])){
         echo "
         <script>
             alert('Email not registered!');
-            window.location.href = 'index.php';
+            window.location.href = 'login.php';
         </script>
         ";
     }
@@ -70,7 +70,7 @@ if($result){
                 echo "
                 <script>
                     alert('Student number already exists! Please make sure to enter your unique student number correctly, or login if you already have an account.');
-                    window.location.href = 'index.php';
+                    window.location.href = 'login.php';
                 </script>
                 ";
             }else{
@@ -78,7 +78,7 @@ if($result){
                 echo "
                 <script>
                     alert('Email already exists!');
-                    window.location.href = 'index.php';
+                    window.location.href = 'login.php';
                 </script>
                 ";
             
@@ -92,7 +92,7 @@ if($result){
             echo "
             <script>
                 alert('Registration successful!');
-                window.location.href = 'index.php';
+                window.location.href = 'login.php';
             </script>
             ";
         }
@@ -101,7 +101,7 @@ if($result){
             echo "
             <script>
                 alert('Cannot run query!');
-                window.location.href = 'index.php';
+                window.location.href = 'login.php';
             </script>
             ";
     }
@@ -110,7 +110,7 @@ if($result){
     echo "
     <script>
         alert('Cannot run query!');
-        window.location.href = 'index.php';
+        window.location.href = 'login.php';
     </script>
     ";
 }

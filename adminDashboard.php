@@ -12,11 +12,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <script>
     alert('You don't have admin privileges.');
     </script>";
-    header("location: userHome.php");
+    header("location: index.php");
   }
 } else {
   session_destroy();
-    header("location: index.php");
+    header("location: login.php");
 }
 
 ?>
