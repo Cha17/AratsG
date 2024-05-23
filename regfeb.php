@@ -237,7 +237,6 @@ if (isset($_POST["submit"])) {
                     </div>
                   </div>
                   <!-- End of Payment Option -->
-
                   <!-- Note -->
                   <div class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
