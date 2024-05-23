@@ -32,7 +32,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM registrations LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT registrations.reg_id, registrations.user_id, registrations.event_id, registrations.program, registrations.yearlvl, registrations.section, registrations.payment_mode, registrations.payment_status, registrations.addtl_data, events.title, events.price, users.fullname, users.studentNum FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.payment_status = 'Pending' LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -405,19 +405,20 @@ $query = mysqli_query($conn, $sql);
             >
             
         <div class="flex flex-col items-center">
-            <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
+        <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
             rounded-3xl">
             <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
               <table>
                 
                 <tr>
-                <th class="text-orange-950 font-semibold leading-6">Name</th>
-                <th class="text-orange-950 font-semibold leading-6">Student No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Control No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Year Level</th>
-                <th class="text-orange-950 font-semibold leading-6">Program</th>
-                <th class="text-orange-950 font-semibold leading-6">Form Type</th>
-                <th class="text-orange-950 font-semibold leading-6">Action⠀</th>
+                <th class="text-orange-950 font-semibold leading-6">Registration ID</th>
+                <th class="text-orange-950 font-semibold leading-6">Event Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Student Number</th>
+                <th class="text-orange-950 font-semibold leading-6">Registrant Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Year and Section</th>
+                <th class="text-orange-950 font-semibold leading-6">Mode</th>
+                <th class="text-orange-950 font-semibold leading-6">Status</th>
+                <th class="text-orange-950 font-semibold leading-6">Action</th>
                 </tr>
           <!--SHOWDATA-->
           <tbody id="showdata">
@@ -440,15 +441,17 @@ $query = mysqli_query($conn, $sql);
           
           //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
           */
+          
           $result = $conn-> query($sql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
             <td><?php echo $row["reg_id"]; ?></td>
+            <td><?php echo $row["title"]; ?></td>
             <td><?php echo $row["user_id"]; ?></td>
-            <td><?php echo $row["event_id"]; ?></td>
-            <td><?php echo $row["program"]; ?></td>
-            <td><?php echo $row["yearlvl"]; ?></td>
-            <td><?php echo $row["section"]; ?></td>
+            <td><?php echo $row["fullname"]; ?></td>
+            <td><?php echo $row["program"]." ".$row["yearlvl"]."-".$row["section"]; ?></td>
+            <td><?php echo $row["payment_mode"]; ?></td>
+            <td><?php echo $row["payment_status"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
                 <button name="completed" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>

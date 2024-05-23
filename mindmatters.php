@@ -5,47 +5,49 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
-  if (isset($_POST["submit"])) {
-    $program = $_POST['program'];
-    $year = $_POST['year'];
-    $sec = $_POST['sec'];
-    $payment = $_POST['payment'];
-    $note = $_POST['note'];
+if (isset($_POST["submit"])) {
+  $program = $_POST['program'];
+  $year = $_POST['year'];
+  $sec = $_POST['sec'];
+  $payment = $_POST['payment'];
+  $note = $_POST['note'];
 
-    $email = $_SESSION['email'];
-    $sql = "Select * from users where email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $userid = $row['user-id'];
+  $email = $_SESSION['email'];
+  $sql = "Select * from users where email='$email'";
+  $sql = "Select * from users where email='$email'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $userid = $row['user-id'];
 
-    $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
   VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
-    mysqli_query($conn, $query);
+  mysqli_query($conn, $query);
 ?><script type="text/javascript">
-      alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
+    alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
 
 
 
-      window.location.href = "qrgenerator.php";
-    </script><?php
+    window.location.href = "qrgenerator.php";
+  </script><?php
 
 
 
 
-              //header("location: formrequest.html");
-            }
-          } else {
-            echo "
+            //header("location: formrequest.html");
+          }
+        
+        } else {
+          echo "
                 <script>
                     alert('Login first before filling out the register form');
                     window.location.href = 'index.php';
                 </script>
                 ";
-          }
+        }
 
-              ?>
+            ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +55,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</title>
+  <title>Mind Matters</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -74,7 +76,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="justify-center self-start flex gap-10 my-auto mr-10 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
-            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading">About</a>
+            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
+            
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -91,33 +94,35 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h1 class="text-center text-[80px] pb-2">𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</h1>
+          <h1 class="text-center text-[80px] pb-2">MIND MATTERS</h1>
           <p class="text-justify pb-4">
-          Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 #401b1b
-         ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer 
-          Laboratory 1 to 4 & Room 301, 303
-          Hello World is the perfect way to:
-          Level Up your skills with workshops and seminars led by our guest speaker! Party Up with 
-          fellow students through interactive sessions and activities. Power Up for the upcoming 
-          semester with a refreshing and fun environment.
+          A seminar talking about Psychological First Aid and Mental Hygiene? Say no more!
+          Because La Liga Psicologia is pleased to announce that we will be conducting our 
+          first-ever face-to-face seminar, after the pandemic, entitled “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒: 
+          𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞” on 𝐅𝐫𝐢𝐝𝐚𝐲, 𝐌𝐚𝐲 𝟎𝟑, 𝟐𝟎𝟐𝟒.
+          As future mental health professionals, we value the importance of both our mental 
+          and physical health as a component of our overall well-being. Being equipped with 
+          knowledge and skills in assessing and de-escalating a situation in times of crisis 
+          may help keep ourselves safe and other people. You wouldn't want to miss out on 
+          this great opportunity, right?
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
               <li>
-                DCS WEEK 2024
+                Mind Matters
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
-                April 11 - 13, 2024
+                May 03, 2024
               </li>
               <li>
                 <img src="images/bx-time.svg" alt="">
-                8:00 AM - 5:00 PM
+                8:00 AM onwards
               </li>
               <li>
                 <img src="images/bx-map.svg" alt="">
-                CvSU Bacoor Gym
+                SF, Multipurpose Hall, New Bldg.
               </li>
               <li>
                 <img src="images/bx-group.svg" alt="">
@@ -125,7 +130,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               </li>
               <li>
                 <img src="images/bx-purchase-tag.svg" alt="">
-                Php 25.00
+                FREE
               </li>
             </ul>
           </div>
@@ -133,7 +138,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         </div>
       </div>
       <div>
-        <img src="images/DCS 2024.jpg" alt="" class="h-[650px] w-[650px] ml-4 ">
+        <img src="images/mindmatters.jpg" alt="" class="h-[650px] w-[650px] ml-4 ">
       </div>
     </div>
 

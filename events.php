@@ -33,6 +33,7 @@ session_start();
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
             <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
+            
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -53,7 +54,7 @@ session_start();
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
             <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-              Feb-Ibig 2024
+            𝐅𝐞𝐛-𝐈𝐛𝐢𝐠 2024
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
@@ -68,7 +69,7 @@ session_start();
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
             <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-              DCS Week 2024
+            𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
@@ -84,12 +85,12 @@ session_start();
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
             <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-              Biniverse
+            𝗠𝗜𝗡𝗗 𝗠𝗔𝗧𝗧𝗘𝗥𝗦
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            BINI is gearing up for their much-anticipated first solo concert. Get ready to witness
-            powerful performances, stunning visuals, and special surprises!
+          A seminar talking about Psychological First Aid and Mental Hygiene?
+          “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒: 𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞”.
           </p>
           <a href="regbini.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
@@ -99,12 +100,11 @@ session_start();
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
             <h2 class="text-gray-950 text-xl font-medium leading-7 grow whitespace-nowrap self-start">
-              SBTown Music Fiesta
+            𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗙𝗢𝗥 𝗬𝗢𝗨.💚🦋
             </h2>
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            SBTown Music Fiesta is set on May 26, 2024, 5PM at Rizal Open
-            Auditorium, Rizal Park Luneta.
+          𝗙𝗥𝗘𝗘 and remarkable 𝘀𝗲𝗺𝗶𝗻𝗮𝗿 entitled "𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀: 𝗙𝗼𝘀𝘁𝗲𝗿𝗶𝗻𝗴 𝗮 𝗛𝗲𝗮𝗹𝘁𝗵𝘆 𝗮𝗻𝗱 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗪𝗼𝗿𝗸 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗺𝗲𝗻𝘁" at 𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺.
           </p>
           <a href="ReqCOE.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>

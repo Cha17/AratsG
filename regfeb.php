@@ -53,7 +53,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Feb-Ibig 2024</title>
+  <title>𝐅𝐞𝐛-𝐈𝐛𝐢𝐠 2024</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -75,6 +75,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="justify-center self-start flex gap-10 my-auto mr-10 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
+            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";

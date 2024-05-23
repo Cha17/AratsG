@@ -5,47 +5,49 @@ session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
-  if (isset($_POST["submit"])) {
-    $program = $_POST['program'];
-    $year = $_POST['year'];
-    $sec = $_POST['sec'];
-    $payment = $_POST['payment'];
-    $note = $_POST['note'];
+if (isset($_POST["submit"])) {
+  $program = $_POST['program'];
+  $year = $_POST['year'];
+  $sec = $_POST['sec'];
+  $payment = $_POST['payment'];
+  $note = $_POST['note'];
 
-    $email = $_SESSION['email'];
-    $sql = "Select * from users where email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $userid = $row['user-id'];
+  $email = $_SESSION['email'];
+  $sql = "Select * from users where email='$email'";
+  $sql = "Select * from users where email='$email'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+  $userid = $row['user-id'];
 
-    $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
+  $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
   VALUES ($userid,'20240001','$program','$year','$sec','$payment', '$note')";
 
 
-    mysqli_query($conn, $query);
+  mysqli_query($conn, $query);
 ?><script type="text/javascript">
-      alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
+    alert("Keep in mind that your request is subject to assessment, and approval is not guaranteed.");
 
 
 
-      window.location.href = "qrgenerator.php";
-    </script><?php
+    window.location.href = "qrgenerator.php";
+  </script><?php
 
 
 
 
-              //header("location: formrequest.html");
-            }
-          } else {
-            echo "
+            //header("location: formrequest.html");
+          }
+        
+        } else {
+          echo "
                 <script>
                     alert('Login first before filling out the register form');
                     window.location.href = 'index.php';
                 </script>
                 ";
-          }
+        }
 
-              ?>
+            ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +55,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</title>
+  <title>𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗮𝗻𝗱 𝗠𝗲𝗻𝘁𝗮𝗹, 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗽𝗶𝗿𝗶𝘁𝘂𝗮𝗹 𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -74,7 +76,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="justify-center self-start flex gap-10 my-auto mr-10 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
-            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading">About</a>
+            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -91,33 +93,33 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h1 class="text-center text-[80px] pb-2">𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</h1>
+          <h6 class="text-center text-[80px] pb-2">𝗛𝗲𝗮𝗹𝘁𝗵 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀</h6>
           <p class="text-justify pb-4">
-          Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 #401b1b
-         ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer 
-          Laboratory 1 to 4 & Room 301, 303
-          Hello World is the perfect way to:
-          Level Up your skills with workshops and seminars led by our guest speaker! Party Up with 
-          fellow students through interactive sessions and activities. Power Up for the upcoming 
-          semester with a refreshing and fun environment.
+          𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
+          Let's get all ready as the 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀 𝗖𝗲𝗻𝘁𝗿𝗮𝗹 𝗦𝘁𝘂𝗱𝗲𝗻𝘁 𝗚𝗼𝘃𝗲𝗿𝗻𝗺𝗲𝗻𝘁 will 
+          conduct a 𝗙𝗥𝗘𝗘 and remarkable 𝘀𝗲𝗺𝗶𝗻𝗮𝗿 entitled "𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗮𝗻𝗱 𝗠𝗲𝗻𝘁𝗮𝗹, 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗽𝗶𝗿𝗶𝘁𝘂𝗮𝗹 𝗛𝗲𝗮𝗹𝘁𝗵
+          𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀: 𝗙𝗼𝘀𝘁𝗲𝗿𝗶𝗻𝗴 𝗮 𝗛𝗲𝗮𝗹𝘁𝗵𝘆 𝗮𝗻𝗱 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝘃𝗲 𝗪𝗼𝗿𝗸 𝗘𝗻𝘃𝗶𝗿𝗼𝗻𝗺𝗲𝗻𝘁", at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 
+          𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺.The seminar is mainly focused on 𝗠𝗲𝗻𝘁𝗮𝗹 𝗮𝗻𝗱 𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 and 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗦𝘂𝗺𝗺𝗶𝘁. 
+          This is open for everyone especially student leaders such as Organizations, Society Officers, and Class
+          Presidents. The attendees will be receiving 𝗲-𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 for participating. ✨
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
               <li>
-                DCS WEEK 2024
+              𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
-                April 11 - 13, 2024
-              </li>
+                𝗠𝗮𝗿𝗰𝗵 𝟮𝟲, 𝟮𝟬𝟮𝟰
+             </li>
               <li>
                 <img src="images/bx-time.svg" alt="">
-                8:00 AM - 5:00 PM
+                𝟴 𝗮.𝗺. to 𝟱 𝗽.𝗺
               </li>
               <li>
                 <img src="images/bx-map.svg" alt="">
-                CvSU Bacoor Gym
+                𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀 𝗚𝘆𝗺𝗻𝗮𝘀𝗶𝘂𝗺
               </li>
               <li>
                 <img src="images/bx-group.svg" alt="">
@@ -125,7 +127,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               </li>
               <li>
                 <img src="images/bx-purchase-tag.svg" alt="">
-                Php 25.00
+                FREE
               </li>
             </ul>
           </div>
@@ -133,7 +135,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         </div>
       </div>
       <div>
-        <img src="images/DCS 2024.jpg" alt="" class="h-[650px] w-[650px] ml-4 ">
+        <img src="images/Leadership and Mental Semianr.jpg" alt="" class="h-[650px] w-[650px] ml-4 ">
       </div>
     </div>
 
