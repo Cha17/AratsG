@@ -109,6 +109,21 @@ session_start();
           <a href="leadershipAndmental.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
+      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
+        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
+          <div class="relative flex items-stretch justify-between gap-2">
+            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
+              CSG ELECTIONS
+            </h2>
+          </div>
+          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
+            <span class="font-semibold">Calling all CvSUeños!🗣️ </span> We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance.
+          </p>
+          <a href="csgelections.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+        </div>
+      </div>
+
     </section>
   </div>
 </body>
