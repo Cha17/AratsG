@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>DCS WEEK 2024</title>
+  <title>𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -76,6 +76,7 @@ if (isset($_POST["submit"])) {
           <div class="justify-center self-start flex gap-10 my-auto mr-10 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
+            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading">About</a>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -92,16 +93,21 @@ if (isset($_POST["submit"])) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h1 class="text-center text-[80px] pb-2">DCS WEEK 2024</h1>
+          <h1 class="text-center text-[80px] pb-2">𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</h1>
           <p class="text-justify pb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, necessitatibus et. Odit, eius quam. Adipisci quisquam molestias corrupti, facilis repellat unde harum facere quis ea earum commodi maxime necessitatibus vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis maiores libero, inventore dolor in repellat odit explicabo aliquam provident natus. Odit animi nobis eligendi vitae beatae? Voluptas officia incidunt et.
+          Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 #401b1b
+         ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer 
+          Laboratory 1 to 4 & Room 301, 303
+          Hello World is the perfect way to:
+          Level Up your skills with workshops and seminars led by our guest speaker! Party Up with 
+          fellow students through interactive sessions and activities. Power Up for the upcoming 
+          semester with a refreshing and fun environment.
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
               <li>
-                [Event Name]
+                DCS WEEK 2024
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
