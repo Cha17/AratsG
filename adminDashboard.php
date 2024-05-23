@@ -133,7 +133,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 <ul class="py-1" aria-labelledby="dropdown">
 
                   <li>
-                    <a href="index.html" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
+                    <a href="login.php" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
                   </li>
                 </ul>
               </div>
