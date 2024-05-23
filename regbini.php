@@ -40,7 +40,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
             echo "
                 <script>
                     alert('Login first before filling out the register form');
-                    window.location.href = 'index.php';
+                    window.location.href = 'login.php';
                 </script>
                 ";
           }
@@ -53,7 +53,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</title>
+  <title>Biniverse</title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <link rel="stylesheet" href="regFebibig.css">
@@ -74,7 +74,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
           <div class="justify-center self-start flex gap-10 my-auto mr-10 max-md:max-w-full max-md:flex-wrap max-md:justify-center">
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
-            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading">About</a>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
@@ -91,25 +90,20 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <div class="grid grid-cols-2 gap-16 mt-20">
       <div>
         <div class="px-20 ml-10">
-          <h1 class="text-center text-[80px] pb-2">𝐃𝐂𝐒 𝐖𝐄𝐄𝐊 2024</h1>
+          <h1 class="text-center text-[80px] pb-2">Biniverse</h1>
           <p class="text-justify pb-4">
-          Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 #401b1b
-         ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer 
-          Laboratory 1 to 4 & Room 301, 303
-          Hello World is the perfect way to:
-          Level Up your skills with workshops and seminars led by our guest speaker! Party Up with 
-          fellow students through interactive sessions and activities. Power Up for the upcoming 
-          semester with a refreshing and fun environment.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, necessitatibus et. Odit, eius quam. Adipisci quisquam molestias corrupti, facilis repellat unde harum facere quis ea earum commodi maxime necessitatibus vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis maiores libero, inventore dolor in repellat odit explicabo aliquam provident natus. Odit animi nobis eligendi vitae beatae? Voluptas officia incidunt et.
           </p>
           <div class="formbold-event-details">
             <h5>Event Details</h5>
             <ul>
               <li>
-                DCS WEEK 2024
+                [Event Name]
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
-                April 11 - 13, 2024
+                February 14, 2024
               </li>
               <li>
                 <img src="images/bx-time.svg" alt="">
@@ -125,15 +119,15 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               </li>
               <li>
                 <img src="images/bx-purchase-tag.svg" alt="">
-                Php 25.00
+                Php 15.00
               </li>
             </ul>
           </div>
 
         </div>
       </div>
-      <div>
-        <img src="images/DCS 2024.jpg" alt="" class="h-[650px] w-[650px] ml-4 ">
+      <div class="justify-center">
+        <img src="images/biniverse.jpg" alt="" class="h-[650px] w-[550px] ml-4 ">
       </div>
     </div>
 

@@ -92,7 +92,7 @@ session_start();
           A seminar talking about Psychological First Aid and Mental Hygiene?
           “𝐌𝐈𝐍𝐃 𝐌𝐀𝐓𝐓𝐄𝐑𝐒: 𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 𝐭𝐨 𝐏𝐬𝐲𝐜𝐡𝐨𝐥𝐨𝐠𝐢𝐜𝐚𝐥 𝐅𝐢𝐫𝐬𝐭 𝐀𝐢𝐝 𝐚𝐧𝐝 𝐌𝐞𝐧𝐭𝐚𝐥 𝐇𝐲𝐠𝐢𝐞𝐧𝐞”.
           </p>
-          <a href="ReqCOG.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="regbini.php" class="flex items-end relative text-gray-700 text-sm font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>
       <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
