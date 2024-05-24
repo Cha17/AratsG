@@ -7,7 +7,7 @@ if(isset($_POST['completed']))
     $reg_id = mysqli_real_escape_string($conn, $_POST['completed']);
 
     $result = $conn-> query("UPDATE registrations SET payment_status = 'Paid' WHERE reg_id=$reg_id;"); 
-    header('Location:requests.php');
+    header('Location:attendees.php');
 }
     /*$row = mysqli_fetch_assoc($result);
     
