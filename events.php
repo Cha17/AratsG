@@ -90,7 +90,7 @@ session_start();
           </div>
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
             A seminar talking about Psychological First Aid and Mental Hygiene?
-            <span class="font-semibold"> "Mind Matters: Introduction to Psychological First Aid and Mental Hygiene." </span>
+            <span class="font-semibold"> "Mind Matters: Introduction to Psychological First Aid and Mental Hygiene.</span>
           </p>
           <a href="mindmatters.php" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
