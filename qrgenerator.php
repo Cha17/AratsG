@@ -136,7 +136,7 @@ include("conn.php");
         <!-- Control Number -->
         <div class="flex  justify-center pb-7">
           <input type="text" class="bg-inherit text-center p-2 border h-[56px] rounded-xl border-solid border-orange-950" value="<?php echo $theone['reg_id']; ?>" id="qrText" readonly>
-          <div id="dwld" class="hidden flex justify-center items-center gap-5 ml-6 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
+          <div id="dwld" class="flex justify-center items-center gap-5 ml-6 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
             <a class="text-stone-100 font-semibold leading-6 whitespace-nowrap bg-[#ab644d] p-4 rounded-full shadow-md" onclick="downloadQR()">
               <img src="images/bx-download.svg" alt="">
             </a>
@@ -194,7 +194,7 @@ include("conn.php");
         .then(response => response.blob())
         .then(blob => {
           const link = document.createElement("a");
-          link.download = "qrcode.png";
+          link.download = "Registration ID.png";
           link.href = URL.createObjectURL(blob);
           link.click();
         })
