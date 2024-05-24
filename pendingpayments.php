@@ -17,6 +17,7 @@ if (isset($_GET['yrsec'])) {
   $yrsec = $_GET['yrsec'];
 }*/
 
+roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 // Number of rows per page
 $rowsPerPage = 10;

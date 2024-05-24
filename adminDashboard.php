@@ -2,23 +2,7 @@
 session_start();
 include("conn.php");
 
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-  $email = $_SESSION['email'];
-  $sql = "Select * from users where email='$email'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  if($row['role']=="User") {
-    echo "
-    <script>
-    alert('You don't have admin privileges.');
-    </script>";
-    header("location: index.php");
-  }
-} else {
-  session_destroy();
-    header("location: login.php");
-}
-
+roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,13 +47,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               </div>
             </a>
             <!--Student-->
-            <a href="Students_list.php">
+            <a href="pendingpayments.php">
               <div class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
 
                 <img loading="lazy" src="images/Students.svg" class="aspect-square object-center self-stretch max-w-full" alt="Students Icon" />
 
                 <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">
-                  Students
+                  Pending </br> Payments
                 </h1>
               </div>
             </a>
