@@ -15,8 +15,7 @@ function roleConfirm($loggedin, $email) {
         $result = mysqli_query(mysqli_connect("localhost", "root", "", "g-arat"), $sql);
         $row = mysqli_fetch_assoc($result);
         if($row['role']=="User") {
-          echo "
-          <script>
+          echo "<script>
           alert('You don't have admin privileges.');
           </script>";
           header("location: index.php");

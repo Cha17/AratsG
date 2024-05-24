@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("conn.php");
 //include("searchajax2.php");
 //$columns = array('program');
@@ -250,7 +251,17 @@ $query = mysqli_query($conn, $sql);
                     type="button"
                     data-dropdown-toggle="dropdown"
                   >
-                    Account
+                  <?php
+                  if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                    $email = $_SESSION['email'];
+                    $accquery = "Select * from users where email='$email'";
+                    $result = mysqli_query($conn, $accquery);
+                    $row = mysqli_fetch_assoc($result);
+                    echo '<p>' . $row['fullname'] . '</p>';
+                  } else {
+                    echo 'Not logged in';
+                  }
+                  ?>
                   </button>
                   <div
                   class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
