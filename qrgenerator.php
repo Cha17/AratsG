@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+include("conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,12 +35,12 @@
             <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
             <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
             <!--<?php
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-              echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
-            } else {
-              echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
-            }
-            ?>-->
+                if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                  echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
+                } else {
+                  echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+                }
+                ?>-->
           </div>
         </a>
       </nav>
@@ -40,7 +48,7 @@
 
     <section class="grid gap-20 grid-cols-2 justify-between pt-10">
       <!-- Left Side -->
-      <div class="justify-center" >
+      <div class="justify-center">
         <div class="flex flex-col items-stretch pl-16 max-md:max-w-full max-md:mt-10">
           <h1 class="text-red-950 text-[60px] font-extrabold mr-5 max-md:max-w-full max-md:text-4xl max-md:leading-[71px]">
             Request Successfully Sent
@@ -53,59 +61,59 @@
             </p>
           </div>
           <!-- Registration Details -->
-            <div class="formbold-event-details">
-              <h5>Registration Details</h5>
-              <ul>
-                <li>
-                  [Event Name]
-                </li>
-                <li>
-                  <img src="images/bx-calendar-alt.svg" alt="">
-                  February 14, 2024
-                </li>
-                <li>
-                  <img src="images/bx-time.svg" alt="">
-                  8:00 AM - 5:00 PM
-                </li>
-                <li>
-                  <img src="images/bx-map.svg" alt="">
-                  CvSU Bacoor Gym
-                </li>
-                <li>
-                  <img src="images/bx-group.svg" alt="">
-                  All Students
-                </li>
-                <li>
-                  <img src="images/bx-purchase-tag.svg" alt="">
-                  Php 15.00
-                </li>
-                <li>
-                  [Full Name]
-                </li>
-                <li>
-                  [Student Number]
-                </li>
-                <li>
-                  [email]
-                </li>
-                <li>
-                  [Program]
-                </li>
-                <li>
-                  [Year Level and Section (3 - 1)]
-                </li>
-                <li>
-                  [Payment Option]
-                </li>
-              </ul>
-            </div>
-            <!-- End of Registration Details -->
+          <div class="formbold-event-details">
+            <h5>Registration Details</h5>
+            <ul>
+              <li>
+                [Event Name]
+              </li>
+              <li>
+                <img src="images/bx-calendar-alt.svg" alt="">
+                February 14, 2024
+              </li>
+              <li>
+                <img src="images/bx-time.svg" alt="">
+                8:00 AM - 5:00 PM
+              </li>
+              <li>
+                <img src="images/bx-map.svg" alt="">
+                CvSU Bacoor Gym
+              </li>
+              <li>
+                <img src="images/bx-group.svg" alt="">
+                All Students
+              </li>
+              <li>
+                <img src="images/bx-purchase-tag.svg" alt="">
+                Php 15.00
+              </li>
+              <li>
+                [Full Name]
+              </li>
+              <li>
+                [Student Number]
+              </li>
+              <li>
+                [email]
+              </li>
+              <li>
+                [Program]
+              </li>
+              <li>
+                [Year Level and Section (3 - 1)]
+              </li>
+              <li>
+                [Payment Option]
+              </li>
+            </ul>
           </div>
+          <!-- End of Registration Details -->
         </div>
+      </div>
       <!-- End of Left Side -->
 
       <!-- Right Side -->
-      <div class="justify-center" >
+      <div class="justify-center">
         <!-- QR Code Generator Button -->
         <div class="flex items-stretch justify-center pt-8 gap-5 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
           <button class="text-stone-100 text-center w-fit font-semibold leading-6 whitespace-nowrap bg-[#ab644d] p-4 items-center rounded-xl" onclick="generateQR()">Generate QR Code</button>
@@ -114,22 +122,22 @@
         <div>
           <p class="text-center px-20 py-10">Your
             <span class="font-extrabold">Registration ID</span>
-              is encoded in this QR Code. Please keep this confidential and do not share it with anyone. To register your attendance for the event, simply scan this code upon arrival.
+            is encoded in this QR Code. Please keep this confidential and do not share it with anyone. To register your attendance for the event, simply scan this code upon arrival.
           </p>
         </div>
 
         <!-- PHP Code for Registration ID -->
-        <!--<?php
-          $sql = "SELECT ctrl_num FROM request ORDER BY ctrl_num DESC LIMIT 1;";
-          $result = mysqli_query($conn, $sql);
-          $theone = mysqli_fetch_assoc($result)
-          ?>-->
+        <?php
+        $sql = "SELECT reg_id FROM registrations ORDER BY reg_id DESC LIMIT 1;";
+        $result = mysqli_query($conn, $sql);
+        $theone = mysqli_fetch_assoc($result)
+        ?>
 
         <!-- Control Number -->
         <div class="flex  justify-center pb-7">
-          <input type="text" class="bg-inherit text-center p-2 border h-[56px] rounded-xl border-solid border-orange-950" value="<?php echo $theone['ctrl_num']; ?>" id="qrText" readonly>
+          <input type="text" class="bg-inherit text-center p-2 border h-[56px] rounded-xl border-solid border-orange-950" value="<?php echo $theone['reg_id']; ?>" id="qrText" readonly>
           <div id="dwld" class="hidden flex justify-center items-center gap-5 ml-6 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
-            <a href="#" download="Control Number" onclick="downloadQR()" class="text-stone-100 font-semibold leading-6 whitespace-nowrap bg-[#ab644d] p-4 rounded-full shadow-md" onclick="downloadQR()">
+            <a class="text-stone-100 font-semibold leading-6 whitespace-nowrap bg-[#ab644d] p-4 rounded-full shadow-md" onclick="downloadQR()">
               <img src="images/bx-download.svg" alt="">
             </a>
           </div>
@@ -142,20 +150,20 @@
       <!-- End of Right Side -->
     </section>
   </div>
-    <!-- <script src="script.js"></script> -->
-    <script>
-      let imgBox = document.getElementById("imgBox");
-      let qrImage = document.getElementById("qrImage");
-      let qrText = document.getElementById("qrText");
-      let input = document.querySelector("input");
-      let generatebtn = document.querySelector("generate");
-      let downloadbtn = document.querySelector("download");
-      
+  <!-- <script src="script.js"></script> -->
+  <script>
+    let imgBox = document.getElementById("imgBox");
+    let qrImage = document.getElementById("qrImage");
+    let qrText = document.getElementById("qrText");
+    let input = document.querySelector("input");
+    let generatebtn = document.querySelector("generate");
+    let downloadbtn = document.querySelector("download");
 
-      function generateQR() {
-        if (qrText.value.length > 0) {
-          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`;
-          fetch(qrUrl, {
+
+    function generateQR() {
+      if (qrText.value.length > 0) {
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`;
+        fetch(qrUrl, {
             headers: {
               'Accept': 'image/png'
             }
@@ -168,17 +176,17 @@
             document.getElementById("dwld").classList.remove("hidden");
           })
           .catch(error => console.error('Error:', error));
-        } else {
-          qrText.classList.add("error");
-          setTimeout(() => {
-            qrText.classList.remove("error");
-          }, 1000);
-        }
+      } else {
+        qrText.classList.add("error");
+        setTimeout(() => {
+          qrText.classList.remove("error");
+        }, 1000);
       }
+    }
 
-      function downloadQR() {
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`;
-        fetch(qrUrl, {
+    function downloadQR() {
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`;
+      fetch(qrUrl, {
           headers: {
             'Accept': 'image/png'
           }
@@ -191,8 +199,8 @@
           link.click();
         })
         .catch(error => console.error('Error:', error));
-      }
-      </script>
+    }
+  </script>
 
 
 
