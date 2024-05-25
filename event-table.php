@@ -1,11 +1,14 @@
 <?php
 session_start();
 include("conn.php");
-//include("searchajax2.php");
-//$columns = array('program');
+
+//roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
+
+include("searchajax.php");
+$columns = array('reg_id');
 
 // Only get the column if it exists in the above columns array, if it doesn't exist the database table will be sorted by the first item in the columns array.
-//$column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+$column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
 
 // Get the sort order for the column, ascending or descending, default is ascending.
 /*$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
@@ -18,7 +21,6 @@ if (isset($_GET['evalue'])) {
   $evalue = $_GET['evalue'];
 }
 
-roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 
 // Number of rows per page
@@ -279,7 +281,7 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-8 overflow-hidden shrink-0-w-full ml-3 pl-2" alt="Search Icon" />
                   
                   <div class="text-stone-500  text-lg leading-7 self-center whitespace-nowrap mt-2 mb-1">
-                    <input type = "search" class="bg-zinc-100" id = "getName" placeholder = "Search here..." autocomplete = "off">
+                    <input type = "search" class="bg-zinc-100" id = "getName" name="name" placeholder = "Search here..." autocomplete = "off">
                     <!--script>/*$('#getName').on('input', function() {
                       $('#getName').trigger('keydown');
                     })*/
