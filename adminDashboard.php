@@ -219,7 +219,7 @@ include("conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                  <a href="event-table.php?column=event_id&evalue='.$row['event-id'].'">';
+                  <a href="event-table.php?event_id='.urlencode($row['event-id']).'">';
                   echo $row["title"];
                   echo '</a> </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">';
