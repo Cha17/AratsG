@@ -8,7 +8,8 @@ include("searchajax.php");
 $columns = array('reg_id');
 
 // Only get the column if it exists in the above columns array, if it doesn't exist the database table will be sorted by the first item in the columns array.
-$column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+if (isset($_POST['name'])){
+  $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];}
 
 // Get the sort order for the column, ascending or descending, default is ascending.
 /*$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
