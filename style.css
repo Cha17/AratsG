@@ -1,3 +1,5 @@
+/** @format */
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Teko&display=swap");
 body {
   margin: 0;
@@ -40,7 +42,7 @@ header a {
   font-size: 14px;
   color: #eee;
   margin-right: 40px;
-
+  mix-blend-mode: difference;
   padding: 8px;
 }
 /* carousel */
@@ -90,7 +92,7 @@ header a {
 .carousel .list .item .title {
   font-size: 7em;
   font-weight: bold;
-  line-height: 1.3em;
+  line-height: 1em;
   color: #eab308;
   font-family: "Teko", sans-serif;
   letter-spacing: 5px;
@@ -264,7 +266,7 @@ header a {
 
 .carousel.next .time,
 .carousel.prev .time {
-  animation: runningTime 3s linear 1 forwards;
+  animation: runningTime 1s linear 1 forwards;
 }
 @keyframes runningTime {
   from {
