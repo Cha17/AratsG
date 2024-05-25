@@ -35,7 +35,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.payment_status = 'Paid' LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
