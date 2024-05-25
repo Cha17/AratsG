@@ -2,15 +2,23 @@
 session_start();
 require 'conn.php';
 
-if(isset($_POST['paid']))
+if(isset($_POST['Pending']))
 {
-    $reg_id = mysqli_real_escape_string($conn, $_POST['paid']);
+    $reg_id = mysqli_real_escape_string($conn, $_POST['Pending']);
 
     $result = $conn-> query("UPDATE registrations SET payment_status = 'Paid' WHERE reg_id=$reg_id;"); 
     header('Location:'. $_SERVER['HTTP_REFERER']);
 }
 
-if(isset($_POST['present']))
+if(isset($_POST['Paid']))
+{
+    $reg_id = mysqli_real_escape_string($conn, $_POST['Paid']);
+
+    $result = $conn-> query("UPDATE registrations SET payment_status = 'Present' WHERE reg_id=$reg_id;"); 
+    header('Location:'. $_SERVER['HTTP_REFERER']);
+}
+
+if(isset($_POST['Present']))
 {
     $reg_id = mysqli_real_escape_string($conn, $_POST['present']);
 

@@ -5,12 +5,13 @@ include("conn.php");
 //roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 include("searchajax.php");
+
 $columns = array('reg_id');
 
 // Only get the column if it exists in the above columns array, if it doesn't exist the database table will be sorted by the first item in the columns array.
 if (isset($_POST['name'])){
+  $name = $_POST['name'];
   $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];}
-
 // Get the sort order for the column, ascending or descending, default is ascending.
 /*$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
@@ -18,10 +19,11 @@ if (isset($_GET['progvalue'])) {
   $program = $_GET['progvalue'];
 }*/
 
-if (isset($_GET['evalue'])) {
-  $evalue = $_GET['evalue'];
+if (isset($_GET['event_id'])) {
+  $event_id = $_GET['event_id'];
+ 
 }
-
+ 
 
 
 // Number of rows per page
@@ -38,7 +40,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -456,8 +458,14 @@ $query = mysqli_query($conn, $sql);
           }
           
           //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
-          */
-          $pendingsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Pending' LIMIT $limitStart, $rowsPerPage";
+          
+
+          
+          if ((isset($name))&&(isset($event_id))){
+            search($event_id, $name);
+          }
+          else{*/
+          $pendingsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id AND registrations.payment_status='Pending' LIMIT $limitStart, $rowsPerPage";
           $result = $conn-> query($pendingsql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
@@ -481,7 +489,7 @@ $query = mysqli_query($conn, $sql);
             </form>
           </td>
         </tr>
-    <?php } ?>
+    <?php }?>
           </tbody>
           </div>
         </table>
@@ -568,7 +576,7 @@ $query = mysqli_query($conn, $sql);
           <!--SHOWDATA-->
           <tbody id="showdata">
           <?php 
-          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Paid' LIMIT $limitStart, $rowsPerPage";
+          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id AND registrations.payment_status='Paid' LIMIT $limitStart, $rowsPerPage";
           $result = $conn-> query($paidsql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
@@ -680,13 +688,13 @@ $query = mysqli_query($conn, $sql);
           <!--SHOWDATA-->
           <tbody id="showdata">
           <?php 
-          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Present' LIMIT $limitStart, $rowsPerPage";
+          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id AND registrations.payment_status='Present' LIMIT $limitStart, $rowsPerPage";
           $result = $conn-> query($paidsql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
             <td><?php echo $row["reg_id"]; ?></td>
             <td><?php echo $row["title"]; ?></td>
-            <td><?php echo $row["user_id"]; ?></td>
+            <td><?php echo $row["studentNum"]; ?></td>
             <td><?php echo $row["fullname"]; ?></td>
             <td><?php echo $row["program"]." ".$row["yearlvl"]."-".$row["section"]; ?></td>
             <td><?php echo $row["payment_mode"]; ?></td>

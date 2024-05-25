@@ -2,7 +2,7 @@
 require 'conn.php';
 session_start();
 
-$evalue = $_GET['evalue'];
+$evalue = $_GET['event_id'];
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
   if (isset($_POST["submit"])) {
@@ -19,7 +19,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     $userid = $row['user-id'];
 
     
-    $evalue = $_GET['evalue'];
+    $evalue = $_GET['event_id'];
     
 
     $query = "INSERT INTO registrations (`user_id`,`event_id`,`program`,`yearlvl`,`section`,`payment_mode`,`addtl_data`) 
