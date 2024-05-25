@@ -12,13 +12,14 @@ include("conn.php");
 
 if (isset($_GET['progvalue'])) {
   $program = $_GET['progvalue'];
-}
-
-if (isset($_GET['yrsec'])) {
-  $yrsec = $_GET['yrsec'];
 }*/
 
+if (isset($_GET['evalue'])) {
+  $evalue = $_GET['evalue'];
+}
+
 roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
+
 
 // Number of rows per page
 $rowsPerPage = 10;
@@ -34,7 +35,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT registrations.reg_id, registrations.user_id, registrations.event_id, registrations.program, registrations.yearlvl, registrations.section, registrations.payment_mode, registrations.payment_status, registrations.addtl_data, events.title, events.price, users.fullname, users.studentNum FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.payment_status = 'Paid' LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.payment_status = 'Paid' LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>

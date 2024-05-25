@@ -218,9 +218,10 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
                   class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5">
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >';
+                  >
+                  <a href="event-table.php?column=event_id&evalue='.$row['event-id'].'">';
                   echo $row["title"];
-                  echo '</h2>
+                  echo '</a> </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">';
                   echo $row["description"];
 
