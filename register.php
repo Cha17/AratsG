@@ -126,7 +126,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               </li>
               <li>
                 <img src="images/bx-map.svg" alt="">
-                <?php echo $row['date'];?>
+                <?php echo $row['location'];?>
               </li>
               <li>
                 <img src="images/bx-group.svg" alt="">
