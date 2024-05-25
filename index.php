@@ -153,8 +153,11 @@ session_start();
     <!-- arrows -->
     <div class="arrows">
       <button id="prev">
-        << /button>
-          <button id="next">></button>
+        <img class="flex items-center p-2" src="images/bx-chevron-left.svg" alt="">
+      </button>
+      <button id="next">
+        <img class="flex items-center p-2" src="images/bx-chevron-right.svg" alt="">
+      </button>
     </div>
   </div>
 
