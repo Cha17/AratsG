@@ -246,7 +246,14 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               <div class="justify-between mt-10 max-md:max-w-full">
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
                   <!-- Payment Option -->
-                  <div class="flex flex-col items-stretch w-[32%] max-md:w-full max-md:ml-0">
+                  <?php
+                  $evalue = $_GET['evalue'];
+                  $eventsql = "SELECT * FROM events WHERE `event-id`=$evalue";
+                  $result = mysqli_query($conn, $eventsql);
+                  $row = mysqli_fetch_assoc($result);
+
+                  if($row['price']!=0.00) {
+                    echo '<div class="flex flex-col items-stretch w-[32%] max-md:w-full max-md:ml-0">
                     <div class="items-stretch flex grow flex-col max-md:mt-10">
                       <label for="payment" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Payment Option</label>
                       <div class="w-88 relative">
@@ -257,7 +264,21 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div>';
+                  };
+                  ?>
+                  <!--div class="flex flex-col items-stretch w-[32%] max-md:w-full max-md:ml-0">
+                    <div class="items-stretch flex grow flex-col max-md:mt-10">
+                      <label for="payment" class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap">Payment Option</label>
+                      <div class="w-88 relative">
+                        <select type="text" name="payment" id="payment" placeholder="Payment Option" required class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1" autocomplete="off">
+                          <option value=""></option>
+                          <option value="Cash">Cash</option>
+                          <option value="Online">Online</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div-->
                   <!-- End of Payment Option -->
                   <!-- Note -->
                   <div class="flex flex-col items-stretch w-[68%] max-md:w-full max-md:ml-0">
