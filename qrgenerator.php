@@ -4,6 +4,14 @@ session_start();
 
 include("conn.php");
 
+
+//PHP Code for Registration ID 
+        
+        $sql = "SELECT * FROM registrations ORDER BY reg_id DESC LIMIT 1;";
+        $result = mysqli_query($conn, $sql);
+        $theone = mysqli_fetch_assoc($result);
+        $reg_id = $theone['reg_id'];
+  
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +48,11 @@ include("conn.php");
                 } else {
                   echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
                 }
+
+              $fetch = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` ORDER BY reg_id DESC LIMIT 1";
+              $details = mysqli_query($conn, $fetch);
+              $row = mysqli_fetch_assoc($details);
+
                 ?>-->
           </div>
         </a>
@@ -65,19 +78,19 @@ include("conn.php");
             <h5>Registration Details</h5>
             <ul>
               <li>
-                [Event Name]
+              <?php echo $row['title'] ?>
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
-                February 14, 2024
+                <?php echo $row['date'] ?>
               </li>
               <li>
                 <img src="images/bx-time.svg" alt="">
-                8:00 AM - 5:00 PM
+                <?php echo $row['time'] ?>
               </li>
               <li>
                 <img src="images/bx-map.svg" alt="">
-                CvSU Bacoor Gym
+                <?php echo $row['location'] ?>
               </li>
               <li>
                 <img src="images/bx-group.svg" alt="">
@@ -85,25 +98,25 @@ include("conn.php");
               </li>
               <li>
                 <img src="images/bx-purchase-tag.svg" alt="">
-                Php 15.00
+                <?php echo $row['price'] ?>
               </li>
               <li>
-                [Full Name]
+                <?php echo $row['fullname'] ?>
               </li>
               <li>
-                [Student Number]
+                <?php echo $row['studentNum'] ?>
               </li>
               <li>
-                [email]
+              <?php echo $row['email'] ?>
               </li>
               <li>
-                [Program]
+              <?php echo $row['program'] ?>
               </li>
               <li>
-                [Year Level and Section (3 - 1)]
+              <?php echo $row['yearlvl']."-".$row['section'] ?>
               </li>
               <li>
-                [Payment Option]
+              <?php echo $row['payment_mode'] ?>
               </li>
             </ul>
           </div>
@@ -126,12 +139,7 @@ include("conn.php");
           </p>
         </div>
 
-        <!-- PHP Code for Registration ID -->
-        <?php
-        $sql = "SELECT reg_id FROM registrations ORDER BY reg_id DESC LIMIT 1;";
-        $result = mysqli_query($conn, $sql);
-        $theone = mysqli_fetch_assoc($result)
-        ?>
+        
 
         <!-- Control Number -->
         <div class="flex  justify-center pb-7">
