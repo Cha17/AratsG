@@ -17,7 +17,13 @@ include("conn.php");
   <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 </head>
 
-<body class="bg-fixed bg-no-repeat bg-cover bg-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#f3f4f5] via-[#e0e8ed] to-[#d0dde6]">
+<body>
+  <!-- Gradient Background -->
+  <div class="blob w-full h-full rounded-[999px] absolute top-0 right-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200"></div>
+  <div class="blob w-[1000px] h-[1000px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-red-200 via-gray-100 to-blue-100"></div>
+  <div class="blob w-[600px] h-[600px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-slate-100 via-teal-100 to-blue-100"></div>
+  <div class="blob w-[300px] h-[300px] rounded-[999px] absolute bottom-[10px] left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-green-200 via-cyan-200 to-Fuchsia-300"></div>
+  <!-- End of Gradient Background -->
   <div class="pr-12 max-md:pr-5 no-scrollbar">
     <section class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
       <!--Sidebar-->
@@ -134,8 +140,11 @@ include("conn.php");
             -->
           </div>
         </header>
+
+
         <section class="shadow-lg bg-[#eeefea] flex flex-col mt-10 px-5 py-9 rounded-3xl max-md:max-w-full max-md:mt-10">
           <div class="flex w-[1-00px] max-w-full gap-2 mx-20 justify-between max-md:flex-wrap max-md:justify-center">
+
             <div class="flex items-stretch gap-5">
               <button onclick="location.href='Students_list.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/361fa489-9c27-4e08-a35a-eb40e98cc4fe?apiKey=00d7018a335e46bbabd3ad8844351700&" />
@@ -156,6 +165,8 @@ include("conn.php");
                 </div>
               </div>
             </div>
+
+
             <div class="flex items-stretch gap-5">
               <button onclick="location.href='requests.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c8dc0ae-1840-4118-ad1c-81efd1d6e2eb?apiKey=00d7018a335e46bbabd3ad8844351700&" />
@@ -203,6 +214,9 @@ include("conn.php");
 
           </div>
         </section>
+
+
+
         <div>
           <section class="mt-10">
             <div class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -219,7 +233,7 @@ include("conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                  <a href="event-table.php?event_id='.urlencode($row['event-id']).'">';
+                  <a href="event-table.php?event_id=' . urlencode($row['event-id']) . '">';
                   echo $row["title"];
                   echo '</a> </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">';
@@ -238,7 +252,9 @@ include("conn.php");
 
             </div>
           </section>
-          <div>
+
+        </div>
+        <div>
       </main>
     </section>
   </div>
