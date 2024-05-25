@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2024 at 09:28 AM
+-- Generation Time: May 25, 2024 at 11:09 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,21 +30,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `events` (
   `event-id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `location` varchar(255) NOT NULL,
   `price` decimal(11,2) NOT NULL,
-  `addtl_info` varchar(5000) NOT NULL
+  `addtl_info` varchar(5000) NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`event-id`, `title`, `description`, `date`, `time`, `location`, `price`, `addtl_info`) VALUES
-(20240001, 'Feb-Ibig 2024', 'The Central Student Government presents Feb-Ibig 2024. Get ready for an event filled with activities, fun, and romance!', '2024-03-06', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15.00, 'Pagod ka na ba kakahintay sa chance na makasama mo ang crush mo? Finally, the prolonged wait is over!\n\nGet your partners and friends ready. Join us in 𝗠𝗮𝗿𝗰𝗵 𝟲, 𝟮𝟬𝟮𝟰 (𝗪𝗲𝗱𝗻𝗲𝘀𝗱𝗮𝘆) 𝟴:𝟬𝟬 𝗮𝗺 - 𝟱:𝟬𝟬 𝗽𝗺 for the much awaited 𝗡𝗮𝗸𝗮𝗸𝗮𝗽𝗮𝗴𝗽𝗮𝗯𝗮𝗴𝗮𝗯𝗮𝗴 𝗻𝗮 𝗙𝗲𝗯-𝗜𝗯𝗶𝗴 𝟮𝟬𝟮𝟰: 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗹𝗼𝘃𝗲 𝗰𝗼𝗺𝗲𝘀 𝗳𝗿𝗼𝗺 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗧𝗶𝗺𝗲 (𝗠𝗮𝗿𝗰𝗵 𝗘𝗱𝗶𝘁𝗶𝗼𝗻) at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀. 🏫🎊\n\nGet excited because there will be a lot of bonding and exciting events, performances, and celebrations—you could say it\'s giving—and don\'t forget to stay connected.'),
-(20240002, 'DCS Week 2024\r\n', 'Gear up for DCS Week 2024! Join the Alliance of Computer Scientists and Information Technology Society in a week-long celebration of the Department of Computer Studies.', '2024-04-11', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 25.00, 'Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer Laboratory 1 to 4 & Room 301, 303 Hello World is the perfect way to: Level Up your skills with workshops and seminars led by our guest speaker! Party Up with fellow students through interactive sessions and activities. Power Up for the upcoming semester with a refreshing and fun environment.');
+INSERT INTO `events` (`event-id`, `title`, `author`, `description`, `date`, `time`, `location`, `price`, `addtl_info`, `image`) VALUES
+(20240001, 'Feb-Ibig 2024', 'Central Student Government', 'The Central Student Government presents Feb-Ibig 2024. Get ready for an event filled with activities, fun, and romance!', '2024-03-06', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 15.00, 'Pagod ka na ba kakahintay sa chance na makasama mo ang crush mo? Finally, the prolonged wait is over!\n\nGet your partners and friends ready. Join us in 𝗠𝗮𝗿𝗰𝗵 𝟲, 𝟮𝟬𝟮𝟰 (𝗪𝗲𝗱𝗻𝗲𝘀𝗱𝗮𝘆) 𝟴:𝟬𝟬 𝗮𝗺 - 𝟱:𝟬𝟬 𝗽𝗺 for the much awaited 𝗡𝗮𝗸𝗮𝗸𝗮𝗽𝗮𝗴𝗽𝗮𝗯𝗮𝗴𝗮𝗯𝗮𝗴 𝗻𝗮 𝗙𝗲𝗯-𝗜𝗯𝗶𝗴 𝟮𝟬𝟮𝟰: 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗹𝗼𝘃𝗲 𝗰𝗼𝗺𝗲𝘀 𝗳𝗿𝗼𝗺 𝗨𝗻𝗲𝘅𝗽𝗲𝗰𝘁𝗲𝗱 𝗧𝗶𝗺𝗲 (𝗠𝗮𝗿𝗰𝗵 𝗘𝗱𝗶𝘁𝗶𝗼𝗻) at 𝗖𝗮𝘃𝗶𝘁𝗲 𝗦𝘁𝗮𝘁𝗲 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗶𝘁𝘆 - 𝗕𝗮𝗰𝗼𝗼𝗿 𝗖𝗶𝘁𝘆 𝗖𝗮𝗺𝗽𝘂𝘀. 🏫🎊\n\nGet excited because there will be a lot of bonding and exciting events, performances, and celebrations—you could say it\'s giving—and don\'t forget to stay connected.', 'images/febibig.jpg'),
+(20240002, 'DCS Week 2024\r\n', 'Department of Computer Studies', 'Gear up for DCS Week 2024! Join the Alliance of Computer Scientists and Information Technology Society in a week-long celebration of the Department of Computer Studies.', '2024-04-11', '08:00:00', 'CvSU Bacoor City Campus: Gymnasium', 25.00, 'Get ready to Refresh, Reconnect, and Reload at Hello World! April 11 & 13, 2024 ⏰ 8:00 AM to 5:00 PM Cavite State University - Bacoor City Campus Gymnasium and Computer Laboratory 1 to 4 & Room 301, 303 Hello World is the perfect way to: Level Up your skills with workshops and seminars led by our guest speaker! Party Up with fellow students through interactive sessions and activities. Power Up for the upcoming semester with a refreshing and fun environment.', 'images/DCS 2024.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,8 @@ INSERT INTO `registrations` (`reg_id`, `user_id`, `event_id`, `program`, `yearlv
 (5, 2, 20240001, 'BSCS', '3', '1', '2024-05-23 07:29:19', 'Cash', 'Paid', ''),
 (6, 8, 20240001, 'BSIT', '2', '3', '2024-05-23 16:44:48', 'Online', 'Paid', ''),
 (7, 1, 20240001, 'admin', 'admin', 'admin', '2024-05-25 05:12:41', 'Online', 'Pending', ''),
-(8, 1, 20240002, 'bs', '1', '2', '2024-05-25 05:16:16', 'Cash', 'Pending', '');
+(8, 1, 20240002, 'bs', '1', '2', '2024-05-25 05:16:16', 'Cash', 'Pending', ''),
+(9, 1, 20240002, 'rgger', 'ergtrht', 'htr', '2024-05-25 09:07:48', 'Cash', 'Pending', '');
 
 -- --------------------------------------------------------
 
@@ -138,7 +141,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
