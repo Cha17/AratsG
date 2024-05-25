@@ -454,8 +454,8 @@ $query = mysqli_query($conn, $sql);
           
           //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
           */
-          
-          $result = $conn-> query($sql);   
+          $pendingsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Pending' LIMIT $limitStart, $rowsPerPage";
+          $result = $conn-> query($pendingsql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
             <td><?php echo $row["reg_id"]; ?></td>
@@ -467,7 +467,7 @@ $query = mysqli_query($conn, $sql);
             <td><?php echo $row["payment_status"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
-                <button name="completed" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                <button name="paid" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
                     <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
                 
@@ -541,7 +541,232 @@ $query = mysqli_query($conn, $sql);
     ?>
     </div>
 <!--PAGE BUTTON END-->
-        
+  </section>
+<!--Paid-->
+<section
+              class="shadow-lg bg-[#eeefea] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10"
+            >
+<div class="flex flex-col items-center">
+        <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
+            rounded-3xl">
+            <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
+              <table>
+                
+                <tr>
+                <th class="text-orange-950 font-semibold leading-6">Registration ID</th>
+                <th class="text-orange-950 font-semibold leading-6">Event Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Student Number</th>
+                <th class="text-orange-950 font-semibold leading-6">Registrant Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Year and Section</th>
+                <th class="text-orange-950 font-semibold leading-6">Mode</th>
+                <th class="text-orange-950 font-semibold leading-6">Status</th>
+                <th class="text-orange-950 font-semibold leading-6">Action</th>
+                </tr>
+          <!--SHOWDATA-->
+          <tbody id="showdata">
+          <?php 
+          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Paid' LIMIT $limitStart, $rowsPerPage";
+          $result = $conn-> query($paidsql);   
+          while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+            <td><?php echo $row["reg_id"]; ?></td>
+            <td><?php echo $row["title"]; ?></td>
+            <td><?php echo $row["user_id"]; ?></td>
+            <td><?php echo $row["fullname"]; ?></td>
+            <td><?php echo $row["program"]." ".$row["yearlvl"]."-".$row["section"]; ?></td>
+            <td><?php echo $row["payment_mode"]; ?></td>
+            <td><?php echo $row["payment_status"]; ?></td>
+            <td>
+              <form action="actionbutton.php" method="POST">
+                <button name="present" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
+                    <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
+                
+                <button name="miss" value="<?=$row['reg_id'];?>"class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-2 py-2 mr-2'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
+                  <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+                </button>
+            </form>
+          </td>
+        </tr>
+    <?php } ?>
+          </tbody>
+          </div>
+        </table>
+    </section>
+    
+<!--PREVIOUS & NEXT PAGE BUTTON-->
+<div class="flex justify-center mt-2 mb-2">
+    <?php
+    $resultnumrows = mysqli_query($conn, "SELECT * FROM registrations");
+    $totalRows = mysqli_num_rows($resultnumrows);
+    $totalPages = ceil($totalRows / $rowsPerPage);
+
+    if(isset($_GET['order'])) {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?order=".$sort_order."&page=$i' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage + 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Next</a>";
+    }
+    }
+    else if (isset($_GET['progvalue'])) {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?progvalue=".$program."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+    }
+    }
+    else {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+    }}
+    ?>
+    </div>
+<!--PAGE BUTTON END-->
+  </section>
+
+<!--Present-->
+<section
+              class="shadow-lg bg-[#eeefea] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10"
+            >
+<div class="flex flex-col items-center">
+        <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
+            rounded-3xl">
+            <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
+              <table>
+                
+                <tr>
+                <th class="text-orange-950 font-semibold leading-6">Registration ID</th>
+                <th class="text-orange-950 font-semibold leading-6">Event Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Student Number</th>
+                <th class="text-orange-950 font-semibold leading-6">Registrant Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Year and Section</th>
+                <th class="text-orange-950 font-semibold leading-6">Mode</th>
+                <th class="text-orange-950 font-semibold leading-6">Status</th>
+                <th class="text-orange-950 font-semibold leading-6">Action</th>
+                </tr>
+          <!--SHOWDATA-->
+          <tbody id="showdata">
+          <?php 
+          $paidsql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$evalue AND registrations.payment_status='Present' LIMIT $limitStart, $rowsPerPage";
+          $result = $conn-> query($paidsql);   
+          while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+            <td><?php echo $row["reg_id"]; ?></td>
+            <td><?php echo $row["title"]; ?></td>
+            <td><?php echo $row["user_id"]; ?></td>
+            <td><?php echo $row["fullname"]; ?></td>
+            <td><?php echo $row["program"]." ".$row["yearlvl"]."-".$row["section"]; ?></td>
+            <td><?php echo $row["payment_mode"]; ?></td>
+            <td><?php echo $row["payment_status"]; ?></td>
+            <td>
+              <form action="actionbutton.php" method="POST">
+                <button name="present" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
+                    <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
+                
+                <button name="miss" value="<?=$row['reg_id'];?>"class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-2 py-2 mr-2'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
+                  <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+                </button>
+            </form>
+          </td>
+        </tr>
+    <?php } ?>
+          </tbody>
+          </div>
+        </table>
+    </section>
+    
+<!--PREVIOUS & NEXT PAGE BUTTON-->
+<div class="flex justify-center mt-2 mb-2">
+    <?php
+    $resultnumrows = mysqli_query($conn, "SELECT * FROM registrations");
+    $totalRows = mysqli_num_rows($resultnumrows);
+    $totalPages = ceil($totalRows / $rowsPerPage);
+
+    if(isset($_GET['order'])) {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?order=".$sort_order."&page=$i' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage + 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Next</a>";
+    }
+    }
+    else if (isset($_GET['progvalue'])) {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?progvalue=".$program."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+    }
+    }
+    else {
+      // Previous page button
+      if ($currentPage > 1) {
+        echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+    }
+
+    // Page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+    }
+
+    // Next page button
+    if ($currentPage < $totalPages) {
+        echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+    }}
+    ?>
+    </div>
+<!--PAGE BUTTON END-->
+  </section>
+
+
 <script src="table.js"></script>
     <script>
       $(document).ready(function(){
