@@ -51,7 +51,7 @@ include("conn.php");
       <div class="justify-center">
         <div class="flex flex-col items-stretch pl-16 max-md:max-w-full max-md:mt-10">
           <h1 class="text-red-950 text-[60px] font-extrabold mr-5 max-md:max-w-full max-md:text-4xl max-md:leading-[71px]">
-            Request Successfully Sent
+            Registered Successfully!
           </h1>
           <div>
             <p class="text-orange-950 leading-8 w-full mr-5 max-md:max-w-full">
