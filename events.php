@@ -49,22 +49,30 @@ session_start();
       Events
     </h1>
     <section class="self-center flex max-w-full gap-5 mt-8 mb-10 max-md:flex-wrap max-md:justify-center max-md:mt-10">
+    <?php
+              $sql = "Select * from events";
+              $query = mysqli_query($conn, $sql);
+              if ($query->num_rows > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                  echo '
       <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
-              Feb-Ibig 2024
-            </h2>
+            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">';
+              echo $row['title'];
+      echo '</h2>
           </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            The Central Student Government presents Feb-Ibig 2024. Get ready
-            for an <span class="font-semibold"> event filled with activities, fun, and romance!</span>
-          </p>
-          <a href="register.php?column=event_id&evalue=20240001" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">';
+            echo $row['description'];
+      echo '</p>
+          <a href="register.php?column=event_id&evalue='.$row['event-id'].'" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
-      </div>
-      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[330px] max-h-[330px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
+      </div>';
+    };
+  };
+  ?>
+      <!--div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[330px] max-h-[330px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
         <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-12">
           <div class="relative flex items-stretch justify-between gap-2">
             <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
@@ -122,7 +130,7 @@ session_start();
           </p>
           <a href="register.php?column=event_id&evalue=20240002" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
-      </div>
+      </div-->
 
     </section>
   </div>
