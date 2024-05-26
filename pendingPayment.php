@@ -137,42 +137,45 @@ $query = mysqli_query($conn, $sql);
                 </li>
             </ul>
 
-            <div class= "outer-container">
-    <div class="container pt-10">
-    <h1
-                    class="text-orange-950 justify-center text-center text-md font-medium self-center whitespace-nowrap my-auto"
-                  >
+            <!-- Bottom sidebar -->
+            <div class="container pt-32">
+                <h4 class="text-red-100 justify-center text-center text-md font-medium self-center whitespace-nowrap my-auto">
                     Scan Here
-                  </h1>   
-            <div class="row">
-            
-                <div class="col-md-5 pt-2">
-                    <video id="preview"  style="  border-radius: 10px; width: 180px; height: 180px; padding: top 20px; object-fit: cover;"></video>
+                </h4>
+                <div class="grid grid-cols-1">
+
+                    <div class="flex justify-center pt-4">
+                        <video id="preview" style="  border-radius: 10px; width: 180px; height: 180px; padding: top 20px; object-fit: cover;"></video>
+                    </div>
+
                 </div>
-                
             </div>
         </div>
-    </div>
-    <script>
-            let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
-            Instascan.Camera.getCameras().then(function(cameras){
-                if (cameras.length > 0){
+        <script>
+            let scanner = new Instascan.Scanner({
+                video: document.getElementById('preview')
+            });
+            Instascan.Camera.getCameras().then(function(cameras) {
+                if (cameras.length > 0) {
                     scanner.start(cameras[0]);
                 } else {
                     alert('No cameras found');
                 }
-            }).catch(function(e){
+            }).catch(function(e) {
                 console.error(e);
             });
 
-            scanner.addListener('scan',function(c){
-                document.getElementById('getName').value=c;
+            scanner.addListener('scan', function(c) {
+                document.getElementById('getName').value = c;
+                const scannedvalue = c;
                 document.getElementById('getName').trigger('input');
+                document.getElementById('getName').click();
+
             });
-            
-            
+
+
             video.style.objectFit = 'cover';
-  </script>
+        </script>
 
         </div>
 

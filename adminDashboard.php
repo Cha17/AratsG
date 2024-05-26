@@ -37,20 +37,20 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
       </a>
       <ul class="space-y-2 font-medium">
         <li>
-          <a href="adminDashboard.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700 group">
+          <a href="adminDashboard.php" class="flex items-center p-2 text-gray-900 rounded-lg bg-gradient-to-l from-red-100 to-sky-700 text-white hover:text-slate-50 hover:bg-sky-900 group">
             <img src="images/bxs-home-alt-2.svg" alt="" />
             <span class="ms-3">Dashboard</span>
           </a>
         </li>
 
         <li>
-          <a href="pendingpayments.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700">
+          <a href="pendingPayment.php" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
             <img src="images/bxs-file.svg" alt="" />
             <span class="flex-1 ms-3 whitespace-nowrap">Pending Payment</span>
-            <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+            <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-red-100">
               <?php
-              $sql = "Select * from registrations where payment_status='Pending'";
-              $result = mysqli_query($conn, $sql);
+              $sql1 = "Select * from registrations where payment_status='Pending'";
+              $result = mysqli_query($conn, $sql1);
 
               if (isset($result)) {
                 $row = mysqli_num_rows($result);
@@ -61,13 +61,15 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
           </a>
         </li>
         <li>
-          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700 group">
+          <a href="addevent.php" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700 group">
             <img src="images/bx-calendar-plus.svg" alt="" />
             <span class="ms-3">Add Event</span>
           </a>
         </li>
       </ul>
+
     </div>
+
   </aside>
   <!-- End of Sidebar -->
 
