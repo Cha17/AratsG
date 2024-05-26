@@ -106,17 +106,17 @@ $query = mysqli_query($conn, $sql);
             </a>
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="adminDashboard.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700 group">
+                    <a href="adminDashboard.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700 group">
                         <img src="images/bxs-home-alt-2.svg" alt="" />
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="pendingpayments.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700">
+                    <a href="pendingpayments.php" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
                         <img src="images/bxs-file.svg" alt="" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Pending Payment</span>
-                        <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                        <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-red-100">
                             <?php
                             $sql1 = "Select * from registrations where payment_status='Pending'";
                             $result = mysqli_query($conn, $sql1);
@@ -130,7 +130,7 @@ $query = mysqli_query($conn, $sql);
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gradient-to-r from-sky-600 via-sky-300 to-sky-700 group">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700 group">
                         <img src="images/bx-calendar-plus.svg" alt="" />
                         <span class="ms-3">Add Event</span>
                     </a>
@@ -148,7 +148,7 @@ $query = mysqli_query($conn, $sql);
         <!-- Header -->
         <div class="flex w-full items-center justify-between pb-8 gap-5 max-md:max-w-full max-md:flex-wrap">
             <h1 class="text-[#10182c] text-6xl font-bold my-auto">
-                Dashboard
+                Pending Payment
             </h1>
 
 
@@ -185,14 +185,14 @@ $query = mysqli_query($conn, $sql);
         <!-- End of Header -->
 
         <!-- Search and Filter Section -->
-        <div class="grid grid-flow-col pb-8">
+        <div class="grid grid-flow-col">
             <form class="max-w-md ">
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     </div>
                     <input type="search" id="default-search" class="block w-full px-4 py-3 ps-6 text-sm rounded-full bg-sky-900 bg-opacity-10 shadow-md placeholder-gray-400 text-whitefocus:ring-sky-800 focus:border-sky-800" placeholder="Search registrant" required />
-                    <button type="submit" class="text-red-200  absolute end-2.5 bottom-[6.25px] hover:bg-gradient-to-tr from-sky-300 to-sky-700 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2 dark:bg-sky-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <button type="submit" class="text-slate-50  absolute end-2.5 bottom-[6.25px] hover:bg-gradient-to-tr from-sky-300 to-sky-700 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2 dark:bg-sky-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-4 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
@@ -200,7 +200,7 @@ $query = mysqli_query($conn, $sql);
                 </div>
             </form>
             <button class="flex justify-end">
-                <a href="requests.php" class="bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2">Default</a>
+                <a href="requests.php" class="bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-4 py-2 mr-2">Get Report</a>
             </button>
         </div>
         <!-- End of Search and Filter Section -->
@@ -210,21 +210,21 @@ $query = mysqli_query($conn, $sql);
         <!-- Table Section -->
         <section class="shadow-lg bg-[#eeefea] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10">
 
-            <div class="flex flex-col items-center">
-                <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
+            <div class="flex flex-col items-center ">
+                <section class="bg-sky-900 bg-opacity-10 flex w-full max-w-full flex-col pb-8 
   rounded-3xl">
                     <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
                         <table>
 
                             <tr>
-                                <th class="text-orange-950 font-semibold leading-6">Registration ID</th>
-                                <th class="text-orange-950 font-semibold leading-6">Event Name</th>
-                                <th class="text-orange-950 font-semibold leading-6">Student Number</th>
-                                <th class="text-orange-950 font-semibold leading-6">Registrant Name</th>
-                                <th class="text-orange-950 font-semibold leading-6">Year and Section</th>
-                                <th class="text-orange-950 font-semibold leading-6">Mode</th>
-                                <th class="text-orange-950 font-semibold leading-6">Status</th>
-                                <th class="text-orange-950 font-semibold leading-6">Action</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Registration ID</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Event Name</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Student Number</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Registrant Name</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Year and Section</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Mode</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Status</th>
+                                <th class="text-[#10182c] font-semibold leading-6">Action</th>
                             </tr>
                             <!--SHOWDATA-->
                             <tbody id="showdata">
@@ -260,8 +260,8 @@ else {
                                         <td><?php echo $row["payment_status"]; ?></td>
                                         <td>
                                             <form action="actionbutton.php" method="POST">
-                                                <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
+                                                <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #f8fafc;transform: msFilter">
                                                         <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
                                                     </svg></button>
 
@@ -284,47 +284,47 @@ else {
                     if (isset($_GET['order'])) {
                         // Previous page button
                         if ($currentPage > 1) {
-                            echo "<a href='requests.php?order=" . $sort_order . "&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+                            echo "<a href='requests.php?order=" . $sort_order . "&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-sky-900 text-white rounded-full'>Previous</a>";
                         }
 
                         // Page numbers
                         for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<a href='requests.php?order=" . $sort_order . "&page=$i' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>$i</a>";
+                            echo "<a href='requests.php?order=" . $sort_order . "&page=$i' class='mx-1 px-2 py-1 bg-sky-900 text-slate-50 rounded-full'>$i</a>";
                         }
 
                         // Next page button
                         if ($currentPage < $totalPages) {
-                            echo "<a href='requests.php?order=" . $sort_order . "&page=" . ($currentPage + 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Next</a>";
+                            echo "<a href='requests.php?order=" . $sort_order . "&page=" . ($currentPage + 1) . "' class='mx-1 px-2 py-1 bg-sky-900 text-slate-50 rounded-full'>Next</a>";
                         }
                     } else if (isset($_GET['progvalue'])) {
                         // Previous page button
                         if ($currentPage > 1) {
-                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-stone-500 text-white rounded-full'>Previous</a>";
+                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage - 1) . "' class='mx-1 px-2 py-1 bg-sky-900 text-slate-50 rounded-full'>Previous</a>";
                         }
 
                         // Page numbers
                         for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<a href='requests.php?progvalue=" . $program . "&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+                            echo "<a href='requests.php?progvalue=" . $program . "&page=$i' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>$i</a>";
                         }
 
                         // Next page button
                         if ($currentPage < $totalPages) {
-                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Next</a>";
                         }
                     } else {
                         // Previous page button
                         if ($currentPage > 1) {
-                            echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+                            echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Previous</a>";
                         }
 
                         // Page numbers
                         for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+                            echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>$i</a>";
                         }
 
                         // Next page button
                         if ($currentPage < $totalPages) {
-                            echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+                            echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Next</a>";
                         }
                     }
                     ?>
