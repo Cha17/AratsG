@@ -221,7 +221,7 @@ $query = mysqli_query($conn, $sql);
 
             scanner.addListener('scan',function(c){
                 document.getElementById('getName').value=c;
-                document.getElementById('searchForm').submit();
+                document.getElementById('getName').trigger('input');
             });
             
             
