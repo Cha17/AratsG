@@ -192,7 +192,12 @@ $query = mysqli_query($conn, $sql);
     <!-- Header -->
     <div class="flex w-full items-center justify-between pb-8 gap-5 max-md:max-w-full max-md:flex-wrap">
       <h1 class="text-[#10182c] text-6xl font-bold my-auto">
-        Event
+        <?php 
+        $result = $conn->query($sql);
+        $row = mysqli_fetch_assoc($result);
+        echo $row['title'];
+        
+        ?>
       </h1>
 
 
