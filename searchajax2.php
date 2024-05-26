@@ -3,15 +3,16 @@
   
   if ((isset( $_POST['name']))){
 
-  //$request_url=( $_SERVER["HTTP_REFERER"]);
+    //$request_url=( $_SERVER["HTTP_REFERER"]);
   
    $name = $_POST['name'];
    //$event_id = intval(substr($request_url,49));
 
 
-   $sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE (reg_id LIKE '{$name}%' OR studentNum LIKE '{$name}%')";  
+   $sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE (reg_id LIKE '{$name}%' OR studentNum LIKE '{$name}%') AND (payment_status='Pending')";  
    $query = mysqli_query($conn,$sql);
    $data='';
+   $numrows = mysqli_num_rows($query);
    if (mysqli_num_rows($query) > 0)
    {while($row = mysqli_fetch_assoc($query))
    {
@@ -33,7 +34,7 @@
    }
     echo $data;}
   else {
-    echo "No records ".$name;
+    echo "No records";
   }}
  ?>
 
