@@ -94,9 +94,9 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
               $email = $_SESSION['email'];
-              $sql = "Select * from users where email='$email'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_assoc($result);
+              $sql2 = "Select * from users where email='$email'";
+              $result2 = mysqli_query($conn, $sql2);
+              $row = mysqli_fetch_assoc($result2);
               echo '<p>' . $row['fullname'] . '</p>';
             }
             ?>
