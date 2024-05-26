@@ -33,7 +33,7 @@
    }
     echo $data;}
   else {
-    echo "No records";
+    echo "No records ".$name;
   }}
  ?>
 
