@@ -13,8 +13,8 @@ if (isset($_POST["submit"])) {
     $addtl_info = $_POST['addtl_info'];
 
     $query = "INSERT INTO events (title, author, `date`, `time`, `location`, price, `image`, `description`, addtl_info) VALUES ('$title', '$author', '$date', '$time', '$location', '$price', '$image', '$description', '$addtl_info')";
-
     $result = mysqli_query($conn, $query);
+
 ?><script type="text/javascript">
         alert("Event Successfully Added.");
 
@@ -148,7 +148,7 @@ if (isset($_POST["submit"])) {
 
         <!-- Add Event Form -->
 
-        <form class="" method="post" autocomplete="off">
+        <form method="post" autocomplete="off">
             <div class="flex flex-col items-stretch">
                 <div class="grid grid-cols-3 gap-6 bg-sky-900 bg-opacity-15 p-8 rounded-lg">
                     <!-- Event Name -->
