@@ -118,8 +118,8 @@ $query = mysqli_query($conn, $sql);
                         <span class="flex-1 ms-3 whitespace-nowrap">Pending Payment</span>
                         <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                             <?php
-                            $sql = "Select * from registrations where payment_status='Pending'";
-                            $result = mysqli_query($conn, $sql);
+                            $sql1 = "Select * from registrations where payment_status='Pending'";
+                            $result = mysqli_query($conn, $sql1);
 
                             if (isset($result)) {
                                 $row = mysqli_num_rows($result);
@@ -164,9 +164,9 @@ $query = mysqli_query($conn, $sql);
                         <?php
                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                             $email = $_SESSION['email'];
-                            $sql = "Select * from users where email='$email'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
+                            $sql2 = "Select * from users where email='$email'";
+                            $result2 = mysqli_query($conn, $sql2);
+                            $row = mysqli_fetch_assoc($result2);
                             echo '<p>' . $row['fullname'] . '</p>';
                         }
                         ?>
