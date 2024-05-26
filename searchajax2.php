@@ -3,13 +3,13 @@
   
   if ((isset( $_POST['name']))){
 
-    $request_url=( $_SERVER["HTTP_REFERER"]);
+  //$request_url=( $_SERVER["HTTP_REFERER"]);
   
    $name = $_POST['name'];
-   $event_id = intval(substr($request_url,49));
+   //$event_id = intval(substr($request_url,49));
 
 
-   $sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE (reg_id LIKE '{$name}%' OR studentNum LIKE '{$name}%') AND (event_id=$event_id)";  
+   $sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE (reg_id LIKE '{$name}%' OR studentNum LIKE '{$name}%')";  
    $query = mysqli_query($conn,$sql);
    $data='';
    if (mysqli_num_rows($query) > 0)
