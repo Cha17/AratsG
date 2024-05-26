@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+include_once("conn.php");
 
 roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 ?>

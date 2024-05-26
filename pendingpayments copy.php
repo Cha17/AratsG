@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+include_once("conn.php");
 //include("searchajax2.php");
 //$columns = array('program');
 
@@ -17,9 +17,9 @@ if (isset($_GET['progvalue'])) {
 if (isset($_GET['yrsec'])) {
   $yrsec = $_GET['yrsec'];
 }
-
-roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 */
+roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
+
 // Number of rows per page
 $rowsPerPage = 10;
 

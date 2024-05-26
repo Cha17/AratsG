@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+include_once("conn.php");
 
 roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
@@ -213,7 +213,7 @@ $query = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-    <!--script>
+    <script>
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
             Instascan.Camera.getCameras().then(function(cameras){
                 if (cameras.length > 0){
@@ -233,7 +233,7 @@ $query = mysqli_query($conn, $sql);
             
             
             video.style.objectFit = 'cover';
-  </script-->
+  </script>
 
              
             </nav>
