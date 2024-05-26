@@ -1,11 +1,11 @@
 <?php 
   include("conn.php");
   
-  if ((isset( $_GET['name']))){
+  if ((isset( $_POST['name']))){
 
     $request_url=( $_SERVER["HTTP_REFERER"]);
   
-   $name = $_GET['name'];
+   $name = $_POST['name'];
    $event_id = intval(substr($request_url,49));
 
 
