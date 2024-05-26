@@ -32,6 +32,7 @@ session_start();
           } else {
             echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
           }
+
           ?>
         </div>
       </a>
@@ -39,130 +40,69 @@ session_start();
   </header>
   <!-- Carousel -->
   <div class="carousel">
-    <!-- list items -->
     <div class="list">
-      <div class="item">
-        <img src="images/febibig.jpg" alt="Feb-Ibig 2024" />
-        <div class="content">
-          <div class="contentContainer">
-            <div class="author">Central Student Government</div>
-            <div class="title">Feb-Ibig 2024</div>
-            <div class="des">
-              The Central Student Government presents Feb-Ibig 2024. Get ready
-              for an event filled with activities, fun, and romance!
-            </div>
-            <div class="buttons">
-              <button type="button" onclick="location.href='regfeb.php'">Register</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/DCS 2024.jpg" alt="DCS Week 2024" />
-        <div class="content">
-          <div class="contentContainer">
-            <div class="author">Department of Computer Studies</div>
-            <div class="title">DCS Week 2024</div>
-            <div class="des">
-              Gear up for DCS Week 2024! Join the Alliance of Computer
-              Scientists and Information Technology Society in a week-long
-              celebration of the Department of Computer Studies.
-            </div>
-            <div class="buttons">
-              <button type="button" onclick="location.href='dcsweek.php'">Register</button>
+      <?php
+      $q = "SELECT * FROM events";
+      $result = mysqli_query($conn, $q);
+
+      if ($result->num_rows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+          <div class="item">
+            <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['title']; ?>">
+            <div class="content">
+              <div class="contentContainer">
+                <div class="author"><?php echo $row['author'] ?></div>
+                <div class="title"><?php echo $row['title'] ?></div>
+                <div class="des">
+                  <?php echo $row['description'] ?>
+                </div>
+                <div class="buttons">
+                  <button type="button">
+                    <?php echo '<a href="register.php?event_id=' . $row['event-id'] . '">Register</a>' ?>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/Leadership and Mental Semianr.jpg" alt="Bin" />
-        <div class="content">
-          <div class="contentContainer">
-            <div class="author">Central Student Government</div>
-            <div class="title">Leadership and Mental Seminar</div>
-            <div class="des">
-              𝗔 𝗦𝗘𝗠𝗜𝗡𝗔𝗥 𝗠𝗔𝗗𝗘 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗬𝗢𝗨. 💚🦋
-            </div>
-            <div class="buttons">
-              <button type="button" onclick="location.href='leadershipAndmental.php'">Register</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/mindmatters.jpg" alt="SBTown Music Fiesta" />
-        <div class="content">
-          <div class="contentContainer">
-            <div class="author">La Liga Psicologia</div>
-            <div class="title">MIND MATTERS</div>
-            <div class="des">
-              Mind Matters Seminar is set on 𝐌𝐚𝐲 𝟎𝟑, 𝟐𝟎𝟐𝟒, 8 AM onwards at SF,
-              Multipurpose Hall, New Bldg.
-            </div>
-            <div class="buttons">
-              <button type="button" onclick="location.href='mindmatters.php'">Register</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/CSG Elections.jpg" alt="SBTown Music Fiesta" />
-        <div class="content">
-          <div class="contentContainer">
-            <div class="author">Central Student Government</div>
-            <div class="title">CSG ELECTIONS</div>
-            <div class="des">
-              Calling all CvSUeños!🗣️
-              We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance.
-            </div>
-            <div class="buttons">
-              <button type="button" onclick="location.href='csgelections.php'">Register</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+        }
+      }
+      ?>
     </div>
-    <!-- thumbnail -->
+
     <div class="thumbnail">
-      <div class="item">
-        <img src="images/CSG Elections.jpg" alt="Biniverse" class="border-solid border-2 border-slate-500" />
-        <div class="content">
-          <div class="font-bold text-gray-950">CSG LECTIONS</div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/febibig.jpg" alt="Biniverse" class="border-solid border-2 border-slate-500" />
-        <div class="content">
-          <div class="font-bold text-gray-950">Feb-Ibig 2024</div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/DCS 2024.jpg" alt="Biniverse" class="border-solid border-2 border-slate-500" />
-        <div class="content">
-          <div class="font-bold text-gray-950">DCS Week 2024</div>
-        </div>
-      </div>
-      <div class="item">
-        <img src="images/mindmatters.jpg" alt="Biniverse" class="border-solid border-2 border-slate-500" />
-        <div class="content">
-          <div class="font-bold text-gray-950">MIND MATTERS</div>
-        </div>
-      </div>
+      <?php
+      // Create a copy of the result set for thumbnails
+      $thumbnailResult = mysqli_query($conn, $q);
+
+      if ($thumbnailResult->num_rows > 0) {
+        while ($row = mysqli_fetch_assoc($thumbnailResult)) {
+      ?>
+          <div class="item">
+            <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['title']; ?>" class="border-solid border-2 border-slate-500">
+            <div class="content">
+              <div class="font-bold text-gray-950"><?php echo $row['title']; ?></div>
+            </div>
+          </div>
+      <?php
+        }
+      }
+      ?>
     </div>
 
     <!-- arrows -->
     <div class="arrows">
       <button id="prev">
-        <img class="flex items-center p-2" src="images/bx-chevron-left.svg" alt="">
+        < <button id="next">>
       </button>
-      <button id="next">
-        <img class="flex items-center p-2" src="images/bx-chevron-right.svg" alt="">
-      </button>
-    </div>
-  </div>
 
+    </div>
+
+  </div>
   <div class="time"></div>
   <script src="app.js"></script>
+
 </body>
 
 </html>
