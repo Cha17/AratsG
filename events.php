@@ -66,7 +66,7 @@ session_start();
           <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">';
             echo $row['description'];
       echo '</p>
-          <a href="register.php?column=event_id&evalue='.$row['event-id'].'" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
+          <a href="register.php?event_id='.$row['event-id'].'" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
         </div>
       </div>';
     };

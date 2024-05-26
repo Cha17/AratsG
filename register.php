@@ -247,7 +247,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 <div class="gap-14 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
                   <!-- Payment Option -->
                   <?php
-                  $evalue = $_GET['evalue'];
+                  $evalue = $_GET['event_id'];
                   $eventsql = "SELECT * FROM events WHERE `event-id`=$evalue";
                   $result = mysqli_query($conn, $eventsql);
                   $row = mysqli_fetch_assoc($result);
