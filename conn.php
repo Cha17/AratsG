@@ -2,7 +2,7 @@
 
 $conn = mysqli_connect("localhost", "root", "", "g-arat");
 
-/*function roleConfirm($loggedin, $email) {
+function roleConfirm($loggedin, $email) {
   if (isset($loggedin) && $loggedin == true) {
       //$email = $_SESSION['email'];
       $sql = "Select * from users where email='$email'";
@@ -18,7 +18,7 @@ $conn = mysqli_connect("localhost", "root", "", "g-arat");
       session_destroy();
         header("location: login.php");
     }
-}*/
+}
 
 if(mysqli_connect_error()){
     echo "<script>alert('Cannot connect to database!');</script>";

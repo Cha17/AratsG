@@ -2,7 +2,7 @@
 session_start();
 include("conn.php");
 
-//roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
+roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
