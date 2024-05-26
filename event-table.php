@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+include_once("conn.php");
 
 roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
@@ -213,7 +213,7 @@ $query = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-    <!--script>
+    <script>
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
             Instascan.Camera.getCameras().then(function(cameras){
                 if (cameras.length > 0){
@@ -227,13 +227,15 @@ $query = mysqli_query($conn, $sql);
 
             scanner.addListener('scan',function(c){
                 document.getElementById('getName').value=c;
+                const scannedvalue=c;
                 document.getElementById('getName').trigger('input');
+                document.getElementById('getName').click();
 
             });
             
             
             video.style.objectFit = 'cover';
-  </script-->
+  </script>
 
              
             </nav>
@@ -284,8 +286,10 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-8 overflow-hidden shrink-0-w-full ml-3 pl-2" alt="Search Icon" />
                   
                   <div class="text-stone-500  text-lg leading-7 self-center whitespace-nowrap mt-2 mb-1">
-                    <input type = "search" class="bg-zinc-100" id = "getName" name="name" placeholder = "Search here..." autocomplete = "off">
-                    <!--script>/*$('#getName').on('input', function() {
+                  
+                      <input type = "search" class="bg-zinc-100" id = "getName" name="name" placeholder = "Search here..." autocomplete = "off">
+                    
+                      <!--script>/*$('#getName').on('input', function() {
                       $('#getName').trigger('keydown');
                     })*/
                     const event = new Event('keydown');
@@ -478,7 +482,7 @@ $query = mysqli_query($conn, $sql);
             <td><?php echo $row["payment_status"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
-                <button name="paid" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                <button name="Pending" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
                     <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
                 
@@ -589,7 +593,7 @@ $query = mysqli_query($conn, $sql);
             <td><?php echo $row["payment_status"]; ?></td>
             <td>
               <form action="actionbutton.php" method="POST">
-                <button name="present" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                <button name="Paid" value="<?=$row['reg_id'];?>" class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #ffffff;transform: msFilter">
                     <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path></svg></button>
                 

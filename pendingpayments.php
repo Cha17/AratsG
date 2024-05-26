@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+include_once("conn.php");
 //include("searchajax2.php");
 //$columns = array('program');
 
@@ -221,8 +221,7 @@ $query = mysqli_query($conn, $sql);
 
             scanner.addListener('scan',function(c){
                 document.getElementById('getName').value=c;
-                document.getElementById('getName').trigger('input');
-
+                document.getElementById('searchForm').submit();
             });
             
             
@@ -278,7 +277,7 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-8 overflow-hidden shrink-0-w-full ml-3 pl-2" alt="Search Icon" />
                   
                   <div class="text-stone-500  text-lg leading-7 self-center whitespace-nowrap mt-2 mb-1">
-                    <input type = "search" class="bg-zinc-100" id = "getName" placeholder = "Search here..." autocomplete = "off">
+                    <input type = "search" class="bg-zinc-100" id = "getName" name="name" placeholder = "Search here..." autocomplete = "off">
                     <!--script>/*$('#getName').on('input', function() {
                       $('#getName').trigger('keydown');
                     })*/
