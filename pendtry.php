@@ -137,6 +137,43 @@ $query = mysqli_query($conn, $sql);
                 </li>
             </ul>
 
+            <div class= "outer-container">
+    <div class="container pt-10">
+    <h1
+                    class="text-orange-950 justify-center text-center text-md font-medium self-center whitespace-nowrap my-auto"
+                  >
+                    Scan Here
+                  </h1>   
+            <div class="row">
+            
+                <div class="col-md-5 pt-2">
+                    <video id="preview"  style="  border-radius: 10px; width: 180px; height: 180px; padding: top 20px; object-fit: cover;"></video>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
+            Instascan.Camera.getCameras().then(function(cameras){
+                if (cameras.length > 0){
+                    scanner.start(cameras[0]);
+                } else {
+                    alert('No cameras found');
+                }
+            }).catch(function(e){
+                console.error(e);
+            });
+
+            scanner.addListener('scan',function(c){
+                document.getElementById('getName').value=c;
+                document.getElementById('getName').trigger('input');
+            });
+            
+            
+            video.style.objectFit = 'cover';
+  </script>
+
         </div>
 
     </aside>
