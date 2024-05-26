@@ -294,7 +294,7 @@ else {
                                         <td><?php echo $row["payment_status"]; ?></td>
                                         <td>
                                             <form action="actionbutton.php" method="POST">
-                                                <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                                                <button name="Pending" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #f8fafc;transform: msFilter">
                                                         <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
                                                     </svg></button>
