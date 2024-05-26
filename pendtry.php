@@ -189,8 +189,6 @@ $query = mysqli_query($conn, $sql);
             <form class="max-w-md ">
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    </div>
                     <input type="search" id="default-search" class="block w-full px-4 py-3 ps-6 text-sm rounded-full bg-sky-900 bg-opacity-10 shadow-md placeholder-gray-400 text-whitefocus:ring-sky-800 focus:border-sky-800" placeholder="Search registrant" required />
                     <button type="submit" class="text-slate-50  absolute end-2.5 bottom-[6.25px] hover:bg-gradient-to-tr from-sky-300 to-sky-700 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2 dark:bg-sky-900 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-4 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -208,11 +206,10 @@ $query = mysqli_query($conn, $sql);
 
 
         <!-- Table Section -->
-        <section class="shadow-lg bg-[#eeefea] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10">
+        <section class="shadow-lg bg-sky-900 bg-opacity-10 flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10">
 
             <div class="flex flex-col items-center ">
-                <section class="bg-sky-900 bg-opacity-10 flex w-full max-w-full flex-col pb-8 
-  rounded-3xl">
+                <section class="bg-sky-900 bg-opacity-10 flex w-full max-w-full flex-col pb-8 rounded-3xl">
                     <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
                         <table>
 
@@ -304,27 +301,27 @@ else {
 
                         // Page numbers
                         for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<a href='requests.php?progvalue=" . $program . "&page=$i' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>$i</a>";
+                            echo "<a href='requests.php?progvalue=" . $program . "&page=$i' class='mx-2 px-4 py-2bg-sky-900 text-slate-50 rounded-3xl'>$i</a>";
                         }
 
                         // Next page button
                         if ($currentPage < $totalPages) {
-                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Next</a>";
+                            echo "<a href='requests.php?progvalue=" . $program . "&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-slate-50 rounded-3xl'>Next</a>";
                         }
                     } else {
                         // Previous page button
                         if ($currentPage > 1) {
-                            echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Previous</a>";
+                            echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-slate-50 rounded-3xl'>Previous</a>";
                         }
 
                         // Page numbers
                         for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>$i</a>";
+                            echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-sky-900 text-slate-50 rounded-3xl'>$i</a>";
                         }
 
                         // Next page button
                         if ($currentPage < $totalPages) {
-                            echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-white rounded-3xl'>Next</a>";
+                            echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-sky-900 text-slate-50   rounded-3xl'>Next</a>";
                         }
                     }
                     ?>
