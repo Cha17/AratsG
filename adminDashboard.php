@@ -15,6 +15,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link href="/dist/output.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
   <link rel="stylesheet" href="gen.css">
 </head>
 

@@ -1,5 +1,8 @@
 <?php
 require 'conn.php';
+session_start();
+
+roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 if (isset($_POST["submit"])) {
     $title = $_POST['title'];
@@ -33,7 +36,10 @@ if (isset($_POST["submit"])) {
                 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,32 +121,31 @@ if (isset($_POST["submit"])) {
 
 
             <!--Admin Dropdown-->
-            <div class="max-w-lg">
-                <button class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button" data-dropdown-toggle="dropdown">
+                <div class="max-w-lg">
+                    <button class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button" data-dropdown-toggle="dropdown">
                     Account
-                </button>
+                    </button>
 
-                <!-- Dropdown menu -->
-                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
+                    <!-- Dropdown menu -->
+                    <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
                     <div class="px-4 py-3">
                         <?php
                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                            $email = $_SESSION['email'];
-                            $sql2 = "Select * from users where email='$email'";
-                            $result2 = mysqli_query($conn, $sql2);
-                            $row = mysqli_fetch_assoc($result2);
-                            echo '<p>' . $row['fullname'] . '</p>';
+                        $email = $_SESSION['email'];
+                        $sql2 = "Select * from users where email='$email'";
+                        $result2 = mysqli_query($conn, $sql2);
+                        $row = mysqli_fetch_assoc($result2);
+                        echo '<p>' . $row['fullname'] . '</p>';
                         }
                         ?>
                     </div>
                     <ul class="py-1" aria-labelledby="dropdown">
 
                         <li>
-                            <a href="login.php" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
+                        <a href="login.php" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
                         </li>
                     </ul>
                 </div>
-                <!-- End of Dropdown menu -->
             </div>
             <!--End of Admin Dropdown-->
         </div>
