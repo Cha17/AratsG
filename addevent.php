@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     $description = $_POST['description'];
     $addtl_info = $_POST['addtl_info'];
 
-    $query = "INSERT INTO events (title, author, date, time, location, price, image, description, addtl_info) VALUES ('$title', '$author', '$date', '$time', '$location', '$price', '$image', '$description', '$addtl_info')";
+    $query = "INSERT INTO events (title, author, `date`, `time`, `location`, price, `image`, `description`, addtl_info) VALUES ('$title', '$author', '$date', '$time', '$location', '$price', '$image', '$description', '$addtl_info')";
 
     $result = mysqli_query($conn, $query);
 ?><script type="text/javascript">
