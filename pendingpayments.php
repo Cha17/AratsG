@@ -459,7 +459,7 @@ $query = mysqli_query($conn, $sql);
                     <tr>
             <td><?php echo $row["reg_id"]; ?></td>
             <td><?php echo $row["title"]; ?></td>
-            <td><?php echo $row["user_id"]; ?></td>
+            <td><?php echo $row["studentNum"]; ?></td>
             <td><?php echo $row["fullname"]; ?></td>
             <td><?php echo $row["program"]." ".$row["yearlvl"]."-".$row["section"]; ?></td>
             <td><?php echo $row["payment_mode"]; ?></td>
