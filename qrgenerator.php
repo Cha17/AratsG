@@ -6,12 +6,12 @@ include("conn.php");
 
 
 //PHP Code for Registration ID 
-        
-        $sql = "SELECT * FROM registrations ORDER BY reg_id DESC LIMIT 1;";
-        $result = mysqli_query($conn, $sql);
-        $theone = mysqli_fetch_assoc($result);
-        $reg_id = $theone['reg_id'];
-  
+
+$sql = "SELECT * FROM registrations ORDER BY reg_id DESC LIMIT 1;";
+$result = mysqli_query($conn, $sql);
+$theone = mysqli_fetch_assoc($result);
+$reg_id = $theone['reg_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -49,11 +49,21 @@ include("conn.php");
                   echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
                 }
 
-              $fetch = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` ORDER BY reg_id DESC LIMIT 1";
-              $details = mysqli_query($conn, $fetch);
-              $row = mysqli_fetch_assoc($details);
+                $fetch = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` ORDER BY reg_id DESC LIMIT 1";
+                $details = mysqli_query($conn, $fetch);
+                $row = mysqli_fetch_assoc($details);
 
                 ?>-->
+            <a href="events.php" class="text-black text-center text-base font-medium leading-5">About</a>
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+              echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
+            } else {
+              echo "<a href='login.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
+            }
+
+            ?>
+
           </div>
         </a>
       </nav>
@@ -78,7 +88,7 @@ include("conn.php");
             <h5>Registration Details</h5>
             <ul>
               <li>
-              <?php echo $row['title'] ?>
+                <?php echo $row['title'] ?>
               </li>
               <li>
                 <img src="images/bx-calendar-alt.svg" alt="">
@@ -107,16 +117,16 @@ include("conn.php");
                 <?php echo $row['studentNum'] ?>
               </li>
               <li>
-              <?php echo $row['email'] ?>
+                <?php echo $row['email'] ?>
               </li>
               <li>
-              <?php echo $row['program'] ?>
+                <?php echo $row['program'] ?>
               </li>
               <li>
-              <?php echo $row['yearlvl']."-".$row['section'] ?>
+                <?php echo $row['yearlvl'] . "-" . $row['section'] ?>
               </li>
               <li>
-              <?php echo $row['payment_mode'] ?>
+                <?php echo $row['payment_mode'] ?>
               </li>
             </ul>
           </div>
@@ -139,15 +149,18 @@ include("conn.php");
           </p>
         </div>
 
-        
+
 
         <!-- Control Number -->
         <div class="flex  justify-center pb-7">
           <input type="text" class="bg-inherit text-center p-2 border h-[56px] rounded-xl border-solid border-orange-950" value="<?php echo $theone['reg_id']; ?>" id="qrText" readonly>
           <div id="dwld" class="flex justify-center items-center gap-5 ml-6 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
-            <a class="text-stone-100 font-semibold leading-6 whitespace-nowrap bg-[#ab644d] p-4 rounded-full shadow-md" onclick="downloadQR()">
-              <img src="images/bx-download.svg" alt="">
+
+            <a href="adminDashboard.php" class="flex items-center px-4 py-2 text-gray-900 rounded-full bg-[#ab644d] text-white hover:text-slate-50 hover:bg-sky-900 group" onclick=" downloadQR()">
+              <img src="images/bx-download.svg" alt="" />
+              <span class="ms-3">Download</span>
             </a>
+
           </div>
         </div>
         <!-- QR Code -->
