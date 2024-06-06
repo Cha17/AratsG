@@ -40,7 +40,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM registrations JOIN events ON registrations.event_id = events.`event-id` JOIN users ON registrations.user_id = users.`user-id` WHERE registrations.event_id=$event_id";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,14 @@ $query = mysqli_query($conn, $sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-  <title>Event</title>
+  <title>
+    <?php
+    $result = $conn->query($sql);
+    $row = mysqli_fetch_assoc($query);
+    echo $row['title'];
+
+    ?>
+  </title>
   <link rel="icon" type="image/x-icon" href="images/G!.png" />
   <link rel="stylesheet" href="table.css" type="text/css">
   <link href="/dist/output.css" rel="stylesheet" />
@@ -192,11 +199,11 @@ $query = mysqli_query($conn, $sql);
     <!-- Header -->
     <div class="flex w-full items-center justify-between pb-8 gap-5 max-md:max-w-full max-md:flex-wrap">
       <h1 class="text-[#10182c] text-6xl font-bold my-auto">
-        <?php 
-        $result = $conn->query($sql);
-        $row = mysqli_fetch_assoc($result);
-        echo $row['title'];
-        
+        <?php
+        $result1 = $conn->query($sql);
+        $row1 = mysqli_fetch_assoc($result1);
+        echo $row1['title'];
+
         ?>
       </h1>
 
@@ -236,7 +243,7 @@ $query = mysqli_query($conn, $sql);
     <!-- Search and Filter Section -->
     <div class="grid grid-flow-col">
       <!-- Search Bar -->
-      <form class="max-w-md ">
+      <form class="max-w-md " onsubmit="event.preventDefault()">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div class="relative">
           <input type="search" id="getName" name="name" placeholder="Search here..." class="block w-full px-4 py-3 ps-6 text-sm rounded-full bg-sky-900 bg-opacity-10 shadow-md placeholder-gray-400 text-whitefocus:ring-sky-800 focus:border-sky-800" required />
@@ -319,7 +326,7 @@ else{*/
                       <td><?php echo $row["payment_status"]; ?></td>
                       <td>
                         <form action="actionbutton.php" method="POST">
-                          <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                          <button name="Pending" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #f8fafc;transform: msFilter">
                               <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
                             </svg></button>
@@ -426,7 +433,7 @@ else{*/
                       <td><?php echo $row["payment_status"]; ?></td>
                       <td>
                         <form action="actionbutton.php" method="POST">
-                          <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                          <button name="Paid" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #f8fafc;transform: msFilter">
                               <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
                             </svg></button>
@@ -531,7 +538,7 @@ else{*/
                       <td><?php echo $row["payment_status"]; ?></td>
                       <td>
                         <form action="actionbutton.php" method="POST">
-                          <button name="completed" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
+                          <button name="Present" value="<?= $row['reg_id']; ?>" class='bg-sky-900 text-slate-50 text-sm leading-5 font-medium rounded-full px-2 py-2 mr-2'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #f8fafc;transform: msFilter">
                               <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"></path>
                             </svg></button>
