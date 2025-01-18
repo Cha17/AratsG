@@ -247,39 +247,63 @@ if (isset($_POST["submit"])) {
                     placeholder="0.00">
             </div>
 
-            <!-- Image Upload -->
-            <div class="flex flex-col col-span-2">
-    <label class="text-sm font-semibold text-gray-700 mb-1">Event Poster</label>
+<!-- Image Upload -->
+<div class="flex flex-col col-span-2">
+    <label for="image" class="text-sm font-semibold text-gray-700 mb-1">Event Poster</label>
     
-    <!-- Upload Container -->
-    <div id="uploadContainer" class="mt-1 flex justify-center px-6 py-4 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50">
-        <div class="text-center">
-            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" 
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <div class="flex text-sm text-gray-600 justify-center">
-                <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-sky-600 hover:text-sky-500">
-                    <span>Upload a file</span>
-                    <input id="image" name="image" type="file" accept="image/*" class="sr-only" required onchange="previewImage(this)">
+    <div class="grid grid-cols-2 gap-6">
+        <!-- Left Column - Image Preview -->
+        <div class="flex flex-col justify-center items-center border-2 border-gray-300 rounded-lg p-4 min-h-[300px]">
+            <?php if (!empty($event['image'])): ?>
+                <img id="imagePreview" 
+                     src="<?php echo 'uploads/' . htmlspecialchars($event['image']); ?>" 
+                     alt="Event Poster" 
+                     class="max-h-[250px] rounded-lg object-contain">
+            <?php else: ?>
+                <img id="imagePreview" 
+                     src="images/placeholder-image.png" 
+                     alt="Event Poster" 
+                     class="max-h-[250px] rounded-lg object-contain opacity-50">
+            <?php endif; ?>
+        </div>
+        
+        <!-- Right Column - Upload Controls -->
+        <div class="flex flex-col justify-center items-center border-2 border-gray-300 rounded-lg p-4">
+            <!-- Upload Button -->
+            <div class="flex flex-col items-center gap-4 w-full">
+                <label for="image" class="w-full">
+                    <div class="bg-sky-900 text-white text-center py-2 px-4 rounded-lg cursor-pointer hover:bg-sky-800 transition-colors">
+                        <?php echo !empty($event['image']) ? 'Change Poster' : 'Upload Event Poster'; ?>
+                    </div>
+                    <input type='file' 
+                           id='image' 
+                           name='image' 
+                           accept='image/*' 
+                           onchange='previewImage(this)' 
+                           class="hidden" />
                 </label>
-                <p class="pl-1">or drag and drop</p>
+
+                <!-- Remove Button - Only show if there's an image -->
+                <button type="button" 
+                        onclick="removeImage()" 
+                        class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors <?php echo empty($event['image']) ? 'hidden' : ''; ?>"
+                        id="removeButton">
+                    Remove Poster
+                </button>
             </div>
-            <p class="text-xs text-gray-500">PNG, JPG, JPEG up to 5MB</p>
+
+            <!-- File Requirements -->
+            <div class="mt-4 text-center">
+                <p class="text-xs text-gray-500">Accepted formats: PNG, JPG, JPEG</p>
+                <p class="text-xs text-gray-500">Max size: 5MB</p>
+            </div>
         </div>
     </div>
     
-    <!-- Preview Container -->
-    <div id="previewContainer" class="hidden mt-1 relative">
-        <img id="imagePreview" src="" alt="Preview" class="max-h-64 rounded-lg mx-auto">
-        <button type="button" onclick="removeImage()" 
-            class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 focus:outline-none">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-    </div>
+    <!-- Hidden input to track image deletion -->
+    <input type="hidden" name="delete_image" id="delete_image" value="0">
 </div>
+
             <!-- Description -->
             <div class="flex flex-col col-span-2">
                 <label for="description" class="text-sm font-semibold text-gray-700 mb-1">Short Description</label>
@@ -311,16 +335,21 @@ if (isset($_POST["submit"])) {
     <script>
 function previewImage(input) {
     const preview = document.getElementById('imagePreview');
-    const previewContainer = document.getElementById('previewContainer');
-    const uploadContainer = document.getElementById('uploadContainer');
-    
+    const removeButton = document.getElementById('removeButton');
+    const deleteImageInput = document.getElementById('delete_image');
+    const uploadButton = input.closest('label').querySelector('div'); // Get the blue button element
+
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         
         reader.onload = function(e) {
             preview.src = e.target.result;
-            previewContainer.classList.remove('hidden');
-            uploadContainer.classList.add('hidden');
+            preview.classList.remove('opacity-50');
+            removeButton.classList.remove('hidden');
+            deleteImageInput.value = "0";
+            
+            // Change the button text to "Change Poster"
+            uploadButton.textContent = "Change Poster";
         };
         
         reader.readAsDataURL(input.files[0]);
@@ -329,16 +358,22 @@ function previewImage(input) {
 
 function removeImage() {
     const preview = document.getElementById('imagePreview');
-    const previewContainer = document.getElementById('previewContainer');
-    const uploadContainer = document.getElementById('uploadContainer');
+    const removeButton = document.getElementById('removeButton');
     const fileInput = document.getElementById('image');
-    
-    preview.src = '';
-    previewContainer.classList.add('hidden');
-    uploadContainer.classList.remove('hidden');
+    const deleteImageInput = document.getElementById('delete_image');
+    const uploadButton = fileInput.closest('label').querySelector('div'); // Get the blue button element
+
+    preview.src = 'images/placeholder-image.png';
+    preview.classList.add('opacity-50');
+    removeButton.classList.add('hidden');
     fileInput.value = '';
+    deleteImageInput.value = "1";
+
+    // Change the button text back to "Upload Event Poster"
+    uploadButton.textContent = "Upload Event Poster";
 }
 </script>
+
 </body>
 
 </html>
