@@ -5,20 +5,64 @@ session_start();
 roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 if (isset($_POST["submit"])) {
-    $title = $_POST['title'];
-    $author = $_POST['author'];
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $author = mysqli_real_escape_string($conn, $_POST['author']);
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $location = $_POST['location'];
-    $price = $_POST['price'];
-    $image = $_POST['image'];
-    $description = $_POST['description'];
-    $addtl_info = $_POST['addtl_info'];
+    $location = mysqli_real_escape_string($conn, $_POST['location']);
+    $price = mysqli_real_escape_string($conn, $_POST['price']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $addtl_info = mysqli_real_escape_string($conn, $_POST['addtl_info']);
+    
+    // Handle image upload
+    if(isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+        $image = $_FILES['image'];
+        $image_name = $image['name'];
+        $image_tmp = $image['tmp_name'];
+        $image_size = $image['size'];
+        
+        // Configure upload settings
+        $allowed_types = ['image/jpeg', 'image/png', 'image/jpg'];
+        $max_size = 5 * 1024 * 1024; // 5MB
+        $upload_path = 'uploads/';
+        
+        // Create uploads directory if it doesn't exist
+        if (!file_exists($upload_path)) {
+            mkdir($upload_path, 0777, true);
+        }
+        
+        if (in_array($image['type'], $allowed_types)) {
+            if ($image_size <= $max_size) {
+                $unique_name = uniqid() . '_' . $image_name;
+                $destination = $upload_path . $unique_name;
+                
+                if (move_uploaded_file($image_tmp, $destination)) {
+                    $query = "INSERT INTO events (title, author, `date`, `time`, `location`, price, `image`, `description`, addtl_info) 
+                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    
+                    $stmt = mysqli_prepare($conn, $query);
+                    mysqli_stmt_bind_param($stmt, "sssssssss", $title, $author, $date, $time, $location, $price, $unique_name, $description, $addtl_info);
+                    
+                    if (mysqli_stmt_execute($stmt)) {
+                        echo "<script>alert('Event Successfully Added.'); window.location.href='adminDashboard.php';</script>";
+                    } else {
+                        echo "<script>alert('Error adding event: " . mysqli_error($conn) . "');</script>";
+                    }
+                } else {
+                    echo "<script>alert('Error uploading image.');</script>";
+                }
+            } else {
+                echo "<script>alert('Image size too large. Maximum size is 5MB.');</script>";
+            }
+        } else {
+            echo "<script>alert('Invalid file type. Please upload JPG, JPEG or PNG.');</script>";
+        }
+    } else {
+        echo "<script>alert('Please select an image.');</script>";
+    }
+?>
 
-    $query = "INSERT INTO events (title, author, `date`, `time`, `location`, price, `image`, `description`, addtl_info) VALUES ('$title', '$author', '$date', '$time', '$location', '$price', '$image', '$description', '$addtl_info')";
-    $result = mysqli_query($conn, $query);
-
-?><script type="text/javascript">
+<script type="text/javascript">
         alert("Event Successfully Added.");
 
 
@@ -82,12 +126,12 @@ if (isset($_POST["submit"])) {
                 </li>
 
                 <li>
-                    <a href="pendingpayments.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
+                    <a href="adminEvents.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
                         <img src="images/bxs-file.svg" alt="" />
-                        <span class="flex-1 ms-3 whitespace-nowrap">Pending Payment</span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Events</span>
                         <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-red-100">
                             <?php
-                            $sql1 = "Select * from registrations where payment_status='Pending'";
+                            $sql1 = "SELECT *  FROM events";
                             $result = mysqli_query($conn, $sql1);
 
                             if (isset($result)) {
@@ -154,89 +198,147 @@ if (isset($_POST["submit"])) {
 
         <!-- Add Event Form -->
 
-        <form method="post" autocomplete="off">
-            <div class="flex flex-col items-stretch">
-                <div class="grid grid-cols-3 gap-6 bg-sky-900 bg-opacity-15 p-8 rounded-lg">
-                    <!-- Event Name -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="title" class="text-base font-bold leading-6 whitespace-nowrap">Event Name</label>
-                            <input type="text" name="title" id="title" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Event Name" required />
-                        </div>
-                    </div>
-                    <!-- Author -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="author" class="text-base font-bold leading-6 whitespace-nowrap">Author</label>
-                            <input type="text" name="author" id="author" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Author" required />
-                        </div>
-                    </div>
-                    <!-- Date -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="date" class="text-base font-bold leading-6 whitespace-nowrap">Date</label>
-                            <input type="date" name="date" id="date" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Date" required />
-                        </div>
-                    </div>
-                    <!-- Time -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="time" class="text-base font-bold leading-6 whitespace-nowrap">Time</label>
-                            <input type="time" name="time" id="time" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Time" required />
-                        </div>
-                    </div>
-                    <!-- Location -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="location" class="text-base font-bold leading-6 whitespace-nowrap">Location</label>
-                            <input type="text" name="location" id="location" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Location" required />
-                        </div>
-                    </div>
-                    <!-- Price -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="price" class="text-base font-bold leading-6 whitespace-nowrap">Price (If free, input "0.00")</label>
-                            <input type="text" name="price" id="price" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Price" required />
-                        </div>
-                    </div>
-                    <!-- Image -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="image" class="text-base font-bold leading-6 whitespace-nowrap">Event Poster</label>
-                            <input type="text" name="image" id="image" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-full max-md:pl-1" placeholder="Enter File Name" required />
-                        </div>
-                    </div>
-                    <!-- Description -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="description" class="text-base font-bold leading-6 whitespace-nowrap">Short Description</label>
-                            <textarea type="text" name="description" id="description" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-md max-md:pl-1" placeholder="Short Event Description" required></textarea>
-                        </div>
-                    </div>
-                    <!-- Additional Info -->
-                    <div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-                        <div class="items-stretch flex grow flex-col max-md:mt-10">
-                            <label for="addtl_info" class="text-base font-bold leading-6 whitespace-nowrap">Full Description</label>
-                            <textarea type="text" name="addtl_info" id="addtl_info" class="bg-red-50 bg-opacity-70 mt-3 py-3 px-5 w-full  p-3 focus:outline-none focus:ring-sky-900 focus:ring-1 rounded-md max-md:pl-1" placeholder="Full Event Description" required></textarea>
-                        </div>
-                    </div>
-                </div>
+        <form method="post"  enctype="multipart/form-data">
+    <div class="flex flex-col items-stretch">
+        <div class="grid grid-cols-2 gap-6 bg-sky-900 bg-opacity-15 p-8 rounded-lg">
+            <!-- Event Name -->
+            <div class="flex flex-col">
+                <label for="title" class="text-sm font-semibold text-gray-700 mb-1">Event Name</label>
+                <input type="text" name="title" id="title" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="Enter event name">
             </div>
-            <!-- End of Registration Form -->
-            <!-- Submit Button -->
-            <section>
-                <div class="flex flex-col items-stretch px-16">
-                    <div class="justify-center items-stretch flex w-full flex-col -mr-5 px-7 mt-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
-                        <button type="submit" name="submit" class="bg-sky-900 hover:text-slate-100 hover:bg-gradient-to-l from-red-100 to-sky-700 justify-center items-center shadow-2xl flex w-[200px] max-w-full gap-2 mt-6 px-12 py-5 rounded-[40px] self-center max-md:mt-10 max-md:px-5 text-gray-200 text-center font-extrabold leading-6">
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </form>
+
+            <!-- Author -->
+            <div class="flex flex-col">
+                <label for="author" class="text-sm font-semibold text-gray-700 mb-1">Author</label>
+                <input type="text" name="author" id="author" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="Enter author name">
+            </div>
+
+            <!-- Date -->
+            <div class="flex flex-col">
+                <label for="date" class="text-sm font-semibold text-gray-700 mb-1">Date</label>
+                <input type="date" name="date" id="date" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent">
+            </div>
+
+            <!-- Time -->
+            <div class="flex flex-col">
+                <label for="time" class="text-sm font-semibold text-gray-700 mb-1">Time</label>
+                <input type="time" name="time" id="time" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent">
+            </div>
+
+            <!-- Location -->
+            <div class="flex flex-col">
+                <label for="location" class="text-sm font-semibold text-gray-700 mb-1">Location</label>
+                <input type="text" name="location" id="location" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="Enter location">
+            </div>
+
+            <!-- Price -->
+            <div class="flex flex-col">
+                <label for="price" class="text-sm font-semibold text-gray-700 mb-1">Price (PHP)</label>
+                <input type="number" name="price" id="price" step="0.01" required
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="0.00">
+            </div>
+
+            <!-- Image Upload -->
+            <div class="flex flex-col col-span-2">
+    <label class="text-sm font-semibold text-gray-700 mb-1">Event Poster</label>
+    
+    <!-- Upload Container -->
+    <div id="uploadContainer" class="mt-1 flex justify-center px-6 py-4 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50">
+        <div class="text-center">
+            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" 
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="flex text-sm text-gray-600 justify-center">
+                <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-sky-600 hover:text-sky-500">
+                    <span>Upload a file</span>
+                    <input id="image" name="image" type="file" accept="image/*" class="sr-only" required onchange="previewImage(this)">
+                </label>
+                <p class="pl-1">or drag and drop</p>
+            </div>
+            <p class="text-xs text-gray-500">PNG, JPG, JPEG up to 5MB</p>
+        </div>
+    </div>
+    
+    <!-- Preview Container -->
+    <div id="previewContainer" class="hidden mt-1 relative">
+        <img id="imagePreview" src="" alt="Preview" class="max-h-64 rounded-lg mx-auto">
+        <button type="button" onclick="removeImage()" 
+            class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 focus:outline-none">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+            <!-- Description -->
+            <div class="flex flex-col col-span-2">
+                <label for="description" class="text-sm font-semibold text-gray-700 mb-1">Short Description</label>
+                <textarea name="description" id="description" required rows="3"
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="Enter a brief description"></textarea>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="flex flex-col col-span-2">
+                <label for="addtl_info" class="text-sm font-semibold text-gray-700 mb-1">Full Description</label>
+                <textarea name="addtl_info" id="addtl_info" required rows="5"
+                    class="bg-white py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                    placeholder="Enter detailed description"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-center mt-8">
+        <button type="submit" name="submit" 
+            class="bg-sky-900 hover:bg-sky-800 text-white font-semibold py-2 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
+            Add Event
+        </button>
+    </div>
+</form>
     </div>
     <!-- End of Add Event Form -->
+    <script>
+function previewImage(input) {
+    const preview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('previewContainer');
+    const uploadContainer = document.getElementById('uploadContainer');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewContainer.classList.remove('hidden');
+            uploadContainer.classList.add('hidden');
+        };
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
+function removeImage() {
+    const preview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('previewContainer');
+    const uploadContainer = document.getElementById('uploadContainer');
+    const fileInput = document.getElementById('image');
+    
+    preview.src = '';
+    previewContainer.classList.add('hidden');
+    uploadContainer.classList.remove('hidden');
+    fileInput.value = '';
+}
+</script>
 </body>
 
 </html>

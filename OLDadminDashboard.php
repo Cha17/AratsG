@@ -53,7 +53,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
               </div>
             </a>
             <!--Student-->
-            <a href="pendingpayments.php">
+            <a href="pendingpayment.php">
               <div class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
 
                 <img loading="lazy" src="images/Students.svg" class="aspect-square object-center self-stretch max-w-full" alt="Students Icon" />

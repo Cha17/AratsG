@@ -113,7 +113,7 @@ $query = mysqli_query($conn, $sql);
                 </li>
 
                 <li>
-                    <a href="pendingpayments.php" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
+                    <a href="pendingpayment.php" class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-slate-50 hover:bg-gradient-to-l from-red-100 to-sky-700">
                         <img src="images/bxs-file.svg" alt="" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Pending Payment</span>
                         <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-red-100">

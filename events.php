@@ -1,139 +1,138 @@
 <?php
 require('conn.php');
 session_start();
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>G! Arat Na</title>
-  <link rel="icon" type="image/x-icon" href="images/G!.png" />
-  <link href="/dist/output.css" rel="stylesheet" />
-  <link rel="stylesheet" href="regFebibig.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G! Arat Na - Events</title>
+    <link rel="icon" type="image/x-icon" href="images/G!.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
 
-<body>
-  <!-- Gradient Background -->
-  <div class="blob w-full h-full rounded-[999px] absolute top-0 right-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200"></div>
+<body class="bg-gray-50">
+    <!-- Gradient Background -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="blob w-full h-full rounded-[999px] absolute top-0 right-0 blur-3xl bg-opacity-60 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200"></div>
+        <div class="blob w-[1000px] h-[1000px] rounded-[999px] absolute bottom-0 left-0 blur-3xl bg-opacity-60 bg-gradient-to-r from-red-200 via-gray-100 to-blue-100"></div>
+        <div class="blob w-[600px] h-[600px] rounded-[999px] absolute bottom-0 left-0 blur-3xl bg-opacity-60 bg-gradient-to-r from-slate-100 via-teal-100 to-blue-100"></div>
+        <div class="blob w-[300px] h-[300px] rounded-[999px] absolute bottom-[10px] left-0 blur-3xl bg-opacity-60 bg-gradient-to-r from-green-200 via-cyan-200 to-fuchsia-300"></div>
+    </div>
+
+    <!-- Header with sticky navigation -->
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+       <!-- Gradient Background -->
+   <div class="blob w-full h-full rounded-[999px] absolute top-0 right-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200"></div>
   <div class="blob w-[1000px] h-[1000px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-red-200 via-gray-100 to-blue-100"></div>
   <div class="blob w-[600px] h-[600px] rounded-[999px] absolute bottom-0 left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-slate-100 via-teal-100 to-blue-100"></div>
   <div class="blob w-[300px] h-[300px] rounded-[999px] absolute bottom-[10px] left-0 -z-10 blur-3xl bg-opacity-60 bg-gradient-to-r from-green-200 via-cyan-200 to-Fuchsia-300"></div>
   <!-- End of Gradient Background -->
-  <div class="flex flex-col items-stretch pl-12 pr-12 max-md:px-5">
-    <header>
-      <nav class="flex w-full items-center justify-between gap-20 mt-10 max-md:max-w-full max-md:flex-wrap">
-        <a href="index.php" class="flex items-stretch justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
-          <img src="images/G!.png" class="aspect-[4.09] object-contain object-center w-[200px] overflow-hidden shrink-0 max-w-full" alt="G! Arat Na" />
-          <div class="justify-center self-start flex gap-10 my-auto max-md:max-w-full max-md:flex-wrap max-md:justify-center">
-            <a href="index.php" class="text-stone-900 text-center text-base font-medium leading-5">Home</a>
-            <a href="events.php" class="text-black text-center text-base font-extrabold leading-5">Events</a>
-            <a href="userAbout.php" class="text-stone-900 text-center text-base font-medium leading-5">About</a>
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.php" class="flex items-center space-x-4">
+                    <img src="images/G!.png" class="w-10 h-auto" alt="G! Arat Na" />
+                    <span class="font-semibold text-xl">G! Arat Na</span>
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-bars text-gray-600 text-xl"></i>
+                </button>
 
-            <?php
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-              echo "<a href='logout.php' class='text-black text-center text-base font-medium leading-5'>Logout</a>";
-            } else {
-              echo "<a href='index.php' class='text-black text-center text-base font-medium leading-5'>Login</a>";
-            }
-            ?>
-          </div>
-        </a>
-      </nav>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.php" class="text-gray-800 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="events.php" class="text-gray-800 hover:text-blue-600 font-bold transition-colors">Events</a>
+                    <a href="userAbout.php" class="text-gray-800 hover:text-blue-600 font-medium transition-colors">About</a>
+                    <?php
+                    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                        echo '<a href="logout.php" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</a>';
+                    } else {
+                        echo '<a href="login.php" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Login</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.php" class="text-gray-800 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="events.php" class="text-gray-800 hover:text-blue-600 font-medium transition-colors">Events</a>
+                    <a href="events.php" class="text-gray-800 hover:text-blue-600 font-medium transition-colors">About</a>
+                    <?php
+                    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                        echo '<a href="logout.php" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-center">Logout</a>';
+                    } else {
+                        echo '<a href="login.php" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-center">Login</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </nav>
     </header>
-    <h1 class="text-orange-950 text-[65px] font-extrabold pl-10 leading-[54px] w-[1012px] ml-4 mt-12 max-md:max-w-full max-md:mt-10">
-      Events
-    </h1>
-    <section class="self-center flex max-w-full gap-5 mt-8 mb-10 max-md:flex-wrap max-md:justify-center max-md:mt-10">
-    <?php
-              $sql = "Select * from events";
-              $query = mysqli_query($conn, $sql);
-              if ($query->num_rows > 0) {
-                while ($row = mysqli_fetch_assoc($query)) {
-                  echo '
-      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
-        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
-          <div class="relative flex items-stretch justify-between gap-2">
-            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">';
-              echo $row['title'];
-      echo '</h2>
-          </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">';
-            echo $row['description'];
-      echo '</p>
-          <a href="register.php?event_id='.$row['event-id'].'" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
-        </div>
-      </div>';
-    };
-  };
-  ?>
-      <!--div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[330px] max-h-[330px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
-        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-12">
-          <div class="relative flex items-stretch justify-between gap-2">
-            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
-              DCS Week 2024
-            </h2>
-          </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            Gear up for DCS Week 2024! Join the Alliance of Computer
-            Scientists and Information Technology Society in a <span class="font-semibold">week-long
-              celebration of the Department of Computer Studies.</span>
-          </p>
-          <a href="register.php?column=event_id&evalue=20240002" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
-        </div>
-      </div>
-      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
-        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
-          <div class="relative flex items-stretch justify-between gap-2">
-            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
-              Mind Matters
-            </h2>
-          </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            A seminar talking about Psychological First Aid and Mental Hygiene?
-            <span class="font-semibold"> "Mind Matters: Introduction to Psychological First Aid and Mental Hygiene.</span>
-          </p>
-          <a href="register.php?column=event_id&evalue=20240001" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
-        </div>
-      </div>
-      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
-        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
-          <div class="relative flex items-stretch justify-between gap-2">
-            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
-              Seminar For You
-            </h2>
-          </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            <span class="font-semibold">FREE</span> and remarkable seminar entitled <span class="font-semibold">"Health Awareness: Fostering a Healthy and Productive Work Environment"</span> at Campus Gynasium.
-          </p>
-          <a href="register.php?column=event_id&evalue=20240002" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
-        </div>
-      </div>
-      <div class="bg-gradient-to-tl from-transparent hover:from-[#FFFFFF] hover:via-[#e7be6e] hover:to-[#fc8044] self-stretch w-[250px] max-w-[250px] h-[320px] max-h-[320px] flex grow basis-0 flex-col items-stretch py-px rounded-xl">
-        <div class="flex-col overflow-hidden relative flex w-full items-stretch px-6 pt-7 pb-9">
-          <div class="relative flex items-stretch justify-between gap-2">
-            <div class="bg-sky-900 flex w-1 shrink-0 h-[23px] flex-col rounded-3xl"></div>
-            <h2 class="text-gray-950 text-[32px] font-medium leading-7 grow whitespace-nowrap self-start">
-              CSG ELECTIONS
-            </h2>
-          </div>
-          <p class="relative text-gray-700 text-base leading-5 opacity-90 mt-8">
-            <span class="font-semibold">Calling all CvSUeños!🗣️ </span> We are highly encouraging you to join us at 2024 Central Student Government's Miting de Avance.
-          </p>
-          <a href="register.php?column=event_id&evalue=20240002" class="flex items-end relative text-gray-700 text-l font-bold leading-4 whitespace-nowrap mt-12 max-md:mt-10">Register Now</a>
-        </div>
-      </div-->
 
-    </section>
-  </div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-32 pb-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Page Title -->
+            <div class="mb-12">
+                <h1 class="text-5xl font-bold text-orange-950 mb-4">Upcoming Events</h1>
+                <p class="text-gray-600 text-xl">Discover and register for exciting events happening at our campus</p>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php
+                $sql = "SELECT * FROM events";
+                $query = mysqli_query($conn, $sql);
+                if ($query->num_rows > 0) {
+                    while ($row = mysqli_fetch_assoc($query)) {
+                        echo '
+                        <div class="group relative bg-white/60 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            
+                            <div class="relative p-6">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-1 h-6 bg-blue-600 rounded-full"></div>
+                                    <h2 class="text-2xl font-semibold text-gray-900 group-hover:text-orange-900 transition-colors">
+                                        '.$row['title'].'
+                                    </h2>
+                                </div>
+                                
+                                <p class="text-gray-600 mb-6 line-clamp-3">
+                                    '.$row['description'].'
+                                </p>
+                                
+                                <div class="flex justify-between items-center">
+                                
+                                    <a href="regform.php?event_id='.$row['event-id'].'" 
+                                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                        <span>Register Now</span>
+                                        <i class="fas fa-arrow-right ml-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
-
 </html>

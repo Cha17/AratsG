@@ -1,57 +1,52 @@
-let nextDom = document.getElementById('next');
-let prevDom = document.getElementById('prev');
+// Get DOM elements
+const nextDom = document.getElementById('next');
+const prevDom = document.getElementById('prev');
+const carouselDom = document.querySelector('.carousel');
+const sliderDom = carouselDom.querySelector('.list');
+const thumbnailItems = document.querySelectorAll('.md\\:w-1\\/4 .item');
 
-let carouselDom = document.querySelector('.carousel');
-let SliderDom = carouselDom.querySelector('.carousel .list');
-let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
-let timeDom = document.querySelector('.carousel .time');
+let currentIndex = 0;
+const slides = document.querySelectorAll('.carousel .list .item');
+const timeAutoNext = 7000;
 
-let timeRunning = 3000;
-let timeAutoNext = 7000;
+// Function to show specific slide
+function showSlide(index) {
+    // Hide all slides
+    slides.forEach(slide => {
+        slide.style.display = 'none';
+    });
+    
+    // Show the selected slide
+    if (slides[index]) {
+        slides[index].style.display = 'block';
+    }
+    
+    currentIndex = index;
+}
 
+// Next button click handler
 nextDom.onclick = function() {
-  showSlider('next');
-}
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+};
 
+// Previous button click handler
 prevDom.onclick = function() {
-  showSlider('prev');
-}
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+};
 
-let runTimeOut;
-let runNextAuto = setTimeout(() => {
-  next.click();
-}, timeAutoNext)
-
-function showSlider(type) {
-  let sliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
-  let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
-
-  if (type === 'next') {
-    SliderDom.appendChild(sliderItemsDom[0]);
-    thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
-    carouselDom.classList.add('next');
-  } else {
-    SliderDom.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
-    thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
-    carouselDom.classList.add('prev');
-  }
-
-  clearTimeout(runTimeOut);
-  runTimeOut = setTimeout(() => {
-    carouselDom.classList.remove('next');
-    carousel
-  })
-}
-
-
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
-
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
+// Thumbnail click handlers
+thumbnailItems.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+        showSlide(index);
+    });
 });
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
-});
+// Auto-advance carousel
+setInterval(() => {
+    nextDom.click();
+}, timeAutoNext);
+
+// Show first slide initially
+showSlide(0);
