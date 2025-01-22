@@ -9,12 +9,8 @@
     <link rel="stylesheet" href="login.css">
     <title>G! Arat Na</title>
     <link rel="icon" type="image/x-icon" href="images/G!.png">
-    <style>
-        .input-field {
-            position: relative;
-        }
-        
-        .toggle-password, .toggle-text {
+    <style>      
+        .toggle-password {
             position: absolute;
             right: 20px;
             top: 50%;
@@ -26,13 +22,17 @@
             pointer-events: auto;
         }
         
-        .toggle-password:hover, .toggle-text:hover {
+        .toggle-password:hover {
             color: #666;
         }
 
-        .input-field input[type="password"],
-        .input-field input[type="text"] {
-            padding-right: 45px;
+
+        .input-field input {
+            transition: box-shadow 0.3s ease;
+        }
+        .input-field input:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 55px;
         }
 
         .error-message {
@@ -51,8 +51,7 @@
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="" placeholder="Email or Username" name="email_username" class="text-input" required />
-                        <i class="fa-regular fa-eye-slash toggle-text"></i>
+                        <input type="text" placeholder="Email or Username" name="email_username" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -67,18 +66,15 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="Email or Username" placeholder="Username" id="username" name="username" class="text-input" required />
-                        <i class="fa-regular fa-eye-slash toggle-text"></i>
+                        <input type="text" placeholder="Username" id="username" name="username" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="password" placeholder="Email" id="email" name="email" class="text-input" required />
-                        <i class="fa-regular fa-eye-slash toggle-text"></i>
+                        <input type="email" placeholder="Email" id="email" name="email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="password" placeholder="Student Number" id="studentNum" name="studentNum" class="text-input" required />
-                        <i class="fa-regular fa-eye-slash toggle-text"></i>
+                        <input type="text" placeholder="Student Number" id="studentNum" name="studentNum" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -130,19 +126,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const togglePasswordButtons = document.querySelectorAll('.toggle-password');
-            const toggleTextButtons = document.querySelectorAll('.toggle-text');
 
             togglePasswordButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const passwordInput = this.previousElementSibling;
                     toggleFieldVisibility(passwordInput, this);
-                });
-            });
-
-            toggleTextButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const textInput = this.previousElementSibling;
-                    toggleFieldVisibility(textInput, this);
                 });
             });
 
@@ -159,7 +147,6 @@
             }
         });
 
-        // form validation functions
         function validateSignIn(event) {
             const form = event.target;
             const emailUsername = form.querySelector('[name="email_username"]');
