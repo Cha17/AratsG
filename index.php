@@ -110,8 +110,8 @@ session_start();
                                     <div class="content absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
                                         <div class="p-4 lg:p-8 text-white max-w-2xl">
                                             <div class="text-blue-400 font-medium mb-2"><?= htmlspecialchars($event['author']); ?></div>
-                                            <h2 class="text-2xl lg:text-4xl font-bold mb-2 lg:mb-4"><?= htmlspecialchars($event['title']); ?></h2>
-                                            <p class="text-sm lg:text-lg mb-4 lg:mb-6"><?= htmlspecialchars($event['description']); ?></p>
+                                            <h2 class="text-2xl lg:text-4xl font-bold mb-2 lg:mb-2 line-clamp-2"><?= htmlspecialchars($event['title']); ?></h2>
+                                            <p class="text-sm lg:text-lg mb-4 lg:mb-4 line-clamp-2 mr-12"><?= htmlspecialchars($event['description']); ?></p>
                                             <button onclick="location.href='regform.php?event_id=<?= $event['event-id']; ?>'" 
                                                     class="px-4 py-2 lg:px-6 lg:py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                                                 Register Now
@@ -155,13 +155,13 @@ session_start();
                     foreach ($events as $index => $event) {
                         $thumbnailPath = 'uploads/' . ($event['image'] ? $event['image'] : 'default-event.jpg');
                     ?>
-                        <div class="thumbnail-item cursor-pointer transform hover:scale-105 transition-all duration-300 mb-4"
-     data-index="<?= $index ?>">
-    <img src="<?= htmlspecialchars($thumbnailPath); ?>" 
-         alt="<?= htmlspecialchars($event['title']); ?>" 
-         class="w-full h-32 object-cover rounded-lg border-2 border-gray-300" />
-    <p class="mt-2 text-sm font-medium truncate"><?= htmlspecialchars($event['title']); ?></p>
-</div>
+                    <div class="thumbnail-item cursor-pointer transform hover:scale-105 transition-all duration-300 mb-4"
+                        data-index="<?= $index ?>">
+                        <img src="<?= htmlspecialchars($thumbnailPath); ?>" 
+                            alt="<?= htmlspecialchars($event['title']); ?>" 
+                            class="w-full h-32 object-cover rounded-lg border-2 border-gray-300" />
+                        <p class="mt-1 text-sm font-medium truncate px-2"><?= htmlspecialchars($event['title']); ?></p>
+                    </div>
                     <?php 
                     }
                 } 
