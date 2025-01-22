@@ -34,6 +34,12 @@
         .input-field input[type="text"] {
             padding-right: 45px;
         }
+
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -41,42 +47,42 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Sign in Form -->
-                <form action="login_register.php" method="POST" class="sign-in-form">
+                <form action="login_register.php" method="POST" class="sign-in-form" onsubmit="return validateSignIn(event)">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="password" placeholder="Email or Username" name="email_username" class="text-input" />
+                        <input type="" placeholder="Email or Username" name="email_username" class="text-input" required />
                         <i class="fa-regular fa-eye-slash toggle-text"></i>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" class="password-input" />
+                        <input type="password" placeholder="Password" name="password" class="password-input" required />
                         <i class="fa-regular fa-eye-slash toggle-password"></i>
                     </div>
                     <input type="submit" name="login" value="Login" class="btn solid" />
                 </form>
 
                 <!-- Sign up Form -->
-                <form action="login_register.php" method="POST" class="sign-up-form">
+                <form action="login_register.php" method="POST" class="sign-up-form" onsubmit="return validateSignUp(event)">
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="password" placeholder="Username" id="username" name="username" class="text-input" />
+                        <input type="Email or Username" placeholder="Username" id="username" name="username" class="text-input" required />
                         <i class="fa-regular fa-eye-slash toggle-text"></i>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="password" placeholder="Email" id="email" name="email" class="text-input" />
+                        <input type="password" placeholder="Email" id="email" name="email" class="text-input" required />
                         <i class="fa-regular fa-eye-slash toggle-text"></i>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="password" placeholder="Student Number" id="studentNum" name="studentNum" class="text-input" />
+                        <input type="password" placeholder="Student Number" id="studentNum" name="studentNum" class="text-input" required />
                         <i class="fa-regular fa-eye-slash toggle-text"></i>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" id="password" name="password" class="password-input" />
+                        <input type="password" placeholder="Password" id="password" name="password" class="password-input" required />
                         <i class="fa-regular fa-eye-slash toggle-password"></i>
                     </div>
                     <input type="submit" name="signup" class="btn" value="Sign up" />
@@ -124,6 +130,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+            const toggleTextButtons = document.querySelectorAll('.toggle-text');
+
             togglePasswordButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const passwordInput = this.previousElementSibling;
@@ -131,7 +139,6 @@
                 });
             });
 
-            const toggleTextButtons = document.querySelectorAll('.toggle-text');
             toggleTextButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const textInput = this.previousElementSibling;
@@ -151,6 +158,34 @@
                 }
             }
         });
+
+        // form validation functions
+        function validateSignIn(event) {
+            const form = event.target;
+            const emailUsername = form.querySelector('[name="email_username"]');
+            const password = form.querySelector('[name="password"]');
+
+            if (!emailUsername.value.trim() || !password.value.trim()) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            return true;
+        }
+
+        function validateSignUp(event) {
+            const form = event.target;
+            const username = form.querySelector('#username');
+            const email = form.querySelector('#email');
+            const studentNum = form.querySelector('#studentNum');
+            const password = form.querySelector('#password');
+
+            if (!username.value.trim() || !email.value.trim() || 
+                !studentNum.value.trim() || !password.value.trim()) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            return true;
+        }
     </script>
 </body>
 </html>
