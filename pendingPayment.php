@@ -299,9 +299,10 @@ function showModal(data) {
 }
 
 // Add event listeners for modal buttons
-document.getElementById('closeModal').addEventListener('click', function() {
-    document.getElementById('scanModal').classList.add('hidden');
-});
+document.getElementById('closeModal').onclick = function() {
+    const modal = document.getElementById('scanModal');
+    modal.classList.add('hidden');
+};
 
 document.getElementById('confirmBtn').addEventListener('click', function() {
     // Handle payment confirmation
@@ -638,20 +639,24 @@ function showModal(data) {
                 <script src="table.js"></script>
                 <script>
                     $(document).ready(function() {
-                        $('#getName').on("keyup", function() {
-                            var getName = $(this).val();
-                            $.ajax({
-                                method: 'POST',
-                                url: 'searchajax.php',
-                                data: {
-                                    name: getName
-                                },
-                                success: function(response) {
-                                    $("#showdata").html(response);
-                                }
-                            });
-                        });
-                    });
+    // Get the event ID from the page (assuming it's in the URL)
+    var eventId = <?php echo $event_id; ?>;
+
+    $('#getName').on("keyup", function() {
+        var getName = $(this).val();
+        $.ajax({
+            method: 'POST',
+            url: 'searchajax.php',
+            data: {
+                name: getName,
+                event_id: eventId
+            },
+            success: function(response) {
+                $("#showdata").html(response);
+            }
+        });
+    });
+});
 
                     function SORTdropdown() {
                         document.getElementById("sortDropdown").classList.toggle("show");

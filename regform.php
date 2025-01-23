@@ -139,9 +139,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                         </ul>
                     </div>
                 </div>
-                <?php if (isset($event['image'])): ?>
+                <?php if (isset($event['image'])): 
+                    $imagePath = 'uploads/' . ($event['image'] ? $event['image'] : 'default-event.jpg');
+                    ?>
                 <div class="aspect-square rounded-2xl overflow-hidden">
-                    <img src="<?php echo $event['image']; ?>" alt="<?php echo $event['title']; ?>" class="w-full h-full object-cover">
+                    <img src="<?= htmlspecialchars($imagePath)?>" alt="<?php echo $event['title']; ?>" class="w-full h-full object-cover">
                 </div>
                 <?php endif; ?>
             </div>

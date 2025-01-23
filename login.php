@@ -26,14 +26,14 @@
             color: #666;
         }
 
-
+/* 
         .input-field input {
             transition: box-shadow 0.3s ease;
         }
         .input-field input:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 55px;
-        }
+        } */
 
         .error-message {
             color: red;

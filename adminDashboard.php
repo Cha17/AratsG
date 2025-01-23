@@ -128,7 +128,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
           </button>
           <div class="self-center flex grow basis-[0%] flex-col items-stretch">
             <div class="text-[#10182c] font-medium text-center text-xl">
-              <a href="Students_list.php">Users</a>
+              <a href="#">Users</a>
             </div>
             <div class="text-[#10182c] text-center text-4xl font-bold">
               <?php
@@ -152,7 +152,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
           </button>
           <div class="self-center flex grow basis-[0%] flex-col items-stretch">
             <div class="text-[#10182c] font-medium text-center text-xl">
-              <a href="requests.php">Events</a>
+              <a href="adminEvents.php">Events</a>
             </div>
             <div class="text-[#10182c] text-center text-4xl font-bold">
               <?php
@@ -177,7 +177,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
           </button>
           <div class="self-center flex grow basis-[0%] flex-col items-stretch">
             <div class="text-[#10182c] font-medium text-center text-xl">
-              <a href="requests.php">Pending</a>
+              <a href="#">Pending</a>
             </div>
             <div class="text-[#10182c] text-center text-4xl font-bold">
               <?php

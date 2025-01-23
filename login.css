@@ -108,11 +108,34 @@ form.sign-in-form {
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .input-field input::placeholder {
   color: #aaa;
   font-weight: 500;
+}
+
+/* Enhanced input field hover and autocomplete styles */
+/* .input-field input:hover,
+.input-field input:focus {
+    box-shadow: 0 0 10px rgba(89, 149, 253, 0.3);
+    border: 2px solid #5995fd;
+    border-radius: 55px;
+} */
+
+.input-field input:-webkit-autofill,
+.input-field input:-webkit-autofill:hover, 
+.input-field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #333;
+    -webkit-box-shadow: 0 0 0px 1000px #f0f0f0 inset;
+    transition: background-color 5000s ease-in-out 0s;
+    border-radius: 55px;
+}
+
+.input-field input:autofill {
+  background-color: #f0f0f0 !important;
+  border-radius: 55px;
 }
 
 .social-text {
@@ -163,6 +186,7 @@ form.sign-in-form {
 .btn:hover {
   background-color: #4d84e2;
 }
+
 .panels-container {
   position: absolute;
   height: 100%;
