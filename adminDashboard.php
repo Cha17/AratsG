@@ -120,15 +120,14 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
       <div class="flex w-[1-00px] max-w-full gap-2 mx-20 justify-between max-md:flex-wrap max-md:justify-center">
 
         <div class="flex items-stretch gap-5">
-          <button onclick="location.href='Students_list.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
+          <button onclick="location.href='adminUsers.php'"class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full" style="cursor: pointer;" >
             <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-300 to-sky-700 flex items-center justify-center">
               <img class="w-8 h-8" src="images/bx-group outline.svg" alt="">
             </div>
-
           </button>
           <div class="self-center flex grow basis-[0%] flex-col items-stretch">
             <div class="text-[#10182c] font-medium text-center text-xl">
-              <a href="#">Users</a>
+              <a>Users</a>
             </div>
             <div class="text-[#10182c] text-center text-4xl font-bold">
               <?php
@@ -145,7 +144,7 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
 
         <div class="flex items-stretch gap-5">
-          <button onclick="location.href='requests.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
+          <button onclick="location.href='adminEvents.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
             <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-300 to-sky-700 flex items-center justify-center">
               <img class="w-8 h-8" src="images/bx-calendar-event-ool.svg" alt="">
             </div>
@@ -170,14 +169,14 @@ roleConfirm($_SESSION['logged_in'], $_SESSION['email']);
 
         <!--Registratiions-->
         <div class="flex items-stretch gap-5">
-          <button onclick="location.href='requests.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
+          <button onclick="location.href='adminDashboard.php'" class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full">
             <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-300 to-sky-700 flex items-center justify-center">
               <img class="w-8 h-8" src="images/bx-file-ol.svg" alt="">
             </div>
           </button>
           <div class="self-center flex grow basis-[0%] flex-col items-stretch">
             <div class="text-[#10182c] font-medium text-center text-xl">
-              <a href="#">Pending</a>
+              <a>Pending</a>
             </div>
             <div class="text-[#10182c] text-center text-4xl font-bold">
               <?php
