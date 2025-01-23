@@ -5,27 +5,40 @@ session_start();
 
 //for login
 if (isset($_POST['login'])) {
-    $query = "SELECT * FROM users WHERE email = '$_POST[email_username]' OR studentNum = '$_POST[email_username]'";
-    $result = mysqli_query($conn, $query);
+    // First try email
+    $query = "SELECT * FROM users WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $_POST['email_username']);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        
+        // If email not found, try student number
+        if (mysqli_num_rows($result) == 0) {
+            $query = "SELECT * FROM users WHERE studentNum = ?";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "s", $_POST['email_username']);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+        }
 
-    if ($result) {
-        if (mysqli_num_rows($result) == 1) {
+        if ($result && mysqli_num_rows($result) == 1) {
             $result_fetch = mysqli_fetch_assoc($result);
             if (password_verify($_POST['password'], $result_fetch['password'])) {
-                //identify user role
+                $_SESSION['logged_in'] = true;
+                $_SESSION['email'] = $result_fetch['email'];
+                
                 if ($result_fetch['role'] == "User") {
-                    $_SESSION['logged_in'] = true;
-                    $_SESSION['email'] = $result_fetch['email'];
-                    header("location: index.php");;
+                    header("location: index.php");
                 } else {
-                    $_SESSION['logged_in'] = true;
-                    $_SESSION['email'] = $result_fetch['email'];
-                    header("location: adminDashboard.php");;
+                    header("location: adminDashboard.php");
                 }
+                exit();
             } else {
                 echo "
                 <script>
-                    alert('Wrong username or password!');
+                    alert('Wrong password!');
                     window.location.href = 'login.php';
                 </script>
                 ";
@@ -33,18 +46,11 @@ if (isset($_POST['login'])) {
         } else {
             echo "
             <script>
-                alert('Email not registered!');
+                alert('Account not found!');
                 window.location.href = 'login.php';
             </script>
             ";
         }
-    } else {
-        echo "
-        <script>
-            alert('Email not registered!');
-            window.location.href = 'login.php';
-        </script>
-        ";
     }
 }
 
