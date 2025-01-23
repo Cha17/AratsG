@@ -198,134 +198,7 @@ $paidQuery = mysqli_stmt_get_result($stmt);
     </div>
 </div>
         </div>
-        <script>
-let scanner = null;
-
-function toggleCamera() {
-    const cameraIntro = document.getElementById('cameraIntro');
-    const cameraPreview = document.getElementById('cameraPreview');
-    
-    if (cameraPreview.classList.contains('hidden')) {
-        // Start camera
-        cameraIntro.classList.add('hidden');
-        cameraPreview.classList.remove('hidden');
-        
-        scanner = new Instascan.Scanner({
-            video: document.getElementById('preview')
-        });
-        
-        Instascan.Camera.getCameras().then(function(cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-            } else {
-                alert('No cameras found');
-            }
-        }).catch(function(e) {
-            console.error(e);
-        });
-
-        scanner.addListener('scan', function(content) {
-            // When QR code is scanned, fetch registration details
-            fetchRegistrationDetails(content);
-        });
-    } else {
-        // Stop camera
-        if (scanner) {
-            scanner.stop();
-        }
-        cameraPreview.classList.add('hidden');
-        cameraIntro.classList.remove('hidden');
-    }
-}
-
-function fetchRegistrationDetails(regId) {
-    // Make an AJAX call to fetch registration details
-    $.ajax({
-        method: 'POST',
-        url: 'fetch_registration.php', // You'll need to create this PHP file
-        data: { reg_id: regId },
-        success: function(response) {
-            try {
-                const data = JSON.parse(response);
-                if (data.success) {
-                    showModal(data.registration);
-                } else {
-                    showModal({ error: "Registration not found" });
-                }
-            } catch (e) {
-                showModal({ error: "Invalid QR Code" });
-            }
-        },
-        error: function() {
-            showModal({ error: "Error fetching registration details" });
-        }
-    });
-}
-
-function showModal(data) {
-    const modal = document.getElementById('scanModal');
-    const content = document.getElementById('modalContent');
-    const confirmBtn = document.getElementById('confirmBtn');
-    
-    // Clear previous content
-    content.innerHTML = '';
-    
-    if (data.error) {
-        // Show error message
-        content.innerHTML = `
-            <div class="text-red-600 text-center">
-                ${data.error}
-            </div>
-        `;
-        confirmBtn.style.display = 'none';
-    } else {
-        // Show registration details
-        content.innerHTML = `
-            <div class="space-y-3">
-                <p><span class="font-semibold">Registration ID:</span> ${data.reg_id}</p>
-                <p><span class="font-semibold">Event:</span> ${data.title}</p>
-                <p><span class="font-semibold">Student:</span> ${data.fullname}</p>
-                <p><span class="font-semibold">Student Number:</span> ${data.studentNum}</p>
-                <p><span class="font-semibold">Program:</span> ${data.program} ${data.yearlvl}-${data.section}</p>
-                <p><span class="font-semibold">Payment Mode:</span> ${data.payment_mode}</p>
-                <p><span class="font-semibold">Status:</span> ${data.payment_status}</p>
-            </div>
-        `;
-        confirmBtn.style.display = 'block';
-    }
-    
-    // Show modal
-    modal.classList.remove('hidden');
-}
-
-// Add event listeners for modal buttons
-document.getElementById('closeModal').onclick = function() {
-    const modal = document.getElementById('scanModal');
-    modal.classList.add('hidden');
-};
-
-document.getElementById('confirmBtn').addEventListener('click', function() {
-    // Handle payment confirmation
-    $.ajax({
-        method: 'POST',
-        url: 'confirm_payment.php', // You'll need to create this PHP file
-        data: { reg_id: currentRegId },
-        success: function(response) {
-            try {
-                const data = JSON.parse(response);
-                if (data.success) {
-                    // Refresh the page or update the table
-                    location.reload();
-                } else {
-                    alert('Error confirming payment: ' + data.message);
-                }
-            } catch (e) {
-                alert('Error processing payment confirmation');
-            }
-        }
-    });
-});
-</script>
+      
 
         </div>
 
@@ -557,6 +430,134 @@ document.getElementById('confirmBtn').addEventListener('click', function() {
 </div>
 <!-- End of Modal Dialog -->
 
+<script>
+let scanner = null;
+let currentRegId; 
+
+function toggleCamera() {
+    const cameraIntro = document.getElementById('cameraIntro');
+    const cameraPreview = document.getElementById('cameraPreview');
+    
+    if (cameraPreview.classList.contains('hidden')) {
+        // Start camera
+        cameraIntro.classList.add('hidden');
+        cameraPreview.classList.remove('hidden');
+        
+        scanner = new Instascan.Scanner({
+            video: document.getElementById('preview')
+        });
+        
+        Instascan.Camera.getCameras().then(function(cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+            } else {
+                alert('No cameras found');
+            }
+        }).catch(function(e) {
+            console.error(e);
+        });
+
+        scanner.addListener('scan', function(content) {
+            // When QR code is scanned, fetch registration details
+            fetchRegistrationDetails(content);
+        });
+    } else {
+        // Stop camera
+        if (scanner) {
+            scanner.stop();
+        }
+        cameraPreview.classList.add('hidden');
+        cameraIntro.classList.remove('hidden');
+    }
+}
+
+function fetchRegistrationDetails(regId) {
+    // Make an AJAX call to fetch registration details
+    $.ajax({
+        method: 'POST',
+        url: 'fetch_registration.php', // You'll need to create this PHP file
+        data: { reg_id: regId },
+        success: function(response) {
+            try {
+                const data = JSON.parse(response);
+                if (data.success) {
+                    showModal(data.registration);
+                } else {
+                    showModal({ error: "Registration not found" });
+                }
+            } catch (e) {
+                showModal({ error: "Invalid QR Code" });
+            }
+        },
+        error: function() {
+            showModal({ error: "Error fetching registration details" });
+        }
+    });
+}
+
+
+
+// Add event listeners for modal buttons
+document.getElementById('closeModal').onclick = function() {
+    const modal = document.getElementById('scanModal');
+    modal.classList.add('hidden'); // This should hide the modal
+};
+
+function showModal(data) {
+    const modal = document.getElementById('scanModal');
+    const content = document.getElementById('modalContent');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    // Clear previous content
+    content.innerHTML = '';
+
+    if (data.error) {
+        content.innerHTML = `<div class="text-red-600 text-center">${data.error}</div>`;
+        confirmBtn.style.display = 'none';
+    } else {
+        currentRegId = data.reg_id; // Set currentRegId here
+        content.innerHTML = `
+            <div class="space-y-3">
+                <p><span class="font-semibold">Registration ID:</span> ${data.reg_id}</p>
+                <p><span class="font-semibold">Event:</span> ${data.title}</p>
+                <p><span class="font-semibold">Student:</span> ${data.fullname}</p>
+                <p><span class="font-semibold">Student Number:</span> ${data.studentNum}</p>
+                <p><span class="font-semibold">Program:</span> ${data.program} ${data.yearlvl}-${data.section}</p>
+                <p><span class="font-semibold">Payment Mode:</span> ${data.payment_mode}</p>
+                <p><span class="font-semibold">Status:</span> ${data.payment_status}</p>
+            </div>
+        `;
+        confirmBtn.style.display = 'block';
+    }
+
+    // Show modal
+    modal.classList.remove('hidden');
+}
+
+
+
+document.getElementById('confirmBtn').addEventListener('click', function() {
+    // Handle payment confirmation
+    $.ajax({
+        method: 'POST',
+        url: 'confirm_payment.php', // You'll need to create this PHP file
+        data: { reg_id: currentRegId },
+        success: function(response) {
+            try {
+                const data = JSON.parse(response);
+                if (data.success) {
+                    // Refresh the page or update the table
+                    location.reload();
+                } else {
+                    alert('Error confirming payment: ' + data.message);
+                }
+            } catch (e) {
+                alert('Error processing payment confirmation');
+            }
+        }
+    });
+});
+</script>
 <script>
 // Update the confirm payment function in your existing script
 function handlePaymentConfirmation(regId) {
