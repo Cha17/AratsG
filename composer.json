@@ -1,0 +1,14 @@
+{
+    "name": "aratsg/web-app",
+    "description": "AratsG Web Application",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "ext-mysqli": "*"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+} 
